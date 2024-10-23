@@ -1,4 +1,5 @@
 // 기능 추가
+//등록, 프로필 페이지 이동기능 페이지네이션,삭제 미구현
 const userListFunc = async () => {
   const create = document.querySelector('#create');
   // const delete = document.querySelector('#delete');

@@ -4,15 +4,15 @@ import style from './userList.module.css';
 const userListRender = () => //btn = button
   `
   <div class="${style.body}">
-      <header class="${style.header}">
+      <header>
         <div class="${style.headerLeft}">
           <div class="${style.title}">임직원 관리</div>
           <div class="${style.subTitle}">총 n명의 임직원</div>  
         </div>
         <div class="${style.headerRight}">
           <div class="${style.rightBtn}">
-            <button class = "${style.btnBlack} ${style.btn}" id="create">임직원 등록</button> 
-            <button class = "${style.btnRed} ${style.btn}">임직원 삭제</button>
+            <button class = "${style.btn} ${style.btnBlack}" id="create">임직원 등록</button> 
+            <button class = "${style.btn} ${style.btnRed}">임직원 삭제</button>
           </div>
           <input 
           type ="text" 
@@ -21,10 +21,7 @@ const userListRender = () => //btn = button
         </div>
       </header>
       
-      <div class="${style.navigation}>"
-      네비게이션 예정
-      </div>
-      
+
       <section class="${style.tableSection}">
         <table class="${style.table}">
           <tr>

@@ -1,9 +1,7 @@
 
 .body{
   margin: 0;
-  /* border: 1px solid black; */
-  /* width: 1280px; */
-  /* height: 2000px; */
+  width: auto;
   align-items: center;
 }
 .title{
@@ -21,7 +19,7 @@
 }
 
 /* HEADER */
-.header {
+header {
   margin: 70px auto 0;
   width: 70%;
   height: 70px;
@@ -29,12 +27,6 @@
   top: 0px;
   left: 0px;
   
-}
-.headerLeft{
-
-}
-.headerRight{
-
 }
 .rightBtn{
   position: absolute;
@@ -71,15 +63,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-}
-.navigation{
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 1px solid black;
-  width: 80px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 /* SECTION */
@@ -145,10 +128,12 @@
   height: 33px;
   border-radius: 4px;
   cursor: pointer;
-
 }
 
 @media (max-width:1280px){
+  body{
+    width: 90%;
+  }
   .profileImg,
   .email{
     display:none;
