@@ -6,64 +6,69 @@ const userListRender = () => //btn = button
   <div class=${style.body}>
       <header class=${style.header}>
         <div class=${style.headerLeft}>
-          <h3 class=${style.title}>임직원 관리</h3>
-          <div class="subTitle">총 n명의 임직원</div>  
+          <div class=${style.title}>임직원 관리</div>
+          <div class=${style.subTitle}>총 n명의 임직원</div>  
         </div>
         <div class=${style.headerRight}>
-          <button class =${style.btn, style.btnBlack}>임직원 등록</button> 
-          <button class =${style.btn, style.btnRed}>임직원 삭제</button>
+          <div class=${style.rightBtn}>
+            <button class = ${style.btnBlack}>임직원 등록</button> 
+            <button class = ${style.btnRed}>임직원 삭제</button>
+          </div>
           <input 
           type ="text" 
           class=${style.input} 
-          placeholder ="이름으로 검색하기">
+          placeholder ="이름 또는 이메일로 검색하기">
         </div>
       </header>
       
       <div class=${style.navigation}>
+      네비게이션 예정
       </div>
       
-      <section class=${style.table}>
-        <table>
+      <section class=${style.tableSection}>
+        <table class=${style.table}>
           <tr>
-            <th>checkbox</th>
-            <th>프로필 사진</th>
-            <th>이름</th>
-            <th>이메일</th>
-            <th>휴대폰번호</th>
-            <th>구분</th>
+            <th class=${style.th}></th>
+            <th class=${style.th}>프로필 사진</th>
+            <th class=${style.th}>이름</th>
+            <th class=${style.th}>이메일</th>
+            <th class=${style.th}>휴대폰번호</th>
+            <th class=${style.th}>구분</th>
           </tr>
           <tr>
-            <th><input type="checkbox"></th>
-            <th><img src="" alt="홍길동 프로필사진"></th>
-            <th>홍길동</th>
-            <th>test@naver.com</th>
-            <th>010-1234-5678</th>
-            <th>임직원</th>
+            <td class=${style.td}><input type="checkbox"></td>
+            <td class=${style.td}><img src="/public/vite.svg" alt="홍길동 프로필사진" class=${style.image}></td>
+            <td class=${style.td}>홍길동</td>
+            <td class=${style.td}>test@naver.com</td>
+            <td class=${style.td}>010-1234-5678</td>
+            <td class=${style.td}>임직원</td>
           </tr>
           <tr>
-            <th><input type="checkbox"></th>
-            <th><img src="" alt="박과장 프로필사진"></th>
-            <th>박과장</th>
-            <th>test2@naver.com</th>
-            <th>010-7788-1234</th>
-            <th>임직원</th>
+            <td class=${style.td}><input type="checkbox"></td>
+            <td class=${style.td}><img src="/public/vite.svg" alt="박과장 프로필사진" class=${style.image}></td>
+            <td class=${style.td}>박과장</td>
+            <td class=${style.td}>test2@naver.com</td>
+            <td class=${style.td}>010-7788-1234</td>
+            <td class=${style.td}>임직원</td>
           </tr>
           <tr>
-            <th><input type="checkbox"></th>
-            <th><img src="" alt="김철수 프로필사진"></th>
-            <th>김철수</th>
-            <th>test3@naver.com</th>
-            <th>010-5566-5678</th>
-            <th>관리자</th>
+            <td class=${style.td}><input type="checkbox"></td>
+            <td class=${style.td}><img src="/public/vite.svg" alt="김철수 프로필사진" class=${style.image}></td>
+            <td class=${style.td}>김철수</td>
+            <td class=${style.td}>test3@naver.com</td>
+            <td class=${style.td}>010-5566-5678</td>
+            <td class=${style.td}>관리자</td>
           </tr>
           </table>
+          <div class=${style.pagination}>
+            <div class=${style.paginationBtn}>
+              <button class=${style.unSelectBtn}><</button>
+              <button class=${style.selectBtn}>1</button>
+              <button class=${style.unSelectBtn}>2</button>
+              <button class=${style.unSelectBtn}>></button>
+            </div>
+          </div>
       </section>
-      <div class=${style.pagination}>
-        <button class=${style.paginationBtn, style.unSelectBtn}><</button>
-        <button class=${style.paginationBtn, style.btnBlack}>1</button>
-        <button class=${style.paginationBtn, style.unSelectBtn}>2</button>
-        <button class=${style.paginationBtn, style.unSelectBtn}>></button>
-      </div>
     </div>
   `;
 
