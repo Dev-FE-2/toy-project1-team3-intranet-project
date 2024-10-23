@@ -150,8 +150,7 @@
 
 @media (max-width:1280px){
   .profileImg,
-  .email,
-  .division{
+  .email{
     display:none;
   }
 }
