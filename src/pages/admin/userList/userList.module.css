@@ -1,0 +1,87 @@
+.body{
+  border: 1px solid black;
+  width: 1280px;
+  
+}
+.input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.btn{
+  width: 90px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 5px;
+}
+.btnBlack{
+  color: white;
+  background-color: black;
+}
+.btnRed{
+  color:white;
+  background-color: #C04B35;
+}
+.title{
+  font-size: 24px;
+  font-weight: 800;
+}
+.subTitle{
+  font-size: 12px;
+  font-weight: 800;
+  color: #6C727F;
+}
+.header {
+  border: 1px solid black;
+  background-color: yellow;
+  margin: 0px auto 0;
+  width: 70%;
+  height: 100px;
+  position: relative;
+  display: flex;
+  top: 0px;
+  left: 0px;
+  
+}
+.headerLeft{
+  position: absolute;
+  left: 0;
+  
+}
+.headerRight{
+  position: absolute;
+  right: 0;
+
+}
+.navigation{
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid black;
+  width: 80px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+.table{
+  display: flex;
+  justify-content: center;
+}
+.pagination{
+  position: relative;
+  width: 100%;
+  height: 40%;
+  margin-top: 50px;
+}
+.paginationBtn{
+  font-size: 12px;
+  font-weight: 800;
+  width: 33px;
+  height: 33px;
+  padding: 0; 
+}
+.unSelectBtn{
+  border: 2px solid #f2f2f2;
+  background-color: white;
+}
