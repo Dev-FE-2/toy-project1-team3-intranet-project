@@ -114,6 +114,9 @@
   text-align: center;
   margin: auto;
 }
+.name{
+  cursor: pointer;
+}
 /* PAGINATION */
 .pagination{
   position: absolute;
@@ -142,5 +145,13 @@
   height: 33px;
   border-radius: 4px;
   cursor: pointer;
-  
+
+}
+
+@media (max-width:1280px){
+  .profileImg,
+  .email,
+  .division{
+    display:none;
+  }
 }

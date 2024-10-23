@@ -28,36 +28,36 @@ const userListRender = () => //btn = button
       <section class="${style.tableSection}">
         <table class="${style.table}">
           <tr>
-            <th class="${style.th}"></th>
-            <th class="${style.th}">프로필 사진</th>
-            <th class="${style.th}">이름</th>
-            <th class="${style.th}">이메일</th>
-            <th class="${style.th}">휴대폰번호</th>
-            <th class="${style.th}">구분</th>
+            <th class="${style.th} checkbox"></th>
+            <th class="${style.th} ${style.profileImg}">프로필 사진</th>
+            <th class="${style.th} name">이름</th>
+            <th class="${style.th} ${style.email}">이메일</th>
+            <th class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
+            <th class="${style.th} ${style.division}">구분</th>
           </tr>
           <tr>
-            <td class="${style.td}"><input type="checkbox"></td>
-            <td id="profile1" class="${style.td}"><img src="/public/vite.svg" alt="홍길동 프로필사진" class=${style.image}></td>
-            <td class="${style.td}">홍길동</td>
-            <td class="${style.td}">test@naver.com</td>
-            <td class="${style.td}">010-1234-5678</td>
-            <td class="${style.td}">임직원</td>
+            <td class="${style.td} checkbox"><input type="checkbox"></td>
+            <td id="profile1" class="${style.td} ${style.profileImg}"><img src="/public/vite.svg" alt="홍길동 프로필사진" class=${style.image}></td>
+            <td id="name1" class="${style.td} ${style.name}">홍길동</td>
+            <td class="${style.td} ${style.email}">test@naver.com</td>
+            <td class="${style.td} ${style.phoneNumber}">010-1234-5678</td>
+            <td class="${style.td} ${style.division}">임직원</td>
           </tr>
           <tr>
-            <td class="${style.td}"><input type="checkbox"></td>
-            <td id="profile2" class="${style.td}"><img src="/public/vite.svg" alt="박과장 프로필사진" class=${style.image}></td>
-            <td class="${style.td}">박과장</td>
-            <td class="${style.td}">test2@naver.com</td>
-            <td class="${style.td}">010-7788-1234</td>
-            <td class="${style.td}">임직원</td>
+            <td class="${style.td} checkbox"><input type="checkbox"></td>
+            <td id="profile2" class="${style.td} ${style.profileImg}"><img src="/public/vite.svg" alt="박과장 프로필사진" class=${style.image}></td>
+            <td id="name2" class="${style.td} ${style.name}">박과장</td>
+            <td class="${style.td} ${style.email}">test2@naver.com</td>
+            <td class="${style.td} ${style.phoneNumber}">010-7788-1234</td>
+            <td class="${style.td} ${style.division}">임직원</td>
           </tr>
           <tr>
-            <td class="${style.td}"><input type="checkbox"></td>
-            <td id="profile3" class="${style.td}"><img src="/public/vite.svg" alt="김철수 프로필사진" class=${style.image}></td>
-            <td class="${style.td}">김철수</td>
-            <td class="${style.td}">test3@naver.com</td>
-            <td class="${style.td}">010-5566-5678</td>
-            <td class="${style.td}">관리자</td>
+            <td class="${style.td} checkbox"><input type="checkbox"></td>
+            <td id="profile3" class="${style.td} ${style.profileImg}"><img src="/public/vite.svg" alt="김철수 프로필사진" class=${style.image}></td>
+            <td id="name3" class="${style.td} ${style.name}">김철수</td>
+            <td class="${style.td} ${style.email}">test3@naver.com</td>
+            <td class="${style.td} ${style.phoneNumber}">010-5566-5678</td>
+            <td class="${style.td} ${style.division}">관리자</td>
           </tr>
           </table>
           <div class="${style.pagination}">
