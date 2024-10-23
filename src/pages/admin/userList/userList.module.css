@@ -38,7 +38,6 @@
 }
 .rightBtn{
   position: absolute;
-  top: 0;
   right: 0;
 }
 .btnBlack{
@@ -46,10 +45,6 @@
   font-size: 12px;
   font-weight: 800;
   padding: 7px 5px;
-  border-radius: 4px;
-  border: 1px solid transparent;
-  font-family: inherit;
-  cursor: pointer;
   color: white;
   background-color: black;
 }
@@ -58,12 +53,14 @@
   font-size: 12px;
   font-weight: 800;
   padding: 7px 5px;
-  border-radius: 4px;
-  border: 1px solid transparent;
-  font-family: inherit;
-  cursor: pointer;
   color:white;
   background-color: #C04B35;
+}
+.btn{
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  border: 1px solid transparent;
 }
 .input {
   width: 240px;
@@ -83,7 +80,6 @@
   position: absolute;
   top: 0;
   left: 0;
-
 }
 
 /* SECTION */
@@ -95,31 +91,33 @@
   margin-top: 20px;
 }
 .table{
-  margin: 0 auto;
+  margin: auto;
   width: 70%;
-  height: 50px;
 }
 .th{
   font-size: 12px;
   font-weight: 800;
   text-align: center;
+  margin: auto;
 }
 .td{
+  height: 50px;
   font-size: 12px;
   font-weight: 400;
   text-align: center;
-  padding: 0;
+  margin: auto;
 }
 .image{
   width: 50px;
   height: 50px;
   cursor: pointer;
+  text-align: center;
+  margin: auto;
 }
 /* PAGINATION */
 .pagination{
   position: absolute;
   width: 100%;
-  height: 40%;
   margin: 50px auto 0;
 }
 .paginationBtn{
