@@ -1,0 +1,127 @@
+body {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.content {
+  margin: 20px auto 0;
+}
+
+.absenceRequest {
+  display: flex;
+  justify-content: flex-end;
+}
+.absenceBtn {
+  width: 100px;
+  height: 25px;
+  box-sizing: border-box;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 8px;
+  line-height: 25px;
+}
+.absenceBtn:hover {
+  cursor: pointer;
+}
+
+.searchWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+.searchInput {
+  width: 180px;
+  height: 25px;
+  box-sizing: border-box;
+  line-height: 25px;
+  padding-left: 5px;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+.typeSelect {
+  width: 130px;
+  height: 25px;
+  box-sizing: border-box;
+  line-height: 25px;
+  margin-left: 8px;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+
+.absenceList {
+  width: 100%;
+  line-height: 39px;
+  margin: 42px auto 0;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.absenceList th {
+  background-color: #f2f2f2;
+  border: none;
+  font-weight: bold;
+  font-size: 110%;
+}
+.absenceList th:first-child,
+.absenceList td:first-child {
+  padding-left: 10px;
+}
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.pagination .pageBtn {
+  display: flex;
+  margin-right: 6px;
+}
+.pagination .pageBtn:last-child {
+  margin-right: 0;
+}
+.pagination .pageBtn a {
+  text-decoration: none;
+  width: 33px;
+  height: 33px;
+  box-sizing: border-box;
+  border: 2px solid #f2f2f2;
+  border-radius: 5px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .pageBtn.active a {
+  color: #fff;
+  border-color: #000;
+  background-color: #000;
+}
+
+
+@media (max-width: 1280px) {
+  .absenceList th:first-child,
+  .absenceList th:last-child,
+  .absenceList td:first-child,
+  .absenceList td:last-child {
+      display: none;
+  }
+  
+  .absenceList th:nth-child(2),
+  .absenceList td:nth-child(2) {
+    padding-left: 10px;
+  }
+
+  body {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

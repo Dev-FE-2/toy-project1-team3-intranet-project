@@ -1,7 +1,6 @@
 import './reset.css';
 import router from './router/router';
 
-
 const initApp = async () => {
   popState();
   router();

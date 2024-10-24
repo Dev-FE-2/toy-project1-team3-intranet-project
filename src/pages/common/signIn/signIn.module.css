@@ -1,0 +1,124 @@
+.container * {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  background-color: #e9e9e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox {
+  width: 421px;
+  height: 294px;
+  border-radius: 25px;
+  padding: 34px 24px 18px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.loginForm {
+  width: 100%;
+  height: 100%;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.loginForm label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loginForm label span {
+  width: 70px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loginForm label input {
+  width: 280px;
+  height: 34px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.buttonBox {
+  padding-top: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonBox > button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.buttonBox > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonBox > div > button {
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 1280px) {
+  .loginBox {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .loginForm {
+    justify-content: center;
+    max-width: 400px;
+  }
+
+  .loginForm label {
+    margin-bottom: 30px;
+  }
+
+  .loginForm label span {
+    width: 70px;
+  }
+
+  .loginForm label input {
+    flex: 1;
+    max-width: 80%;
+  }
+}
