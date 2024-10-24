@@ -12,6 +12,10 @@ html {
   vertical-align: baseline;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body,
 div,
 span,
@@ -141,4 +145,14 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  line-height: 1;
 }
