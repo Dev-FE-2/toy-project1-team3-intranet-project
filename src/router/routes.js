@@ -3,7 +3,9 @@ import SignUp from '../pages/common/signUp';
 import AdminAbsence from '../pages/admin/absence';
 import UserAbsence from '../pages/user/absence';
 import Notice from '../pages/common/notice';
+import UserList from '../pages/admin/userList';
 import Profile from '../pages/admin/profile';
+
 // 페이지 구조 저장 + 렌더링 페이지 정리
 const routes = {
   //common
@@ -16,7 +18,9 @@ const routes = {
   '/admin/notice/view': Notice.view,
   '/admin/notice/insert': Notice.form,
   '/admin/notice/update': Notice.form,
+  '/admin/userList': UserList,
   '/admin/profile':Profile,
+  
   //user
   '/user/absence': UserAbsence,
   '/user/notice': Notice.list,
