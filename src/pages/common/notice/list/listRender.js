@@ -46,7 +46,7 @@ const listRender = () => {
     <div class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 관리</h1>
-        <div class="${styles['btn-wrap']}">
+        <div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
           <a href="${curPath}/insert" class="${styles.btn} ${styles.plus}">
             <span>공지 등록</span>
           </a>

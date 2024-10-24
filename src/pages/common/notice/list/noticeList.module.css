@@ -1,3 +1,8 @@
+.btn-wrap {
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
 .list-wrap__header {
     display: flex;
     justify-content: space-between;
