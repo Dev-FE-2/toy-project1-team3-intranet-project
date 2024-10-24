@@ -8,7 +8,7 @@ import Notice from '../pages/common/notice';
 const routes = {
   //common
   '/': SignIn,
-  '/signup': SignUp,
+  '/signUp': SignUp,
 
   //admin
   '/admin/absence': AdminAbsence,
