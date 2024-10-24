@@ -8,16 +8,16 @@ const viewRender = () => {
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 상세</h1>
 
-        <div class="${viewStyles['form-wrap']}">
-          <div class="${viewStyles['form-list']}">
-            <div class="${viewStyles.label}">제목</div>
-            <div class="${viewStyles.content}">
+        <div class="${styles['form-wrap']}">
+          <div class="${styles['form-list']}">
+            <div class="${styles.label}">제목</div>
+            <div class="${styles.content}">
               공지 제목입니다.공지 제목입니다. 공지 제목입니다.
             </div>
           </div>
-          <div class="${viewStyles['form-list']}">
-            <div class="${viewStyles.label}">내용</div>
-            <div class="${viewStyles.content}">
+          <div class="${styles['form-list']}">
+            <div class="${styles.label}">내용</div>
+            <div class="${styles.content}">
               공지 내용입니다.공지 내용입니다.공지 내용입니다.공지
               내용입니다.공지 내용입니다.공지 내용입니다.<br />
               공지 내용입니다.<br />
@@ -26,9 +26,9 @@ const viewRender = () => {
               공지 내용입니다. 공지 내용입니다.
             </div>
           </div>
-          <div class="${viewStyles['form-list']}">
-            <div class="${viewStyles.label}">이미지</div>
-            <div class="${viewStyles.content}">
+          <div class="${styles['form-list']}">
+            <div class="${styles.label}">이미지</div>
+            <div class="${styles.content}">
               <img src="/public/vite.svg" />
             </div>
           </div>
