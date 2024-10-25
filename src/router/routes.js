@@ -5,6 +5,7 @@ import UserAbsence from '../pages/user/absence';
 import Notice from '../pages/common/notice';
 import UserList from '../pages/admin/userList';
 import Profile from '../pages/admin/profile';
+import ProfileForm from '../pages/admin/profileForm';
 
 // 페이지 구조 저장 + 렌더링 페이지 정리
 const routes = {
@@ -20,6 +21,7 @@ const routes = {
   '/admin/notice/update': Notice.form,
   '/admin/userList': UserList,
   '/admin/profile':Profile,
+  '/admin/profileForm':ProfileForm,
   
   //user
   '/user/absence': UserAbsence,
