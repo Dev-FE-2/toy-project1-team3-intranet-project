@@ -3,8 +3,8 @@ import style from './userList.module.css';
 // 페이지 렌더링
 const userListRender = () => //btn = button
   `
-  <div class="${style.body}">
-      <header>
+  <div class="${style.userListWrapper}">
+      <header class="${style.header}>
         <div class="${style.headerLeft}">
           <div class="${style.title}">임직원 관리</div>
           <div class="${style.subTitle}">총 n명의 임직원</div>  
