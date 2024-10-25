@@ -5,7 +5,7 @@ const profileFormRender = () => `
     <div class="${style.profileBox}">
       <div class="${style.contentsBox}">
         <div class="${style.profileItem}">
-          <input type="form" class="${style.division}"></input>
+          <input type="form" class="${style.input} ${style.division}"></input>
           <div class="${style.imgForm}">
             <div class="${style.profileImg}">
               <image src="" alt=""></image>
@@ -14,12 +14,12 @@ const profileFormRender = () => `
               <image class="${style.rotateIcon}" src="/src/img/rotate_icon.svg" alt="아이콘"></image>
             </div>
           </div>
-          <input type="form" class="${style.name}"></input>
-          <input type="form" class="${style.grade}"></input>
+          <input type="form" class="${style.input} ${style.name}"></input>
+          <input type="form" class="${style.input} ${style.grade}"></input>
         </div>
           <div class="${style.footer}">
-            <input type="form" class="${style.form}"></input>
-            <input type="form" class="${style.form}"></input>
+            <input type="form" class="${style.input} ${style.form}"></input>
+            <input type="form" class="${style.input} ${style.form}"></input>
           </div>
       </div>
       <div class="${style.btnWrap}">
