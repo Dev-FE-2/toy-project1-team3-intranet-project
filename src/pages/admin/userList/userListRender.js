@@ -4,7 +4,7 @@ import style from './userList.module.css';
 const userListRender = () => //btn = button
   `
   <div class="${style.userListWrapper}">
-      <header class="${style.header}>
+      <header class="${style.header}">
         <div class="${style.headerLeft}">
           <div class="${style.title}">임직원 관리</div>
           <div class="${style.subTitle}">총 n명의 임직원</div>  
@@ -16,7 +16,7 @@ const userListRender = () => //btn = button
           </div>
           <input 
           type ="text" 
-          class="${style.input} "
+          class="${style.input}"
           placeholder ="이름 또는 이메일로 검색하기">
         </div>
       </header>
