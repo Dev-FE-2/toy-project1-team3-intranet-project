@@ -7,6 +7,7 @@ import UserList from '../pages/admin/userList';
 import Profile from '../pages/admin/profile';
 import UserProfile from '../pages/user/profile';
 import ProfileForm from '../pages/admin/profileForm';
+import UserProfileForm from '../pages/user/profileForm';
 
 // 페이지 구조 저장 + 렌더링 페이지 정리
 const routes = {
@@ -29,6 +30,7 @@ const routes = {
   '/user/notice': Notice.list,
   '/user/notice/view': Notice.view,
   '/user/profile':UserProfile,
+  '/user/profile/profileForm':UserProfileForm,
 };
 
 export default routes;
