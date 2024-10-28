@@ -1,0 +1,146 @@
+.input{
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+.container{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-color: #E9E9E9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profileBox{
+  box-sizing: border-box;
+  width: 775px;
+  height: 450px;
+  border: 1px solid rgba(102, 102, 102, 0.4);
+  border-radius: 25px;
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  position: relative;
+  padding-top: 75px;
+}
+.profileItem{
+  width: 128px;
+  height: 245px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 75px;
+  margin: auto ;
+}
+.division{
+  width: 134px;
+  height: 25px;
+  font-size: 16px;
+  font-weight: 800; 
+  color: #666;
+}
+.imgForm{
+  position: relative;
+}
+.profileImg{
+  width: 128px;
+  height: 128px;
+  border: 3px solid black;
+  border-radius: 70%;
+  overflow: hidden;
+  display: flex;
+  background-color: #d9d9d9;
+}
+.changeImg{
+  width: 37px;
+  height: 37px;
+  border: 1px solid black;
+  border-radius: 70%;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.rotateIcon{
+  width: 31.71px;
+  height: 31.71px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+.name{
+  width: 245px;
+  height: 34px;
+  font-size: 32px;
+  font-weight: 800;
+}
+.grade{
+  width: 134px;
+  height: 25px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #999;
+}
+.footer{
+  margin-top: 39px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.form{
+  width: 248px;
+  height: 27px;
+}
+.btnWrap{
+  display: flex;
+  margin-top: 71px;
+  justify-content: center;
+}
+.btn{
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 119px;
+  height: 33px;
+  border-radius: 4px;
+  padding: 5px 7px;
+  background-color: black;
+  color: white;
+  margin: 10px;
+}
+.btn.btnRed{
+  background-color: #c04b35;
+}
+.btn.btnGray{
+  background-color: #999;
+}
+.btn-wrap .btn {
+
+  padding: 10px 20px 9px;
+}
+@media (max-width: 1280px) {
+  .profileBox{
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    align-content: center;
+    border: none;
+    box-shadow: none;
+  }
+  .contentsBox{
+    width: 80%;
+    height: 80%;
+    position: relative;
+    align-content: center;
+    margin: auto;
+  }
+  .form{
+    max-width: 150px;
+  }
+}
