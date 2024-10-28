@@ -1,6 +1,7 @@
 import sqlite3 from 'sqlite3';
 
 const databaseName = 'toyprj1';
+const database = new sqlite3.Database(`./${databaseName}.db`);
 
 database.serialize(() => {
   database.run(`
@@ -39,4 +40,4 @@ database.serialize(() => {
     )`);
 });
 
-export default database
+export default database;
