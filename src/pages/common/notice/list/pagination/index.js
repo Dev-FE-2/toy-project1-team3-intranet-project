@@ -8,7 +8,7 @@ const pagination = (currentPage, totalPages) => {
   for (let i = startPage; i <= endPage; i++) {
     pageButtons.push(
       `<li>
-         <button class="${i === currentPage ? styles.active : ''}">
+         <button class="${i === currentPage ? `${styles.active} current-page` : ''}">
            ${i}
          </button>
        </li>`
@@ -18,14 +18,17 @@ const pagination = (currentPage, totalPages) => {
   return /* HTML */ `
     <ul class="${styles.pagination}">
       <li>
-        <button class="${styles.prev}" ${currentPage === 1 ? 'disabled' : ''}>
+        <button
+          class="${styles.prev} prev"
+          ${currentPage === 1 ? 'disabled' : ''}
+        >
           &lt;
         </button>
       </li>
       ${pageButtons.join('')}
       <li>
         <button
-          class="${styles.next}"
+          class="${styles.next} next"
           ${currentPage === totalPages ? 'disabled' : ''}
         >
           &gt;
