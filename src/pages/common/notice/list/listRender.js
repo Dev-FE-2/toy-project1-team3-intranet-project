@@ -18,9 +18,9 @@ const listRender = async () => {
           </a>
         </div>
         <div class="${listStyles['list-wrap__header']}">
-          <span class="${listStyles['count-desc']}"
-            >총 ${totalCount}개의 공지</span
-          >
+          <div class="${listStyles['count-desc']}">
+            총 <span id="noticeCnt">${totalCount}</span>개의 공지
+          </div>
           <div class="${listStyles['search-wrap']}">
             <input
               type="search"
