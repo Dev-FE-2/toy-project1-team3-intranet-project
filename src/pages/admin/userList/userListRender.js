@@ -3,58 +3,6 @@ import style from './userList.module.css';
 // 페이지 렌더링
 const userListRender = () => {
   const curPath = window.location.pathname;
-  let items = [
-    { 
-      image: 'path/to/image1', 
-      name: '홍길동', 
-      email: 'test@naver.com', 
-      phoneNumber: '010-1234-5678', 
-      division: '임직원', 
-      id: 1 
-    },
-    { 
-      image: 'path/to/image2', 
-      name: '박과장', 
-      email: 'test2@naver.com', 
-      phoneNumber: '010-7788-1234', 
-      division: '임직원', 
-      id: 2 
-    },
-    { 
-      image: 'path/to/image3', 
-      name: '김철수', 
-      email: 'test3@naver.com', 
-      phoneNumber: '010-5566-5678', 
-      division: '관리자', 
-      id: 3 
-    
-    },
-    { 
-      image: 'path/to/image4', 
-      name: '신짱구', 
-      email: 'test4@naver.com', 
-      phoneNumber: '010-5366-5678', 
-      division: '관리자', 
-      id: 4 
-    },
-    { 
-      image: 'path/to/image5', 
-      name: '이영희', 
-      email: 'test5@naver.com', 
-      phoneNumber: '010-5599-5678', 
-      division: '임직원', 
-      id: 5 
-    },
-    { 
-      image: 'path/to/image6', 
-      name: '이지은', 
-      email: 'test6@naver.com', 
-      phoneNumber: '010-7979-5678', 
-      division: '임직원', 
-      id: 6 
-    },
-  ];
-
   const itemsPerPage = 5; // 페이지당 항목 수
   let currentPage = 1; // 초기 페이지
 
