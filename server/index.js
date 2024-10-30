@@ -26,7 +26,7 @@ const userPath = `${apiPathPrefix}/user`;
 const adminPath = `${apiPathPrefix}/admin`;
 
 const USER_API_URL = {
-  signUp: '${userPath}/signup',
+  signUp: `${userPath}/signup`,
 };
 
 const NOTICE_API_URL = {
