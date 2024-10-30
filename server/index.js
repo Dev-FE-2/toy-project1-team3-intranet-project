@@ -1,83 +1,33 @@
-import express from 'express'
-import morgan from 'morgan'
-import fs from 'fs'
-import db from './database.js'
+import express from 'express';
+import morgan from 'morgan';
+import noticeAdminRouter from './api/notice/admin/index.js';
+import noticeCommonRouter from './api/notice/common/index.js';
 
-const THRESHOLD = 2000
-const port = process.env.PORT || 8080
-const app = express()
+const port = process.env.PORT || 8080;
+const app = express();
 
-app.use((req, res, next) => {
-  const delayTime = Math.floor(Math.random() * THRESHOLD)
+/**
+ * @constant apiPathPrefix api 경로 prefix
+ */
+const apiPathPrefix = '/api';
 
-  setTimeout(() => {
-    next();
-  }, delayTime);
-})
+const commonPath = `${apiPathPrefix}/common`;
+const userPath = `${apiPathPrefix}/user`;
+const adminPath = `${apiPathPrefix}/admin`;
 
-app.use(morgan('dev'))
-app.use(express.static('dist'))
-app.use(express.json())
+const NOTICE_API_URL = {
+  admin: `${adminPath}/notice`,
+  common: `${commonPath}/notice`,
+};
 
-app.get('/api/counter', (req, res) => {
-  const counter = Number(req.query.latest)
+app.use(morgan('dev'));
+app.use(express.static('dist'));
+app.use(express.json());
 
-  if (Math.floor(Math.random() * 10) <= 3) {
-    res.status(400).send({
-      status: 'Error',
-      data: null,
-    })
-  } else {
-    res.status(200).send({
-      status: 'OK',
-      data: counter + 1,
-    })
-  }
-})
-
-app.get('/api/users.json', (req, res) => {
-  fs.readFile('./server/data/users.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading JSON file:', err)
-        return res.status(500).send({ 
-          status: 'Internal Server Error',
-          message: err,
-          data: null,
-        })
-    }
-
-    try {
-        const jsonData = JSON.parse(data)
-        res.json(jsonData)
-    } catch (parseErr) {
-        console.error('Error parsing JSON file:', parseErr)
-        return res.status(500).send({ 
-          status: 'Internal Server Error',
-          message: parseErr,
-          data: null,
-        })
-    }
-  })
-})
-
-app.get('/api/users', (req, res) => {
-  const sql = 'SELECT * FROM Users'
-
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      return res.status(500).json({ 
-        status: 'Error',
-        error: err.message
-      })
-    }
-
-    res.json({ 
-      status: 'OK',
-      data: rows 
-    })
-  })
-})
+// notice 라우터 연결
+app.use(NOTICE_API_URL.admin, noticeAdminRouter);
+app.use(NOTICE_API_URL.common, noticeCommonRouter);
 
 app.listen(port, () => {
-  console.log(`ready to ${port}`)
-})
+  console.log(`ready to ${port}`);
+});
