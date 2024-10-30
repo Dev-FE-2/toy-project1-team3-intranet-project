@@ -38,7 +38,7 @@ database.serialize(() => {
       NOTICE_TITLE TEXT NOT NULL,
       NOTICE_CONTENT TEXT NOT NULL,
       NOTICE_IMAGE BLOB,
-      NOTICE_DATE_TIME TEXT,
+      NOTICE_DATE_TIME TEXT DEFAULT (datetime('now', 'localtime')),
       USER_SERIAL_NUMBER TEXT NOT NULL,
       FOREIGN KEY(USER_SERIAL_NUMBER) REFERENCES USER(USER_SERIAL_NUMBER)
     )`);
@@ -50,4 +50,5 @@ database.serialize(() => {
    * 아이디 중복 검사 쿼리 동작시 데이터가 없을 경우, 에러 반환하기에 테스트 데이터 로우 1개 추가함으로써 해소함.
    */
 });
+
 export default database;
