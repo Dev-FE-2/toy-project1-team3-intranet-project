@@ -21,37 +21,41 @@ const workRender = async () => {
     <div class="${styles.content}">
 
       <div class="${styles.searchWrap}">
-        <input type="search" class="${styles.searchInput}" placeholder="날짜 검색" />
-        <button type="button" class="${styles.searchBtn}">
+        <input type="search" id="searchInput" class="${styles.searchInput}" placeholder="날짜 검색" />
+        <button type="button" id="searchBtn" class="${styles.searchBtn}">
           <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </div>
 
       <table class="${styles.workList}">
-        <tr>
-          <th scope="col">출근일자</td>
-          <th scope="col">출근 시각</td>
-          <th scope="col">퇴근 시각</td>
-        </tr>
-        ${data.length > 0 ? data.map((item) => `
+        <thead>
           <tr>
-            <td>${item.WORK_DATE}</td>
-            <td>${item.WORK_START_DATE_TIME}</td>
-            <td>${item.WORK_END_DATE_TIME}</td>
-          </tr>`
-        ).join('')
-        : `<tr><td colspan="3">등록된 출근 기록이 없습니다.</td></tr>`}
+            <th scope="col">출근일자</td>
+            <th scope="col">출근 시각</td>
+            <th scope="col">퇴근 시각</td>
+          </tr>
+        </thead>
+        <tbody id="workList">
+          ${renderWorkList(data)}
+        </tbody>
       </table>
       
       <div id="pagination" class="${styles.pagination}">
-        <div class="${styles.pageBtn}"><a href="#" class="${styles.prev}"><</a></div>
-        <div class="${styles.pageBtn} ${styles.active}"><a href="#" class="${styles.num}">1</a></div>
-        <div class="${styles.pageBtn}"><a href="#" class="${styles.num}">2</a></div>
-        <div class="${styles.pageBtn}"><a href="#" class="${styles.next}">></a></div>
       </div>
 
     </div>
   </div>
   `};
+
+export const renderWorkList = (data) => {
+  return data.length > 0 ? data.map((item) => `
+    <tr>
+      <td>${item.WORK_DATE}</td>
+      <td>${item.WORK_START_DATE_TIME.split(' ')[1].slice(0, 5)}</td>
+      <td>${item.WORK_END_DATE_TIME.split(' ')[1].slice(0, 5)}</td>
+    </tr>`
+  ).join('')
+  : `<tr><td colspan="3">등록된 출근 기록이 없습니다.</td></tr>`;
+}
 
 export default workRender;

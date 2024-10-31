@@ -3,15 +3,12 @@ import db from '../../../database.js';
 
 const router = express.Router();
 
-// const userSn = localStorage.getItem('userSn');
-// const userSn = 'USER_00000001';
-
 /**
  * 총 개수 조회하는 함수
  * @param {string} search - 검색어
  * @returns 총 공지 개수 반환
  */
-const getTotalWorkCount = (search) => {
+const getTotalWorkCount = (userSn, search) => {
   return new Promise((resolve, reject) => {
     let query = `SELECT COUNT(*) as totalCount FROM WORK WHERE USER_SERIAL_NUMBER = '${userSn}'`;
     query += search
@@ -38,25 +35,23 @@ router.get('/', async (req, res) => {
 
   try {
     // 총 개수 가져오기
-    // const totalCount = await getTotalWorkCount(search);
-    const totalCount = 3;
+    const totalCount = await getTotalWorkCount(userSn, search);
     const totalPage = Math.ceil(totalCount / size);
 
     // SQL 쿼리 생성
     let query = `SELECT * FROM WORK WHERE USER_SERIAL_NUMBER = '${userSn}'`;
     const params = [];
-    // params.push(userSn);
 
     // 검색어 처리
     // if (search) {
-    //   query += ' WHERE WORK_DATE LIKE ?';
+    //   query += ` AND WORK_DATE LIKE ?`;
     //   const searchParam = `%${search}%`;
     //   params.push(searchParam);
     // }
 
     // 정렬
-    // query += ' ORDER BY WORK_DATE DESC LIMIT ? OFFSET ?';
-    // params.push(size, offset);
+    query += ' ORDER BY WORK_DATE DESC LIMIT ? OFFSET ?';
+    params.push(size, offset);
 
     // 특정 페이지의 work 데이터 조회
     db.all(query, params, (err, rows) => {
