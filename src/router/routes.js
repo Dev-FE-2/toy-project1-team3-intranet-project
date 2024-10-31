@@ -21,7 +21,7 @@ const routes = {
   //admin
   '/admin/absence': AdminAbsence,
   '/admin/notice': { ...Notice.list, async: true },
-  '/admin/notice/view': Notice.view,
+  '/admin/notice/view/:noticeSn': { ...Notice.view, async: true },
   '/admin/notice/insert': Notice.form,
   '/admin/notice/update': Notice.form,
   '/admin/userList': UserList,
