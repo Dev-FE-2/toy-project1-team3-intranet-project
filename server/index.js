@@ -9,6 +9,7 @@ import workOnRouter from './api/work/user/workOn.js';
 import absenceAdminRouter from './api/absence/admin/index.js';
 import absenceUserRouter from './api/absence/user/index.js';
 import userInfoRouter from './api/user/user/user.js';
+import userUpdateRouter from './api/user/user/userUpdate.js';
 
 const THRESHOLD = 2000;
 const port = process.env.PORT || 8080;
@@ -35,6 +36,7 @@ const USER_API_URL = {
   signUp: `${userPath}/signup`,
   signIn: `${userPath}/signIn`,
   userInfo: `${userPath}/userInfo`,
+  userUpdate: `${userPath}/userUpdate`,
 };
 
 const NOTICE_API_URL = {
@@ -72,6 +74,7 @@ app.use(ABSENCE_API_URL.user, absenceUserRouter);
 
 // user 라우터 연결
 app.use(USER_API_URL.userInfo, userInfoRouter);
+app.use(USER_API_URL.userUpdate, userUpdateRouter);
 
 app.listen(port, () => {
   console.log(`ready to ${port}`);
