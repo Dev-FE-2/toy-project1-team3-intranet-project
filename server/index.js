@@ -6,6 +6,7 @@ import workUserRouter from './api/work/user/index.js';
 import signUpRouter from './api/user/common/userInfo.js';
 import userSignInRouter from './api/user/common/index.js';
 import workOnRouter from './api/work/user/workOn.js';
+import absenceAdminRouter from './api/absence/admin/index.js';
 
 const THRESHOLD = 2000;
 const port = process.env.PORT || 8080;
@@ -43,6 +44,10 @@ const WORK_API_URL = {
   workOn: `${userPath}/workOn`,
 };
 
+const ABSENCE_API_URL = {
+  admin: `${adminPath}/absence`,
+}
+
 app.use(morgan('dev'));
 app.use(express.static('dist'));
 app.use(express.json());
@@ -56,6 +61,9 @@ app.use(WORK_API_URL.workOn, workOnRouter);
 
 // work 라우터 연결
 app.use(WORK_API_URL.user, workUserRouter);
+
+// absence 라우터 연결
+app.use(ABSENCE_API_URL.admin, absenceAdminRouter);
 
 app.listen(port, () => {
   console.log(`ready to ${port}`);
