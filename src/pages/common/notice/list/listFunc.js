@@ -73,8 +73,10 @@ const handlePagination = async (event, totalPage) => {
  * @param {number} currentPage 현재 페이지
  */
 const setupPagination = (totalPage, currentPage = 1) => {
-  const paginationContainer = document.getElementById('pagingContainer');
-  paginationContainer.innerHTML = pagination(currentPage, totalPage);
+  if (totalPage > 0) {
+    const paginationContainer = document.getElementById('pagingContainer');
+    paginationContainer.innerHTML = pagination(currentPage, totalPage);
+  }
 };
 
 /**
