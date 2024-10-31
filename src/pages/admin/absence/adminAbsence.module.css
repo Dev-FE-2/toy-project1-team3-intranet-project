@@ -36,6 +36,19 @@
   border-radius: 4px;
   border: 1px solid #000;
 }
+.searchBtn {
+  border: none;
+  background-color: transparent;
+}
+.searchBtn:hover {
+  cursor: pointer;
+}
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  padding-top: 3px;
+  margin-left: 8px;
+}
 
 .absenceList {
   width: 100%;
@@ -67,7 +80,7 @@
 .pagination .pageBtn:last-child {
   margin-right: 0;
 }
-.pagination .pageBtn a {
+.pagination .pageBtn button {
   text-decoration: none;
   width: 33px;
   height: 33px;
@@ -79,7 +92,7 @@
   justify-content: center;
   align-items: center;
 }
-.pagination .pageBtn.active a {
+.pagination .pageBtn button.active {
   color: #fff;
   border-color: #000;
   background-color: #000;

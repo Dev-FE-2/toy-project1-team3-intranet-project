@@ -11,18 +11,16 @@ const router = express.Router();
  */
 const getTotalAbsenceCount = (searchType, searchTerm) => {
   return new Promise((resolve, reject) => {
-    let query = `SELECT COUNT(*) as totalCount FROM ABSENCE`;
-    const params = [];
+    let query = `SELECT COUNT(*) as totalCount FROM ABSENCE WHERE 1=1`;
+    
     if (searchType) {
-      query += ` AND ABSENCE_TYPE = ?`;
-      params.push([`${searchType}`]);
+      query += ` AND ABSENCE_TYPE = '${searchType}'`;
     }
     if (searchTerm) {
-      query += ` AND ABSENCE_DETAIL_CONTENT LIKE ?`;
-      params.push([`%${searchTerm}%`]);
+      query += ` AND ABSENCE_DETAIL_CONTENT LIKE '%${searchTerm}%'`;
     }
 
-    db.get(query, params, (err, result) => {
+    db.get(query, [], (err, result) => {
       if (err) {
         return reject(err);
       }
