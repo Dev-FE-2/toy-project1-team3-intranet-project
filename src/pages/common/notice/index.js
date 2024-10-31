@@ -3,7 +3,7 @@ import listFunc from './list/listFunc';
 import viewRender from './view/viewRender';
 import viewFunc from './view/viewFunc';
 import formRender from './form/formRender';
-import formFunc from './form/formRender';
+import formFunc from './form/formFunc';
 
 const Notice = {
   list: {
