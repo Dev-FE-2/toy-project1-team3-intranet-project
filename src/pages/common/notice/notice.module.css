@@ -48,8 +48,16 @@ textarea { width: 100%; min-height: 300px; font-size: 12px; font-weight: 400; re
     font-weight: 400;
 }
 
+.content .pre-white {
+    white-space: pre-wrap;
+}
+
 .content .btn {
     margin-left: 10px;
+}
+
+.content img {
+    width: 100%;
 }
 
 @media (max-width: 1280px) {
