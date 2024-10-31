@@ -1,0 +1,101 @@
+.page {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.content {
+  margin: 20px auto 0;
+}
+
+.searchWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+.searchInput {
+  width: 180px;
+  height: 25px;
+  box-sizing: border-box;
+  line-height: 25px;
+  padding-left: 5px;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+.searchBtn {
+  border: none;
+  background-color: transparent;
+}
+.searchBtn:hover {
+  cursor: pointer;
+}
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  padding-top: 3px;
+  margin-left: 8px;
+}
+
+.workList {
+  width: 100%;
+  line-height: 39px;
+  margin: 20px auto 0;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.workList th {
+  background-color: #f2f2f2;
+  border: none;
+  font-weight: bold;
+  font-size: 110%;
+}
+.workList th:first-child,
+.workList td:first-child {
+  padding-left: 10px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.pagination .pageBtn {
+  display: flex;
+  margin-right: 6px;
+}
+.pagination .pageBtn:last-child {
+  margin-right: 0;
+}
+.pagination .pageBtn button {
+  text-decoration: none;
+  width: 33px;
+  height: 33px;
+  box-sizing: border-box;
+  border: 2px solid #f2f2f2;
+  border-radius: 5px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .pageBtn button.active {
+  color: #fff;
+  border-color: #000;
+  background-color: #000;
+}
+
+
+@media (max-width: 1280px) {
+
+  .page {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

@@ -1,5 +1,5 @@
 // 기능 추가
-const signInFunc = async () => {
+const profileFunc = async () => {
   const title = document.querySelector('#title');
 
   const changeLink = () => (location.href = '/signUp');
@@ -7,4 +7,4 @@ const signInFunc = async () => {
   title.addEventListener('click', changeLink);
 };
 
-export default signInFunc;
+export default profileFunc;

@@ -1,4 +1,3 @@
-import './index.css';
 import listRender from './list/listRender';
 import listFunc from './list/listFunc';
 import viewRender from './view/viewRender';

@@ -1,83 +1,62 @@
-import express from 'express'
-import morgan from 'morgan'
-import fs from 'fs'
-import db from './database.js'
+import express from 'express';
+import morgan from 'morgan';
+import noticeAdminRouter from './api/notice/admin/index.js';
+import noticeCommonRouter from './api/notice/common/index.js';
+import workUserRouter from './api/work/user/index.js';
+import signUpRouter from './api/user/common/userInfo.js';
+import userSignInRouter from './api/user/common/index.js';
+import workOnRouter from './api/work/user/workOn.js';
 
-const THRESHOLD = 2000
-const port = process.env.PORT || 8080
-const app = express()
+const THRESHOLD = 2000;
+const port = process.env.PORT || 8080;
+const app = express();
 
 app.use((req, res, next) => {
-  const delayTime = Math.floor(Math.random() * THRESHOLD)
+  const delayTime = Math.floor(Math.random() * THRESHOLD);
 
   setTimeout(() => {
     next();
   }, delayTime);
-})
+});
 
-app.use(morgan('dev'))
-app.use(express.static('dist'))
-app.use(express.json())
+/**
+ * @constant apiPathPrefix api 경로 prefix
+ */
+const apiPathPrefix = '/api';
 
-app.get('/api/counter', (req, res) => {
-  const counter = Number(req.query.latest)
+const commonPath = `${apiPathPrefix}/common`;
+const userPath = `${apiPathPrefix}/user`;
+const adminPath = `${apiPathPrefix}/admin`;
 
-  if (Math.floor(Math.random() * 10) <= 3) {
-    res.status(400).send({
-      status: 'Error',
-      data: null,
-    })
-  } else {
-    res.status(200).send({
-      status: 'OK',
-      data: counter + 1,
-    })
-  }
-})
+const USER_API_URL = {
+  signUp: `${userPath}/signup`,
+  signIn: `${userPath}/signIn`,
+};
 
-app.get('/api/users.json', (req, res) => {
-  fs.readFile('./server/data/users.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading JSON file:', err)
-        return res.status(500).send({ 
-          status: 'Internal Server Error',
-          message: err,
-          data: null,
-        })
-    }
+const NOTICE_API_URL = {
+  admin: `${adminPath}/notice`,
+  common: `${commonPath}/notice`,
+};
 
-    try {
-        const jsonData = JSON.parse(data)
-        res.json(jsonData)
-    } catch (parseErr) {
-        console.error('Error parsing JSON file:', parseErr)
-        return res.status(500).send({ 
-          status: 'Internal Server Error',
-          message: parseErr,
-          data: null,
-        })
-    }
-  })
-})
+const WORK_API_URL = {
+  user: `${userPath}/work`,
+  workOn: `${userPath}/workOn`,
+};
 
-app.get('/api/users', (req, res) => {
-  const sql = 'SELECT * FROM Users'
+app.use(morgan('dev'));
+app.use(express.static('dist'));
+app.use(express.json());
 
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      return res.status(500).json({ 
-        status: 'Error',
-        error: err.message
-      })
-    }
+// notice 라우터 연결
+app.use(NOTICE_API_URL.admin, noticeAdminRouter);
+app.use(NOTICE_API_URL.common, noticeCommonRouter);
+app.use(USER_API_URL.signUp, signUpRouter);
+app.use(USER_API_URL.signIn, userSignInRouter);
+app.use(WORK_API_URL.workOn, workOnRouter);
 
-    res.json({ 
-      status: 'OK',
-      data: rows 
-    })
-  })
-})
+// work 라우터 연결
+app.use(WORK_API_URL.user, workUserRouter);
 
 app.listen(port, () => {
-  console.log(`ready to ${port}`)
-})
+  console.log(`ready to ${port}`);
+});
