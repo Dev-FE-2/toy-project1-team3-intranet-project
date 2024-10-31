@@ -24,18 +24,18 @@ const profileFunc = async () => {
 
   const defaultImage = '/public/vite.svg';
   if (userData['USER_IMAGE']) {
-    profileImg.src = `data:image/png;base64,${userData['USER_IMAGE']}`;
+    profileImg.src = userData['USER_IMAGE'];
   } else {
     profileImg.src = defaultImage;
   }
 
   name.textContent = userData['USER_NAME'];
-  grade.textContent = userData['USER_RANK'];
+  grade.textContent = userData['USER_GRADE'];
   email.textContent = userData['USER_EMAIL'];
   phone.textContent = userData['USER_PHONE_NUMBER'];
 
   updateUser.addEventListener('click', () => {
-    window.location.pathname = '/user/profileForm';
+    window.location.pathname = '/user/profile/profileForm';
   });
 };
 
