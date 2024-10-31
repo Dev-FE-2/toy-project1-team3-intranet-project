@@ -13,7 +13,7 @@ const upload = multer({ storage });
  * 게시글 등록 API
  */
 router.post('/', upload.single('image'), async (req, res) => {
-  const { title, content, userSn } = req.body;
+  const { title, content, userSn, imageName } = req.body;
   const imageBuffer = req.file ? req.file.buffer : null;
 
   // 총 개수 조회
@@ -23,15 +23,16 @@ router.post('/', upload.single('image'), async (req, res) => {
   const newNoticeSn = `NOTICE_${String(count).padStart(8, 0)}`;
 
   db.run(
-    'INSERT INTO NOTICE (NOTICE_SERIAL_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_IMAGE, USER_SERIAL_NUMBER) VALUES (?, ?, ?, ?, ?)',
-    [newNoticeSn, title, content, imageBuffer, userSn],
+    'INSERT INTO NOTICE (NOTICE_SERIAL_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_IMAGE, NOTICE_IMAGE_NAME, USER_SERIAL_NUMBER) VALUES (?, ?, ?, ?, ?, ?)',
+    [newNoticeSn, title, content, imageBuffer, imageName, userSn],
     (err) => {
       if (err) {
         return res
           .status(500)
           .json({ message: '게시글 등록 실패', error: err });
+      } else {
+        res.json({ message: '게시글이 등록되었습니다.' });
       }
-      res.json({ message: '게시글이 등록되었습니다.' });
     }
   );
 });
@@ -41,23 +42,35 @@ router.post('/', upload.single('image'), async (req, res) => {
  */
 router.put('/:noticeSn', upload.single('image'), (req, res) => {
   const noticeSn = req.params.noticeSn;
-  const { title, content, userSn } = req.body;
+  const { title, content, userSn, imageName, deleteImage } = req.body;
   const imageBuffer = req.file ? req.file.buffer : null;
 
-  // 이미지가 새로 업로드되었는지에 따라 쿼리를 다르게 작성
-  const query = imageBuffer
-    ? 'UPDATE NOTICE SET NOTICE_TITLE = ?, NOTICE_CONTENT = ?, NOTICE_IMAGE = ?, USER_SERIAL_NUMBER = ? WHERE NOTICE_SERIAL_NUMBER = ?'
-    : 'UPDATE NOTICE SET NOTICE_TITLE = ?, NOTICE_CONTENT = ?, USER_SERIAL_NUMBER = ? WHERE NOTICE_SERIAL_NUMBER = ?';
+  let query = '';
+  const params = [];
 
-  const params = imageBuffer
-    ? [title, content, imageBuffer, userSn, noticeSn]
-    : [title, content, userSn, noticeSn];
+  if (deleteImage === 'true') {
+    // 이미지 삭제 요청이 있을 경우
+    query =
+      'UPDATE NOTICE SET NOTICE_TITLE = ?, NOTICE_CONTENT = ?, NOTICE_IMAGE = NULL, NOTICE_IMAGE_NAME = NULL, USER_SERIAL_NUMBER = ? WHERE NOTICE_SERIAL_NUMBER = ?';
+    params.push(title, content, userSn, noticeSn);
+  } else if (imageBuffer) {
+    // 새로운 이미지가 업로드된 경우
+    query =
+      'UPDATE NOTICE SET NOTICE_TITLE = ?, NOTICE_CONTENT = ?, NOTICE_IMAGE = ?, NOTICE_IMAGE_NAME = ?, USER_SERIAL_NUMBER = ? WHERE NOTICE_SERIAL_NUMBER = ?';
+    params.push(title, content, imageBuffer, imageName, userSn, noticeSn);
+  } else {
+    // 이미지가 변경되지 않은 경우
+    query =
+      'UPDATE NOTICE SET NOTICE_TITLE = ?, NOTICE_CONTENT = ?, USER_SERIAL_NUMBER = ? WHERE NOTICE_SERIAL_NUMBER = ?';
+    params.push(title, content, userSn, noticeSn);
+  }
 
   db.run(query, params, (err) => {
     if (err) {
-      return res.status(500).json({ message: '게시글 수정 실패', error: err });
+      res.status(500).json({ message: '게시글 수정 실패', error: err });
+    } else {
+      res.json({ message: '게시글이 수정되었습니다.' });
     }
-    res.json({ message: '게시글이 수정되었습니다.' });
   });
 });
 
@@ -76,16 +89,15 @@ router.delete('/:noticeSn', (req, res) => {
     if (err) {
       console.error('Error deleting notice:', err);
       res.status(500).json({ error: errorMsg });
-      return;
-    }
-
-    // 삭제된 행이 있는지 확인
-    if (this.changes === 0) {
-      res.status(404).json({ error: errorMsg });
     } else {
-      res
-        .status(200)
-        .json({ message: '공지 게시글이 삭제되었습니다.', status: 'OK' });
+      // 삭제된 행이 있는지 확인
+      if (this.changes === 0) {
+        res.status(404).json({ error: errorMsg });
+      } else {
+        res
+          .status(200)
+          .json({ message: '공지 게시글이 삭제되었습니다.', status: 'OK' });
+      }
     }
   });
 });
