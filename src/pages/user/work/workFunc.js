@@ -1,8 +1,7 @@
 import styles from './work.module.css';
 
 import { renderWorkList } from "./workRender";
-// const userSn = localStorage.getItem('userSn');
-const userSn = 'USER_00000001'; // 테스트용
+const userSn = localStorage.getItem('userSn');
 
 export const fetchWorks = async (page = 1, searchTerm = '', userInfo = userSn) => {
   const url = `/api/user/work?userSn=${encodeURIComponent(userInfo)}&page=${page}&search=${encodeURIComponent(searchTerm)}`;
@@ -89,8 +88,7 @@ const handlePagination = async (event, totalPage) => {
  * 부재 리스트 업데이트 함수
  * @param {number} page 현재 페이지
  */
-const updateWorkList = async (searchTerm = '', page = 1) => {
-  console.log("=== search : " + searchTerm);
+const updateWorkList = async (page = 1, searchTerm = '') => {
   const { data, totalPage } = await fetchWorks(page, searchTerm);
 
   // 부재 리스트 렌더링
@@ -111,7 +109,7 @@ const workFunc = async () => {
     const searchTerm = searchInput.value.toLowerCase(); // 전역 변수에 검색어 저장
 
     // 검색어에 맞는 데이터를 받아와 렌더링
-    await updateWorkList(searchTerm);
+    await updateWorkList(1, searchTerm);
   };
 
   // 첫 번째 페이지로 초기화
