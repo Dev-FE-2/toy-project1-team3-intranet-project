@@ -2,17 +2,17 @@ import style from './layout.module.css';
 import './style.css';
 const Layout = (children) => {
   const path = window.location.pathname;
-  const shortCut = path.includes('user')
+  const shortCut = path.includes('/user/')
     ? `
-      <a href="#">출결신청</a>
-      <a href="#">출근관리</a>
-      <a href="#">부재관리</a>
-      <a href="#">공지사항</a>
-      <a href="#">프로필</a>`
+      <a href="/user/workOn">출결신청</a>
+      <a href="/user/work">출근관리</a>
+      <a href="/user/absence">부재관리</a>
+      <a href="/user/notice">공지사항</a>
+      <a href="/user/profile">프로필</a>`
     : `
-      <a href="#">직원관리</a>
-      <a href="#">부재관리</a>
-      <a href="#">공지사항</a>`;
+      <a href="/admin/userList">직원관리</a>
+      <a href="/admin/absence">부재관리</a>
+      <a href="/admin/notice">공지사항</a>`;
 
   return `
     <div class="${style.layout}">

@@ -7,10 +7,11 @@
 .a { text-decoration: none; color: inherit; }
 .input[type="text"], .input[type="search"] { min-width: 240px; font-size: 12px; font-weight: 400; outline: none; border: 1px solid #000; padding: 5px 10px; border-radius: 4px; }
 .input[type="file"] { position: absolute; width: 0; height: 0; padding: 0; border: 0; }
+.input[readonly] { cursor: default; }
 textarea { width: 100%; min-height: 300px; font-size: 12px; font-weight: 400; resize: none; outline: none; border: 1px solid #000; padding: 5px 10px; border-radius: 4px; }
 
 .btn-wrap { display: flex; }
-.btn { display: inline-block; font-size: 12px; font-weight: 500; color: #fff; background-color: #000; border-radius: 4px; padding: 9px 11px 8px; }
+.btn { display: inline-block; font-size: 12px; font-weight: 500; color: #fff; background-color: #000; border-radius: 4px; padding: 9px 11px 8px; cursor: pointer;}
 .btn.red { background-color: #C04B35; }
 .btn.gray { background-color: #999999; }
 .btn > span { display: inline-block; }
@@ -47,8 +48,16 @@ textarea { width: 100%; min-height: 300px; font-size: 12px; font-weight: 400; re
     font-weight: 400;
 }
 
+.content .pre-white {
+    white-space: pre-wrap;
+}
+
 .content .btn {
     margin-left: 10px;
+}
+
+.content img {
+    width: 100%;
 }
 
 @media (max-width: 1280px) {
