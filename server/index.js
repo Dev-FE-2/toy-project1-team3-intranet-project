@@ -6,6 +6,7 @@ import workUserRouter from './api/work/user/index.js';
 import signUpRouter from './api/user/common/userInfo.js';
 import userSignInRouter from './api/user/common/index.js';
 import workOnRouter from './api/work/user/workOn.js';
+import absenceAdminRouter from './api/absence/admin/index.js';
 import absenceUserRouter from './api/absence/user/index.js';
 
 const THRESHOLD = 2000;
@@ -45,6 +46,7 @@ const WORK_API_URL = {
 };
 
 const ABSENCE_API_URL = {
+  admin: `${adminPath}/absence`,
   user: `${userPath}/absence`,
 }
 
@@ -63,6 +65,7 @@ app.use(WORK_API_URL.workOn, workOnRouter);
 app.use(WORK_API_URL.user, workUserRouter);
 
 // absence 라우터 연결
+app.use(ABSENCE_API_URL.admin, absenceAdminRouter);
 app.use(ABSENCE_API_URL.user, absenceUserRouter);
 
 app.listen(port, () => {
