@@ -1,8 +1,7 @@
 import styles from './userAbsence.module.css';
 import { renderUserAbsenceList } from './absenceRender';
 
-// const userSn = localStorage.getItem('userSn');
-const userSn = 'USER_00000001'; // 테스트 데이터
+const userSn = localStorage.getItem('userSn');
 
 let currentSearchType = '';
 let currentSearchTerm = '';
