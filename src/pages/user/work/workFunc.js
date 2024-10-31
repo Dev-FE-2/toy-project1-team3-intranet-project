@@ -1,7 +1,8 @@
 import styles from './work.module.css';
-
 import { renderWorkList } from "./workRender";
+
 const userSn = localStorage.getItem('userSn');
+let currentSearchTerm = '';
 
 export const fetchWorks = async (page = 1, searchTerm = '', userInfo = userSn) => {
   const url = `/api/user/work?userSn=${encodeURIComponent(userInfo)}&page=${page}&search=${encodeURIComponent(searchTerm)}`;
@@ -85,13 +86,13 @@ const handlePagination = async (event, totalPage) => {
 };
 
 /**
- * 부재 리스트 업데이트 함수
+ * 출근관리 리스트 업데이트 함수
  * @param {number} page 현재 페이지
  */
-const updateWorkList = async (page = 1, searchTerm = '') => {
-  const { data, totalPage } = await fetchWorks(page, searchTerm);
+const updateWorkList = async (page = 1) => {
+  const { data, totalPage } = await fetchWorks(page, currentSearchTerm);
 
-  // 부재 리스트 렌더링
+  // 출근관리 리스트 렌더링
   document.getElementById('workList').innerHTML = renderWorkList(data);
 
   // 페이지네이션 갱신
@@ -106,10 +107,10 @@ const workFunc = async () => {
   const paginationContainer = document.getElementById('pagination');
 
   const searchWorks = async () => {
-    const searchTerm = searchInput.value.toLowerCase(); // 전역 변수에 검색어 저장
+    currentSearchTerm = searchInput.value.toLowerCase(); // 전역 변수에 검색어 저장
 
     // 검색어에 맞는 데이터를 받아와 렌더링
-    await updateWorkList(1, searchTerm);
+    await updateWorkList();
   };
 
   // 첫 번째 페이지로 초기화
