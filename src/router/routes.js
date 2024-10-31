@@ -19,7 +19,7 @@ const routes = {
   '/signUp': SignUp,
 
   //admin
-  '/admin/absence': AdminAbsence,
+  '/admin/absence': { ...AdminAbsence, async: true },
   '/admin/notice': { ...Notice.list, async: true },
   '/admin/notice/view/:noticeSn': { ...Notice.view, async: true },
   '/admin/notice/insert': { ...Notice.form, async: true },
