@@ -78,4 +78,35 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * NOTICE 상세 데이터 조회
+ */
+router.get('/:noticeSn', (req, res) => {
+  const noticeSn = req.params.noticeSn;
+
+  const query = `
+    SELECT 
+      NOTICE_SERIAL_NUMBER AS sn,
+      NOTICE_TITLE AS title,
+      NOTICE_CONTENT AS content,
+      NOTICE_IMAGE AS image,
+      NOTICE_DATE_TIME AS date,
+      USER_SERIAL_NUMBER AS user_id 
+    FROM NOTICE 
+    WHERE NOTICE_SERIAL_NUMBER = ?
+  `;
+
+  db.get(query, [noticeSn], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'notice 데이터 조회 실패' });
+      return;
+    } else if (!row) {
+      res.status(404).json({ error: 'notice 데이터 없음' });
+    } else {
+      res.json(row);
+    }
+  });
+});
+
 export default router;
