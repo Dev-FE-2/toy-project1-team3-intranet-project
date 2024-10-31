@@ -1,17 +1,17 @@
-body {
+.page {
   width: 100%;
   height: 100%;
   margin: 0 auto;
 }
 
-h1 {
+.title {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: bold; 
   margin-top: 20px;
 }
 
 .content {
-  margin: 40px auto 0;
+  margin: 20px auto 0;
 }
 
 .searchWrap {
@@ -87,15 +87,20 @@ h1 {
 
 
 @media (max-width: 1280px) {
+  .page {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   .absenceList th:first-child,
   .absenceList th:nth-child(4),
   .absenceList td:first-child,
   .absenceList td:nth-child(4) {
       display: none;
   }
-
-  body {
-    width: 90%;
-    margin: 0 auto;
+  
+  .absenceList th:nth-child(2),
+  .absenceList td:nth-child(2) {
+    padding-left: 10px;
   }
 }
