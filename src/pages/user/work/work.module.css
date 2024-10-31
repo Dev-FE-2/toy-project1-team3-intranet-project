@@ -7,10 +7,11 @@
 .title {
   font-size: 30px;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 .content {
-  margin: 40px auto 0;
+  margin: 20px auto 0;
 }
 
 .searchWrap {
@@ -43,7 +44,7 @@
 .workList {
   width: 100%;
   line-height: 39px;
-  margin: 42px auto 0;
+  margin: 20px auto 0;
   text-align: left;
   border-collapse: collapse;
   border-spacing: 0;
@@ -63,7 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 .pagination .pageBtn {
   display: flex;
