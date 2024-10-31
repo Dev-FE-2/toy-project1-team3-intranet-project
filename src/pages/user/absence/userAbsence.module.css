@@ -1,11 +1,13 @@
 .page {
-  width: 1280px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
 
 .title {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: bold; 
+  margin-top: 20px;
 }
 
 .content {
@@ -72,7 +74,7 @@
 .absenceList {
   width: 100%;
   line-height: 39px;
-  margin: 42px auto 0;
+  margin: 20px auto 0;
   text-align: left;
   border-collapse: collapse;
   border-spacing: 0;
@@ -93,7 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 .pagination .pageBtn {
   display: flex;
