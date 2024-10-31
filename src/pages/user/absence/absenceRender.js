@@ -3,14 +3,6 @@ import { fetchUserAbsence } from './absenceFunc';
 
 // 페이지 렌더링
 const absenceRender = async () => {
-  const userSn = localStorage.getItem('userSn');
-
-  // 로그인이 안 되어있다면 화면 진입 불가하도록
-  // if (!userSn) {
-  //   alert('로그인을 해주세요.');
-  //   window.location.replace('/'); // 로그인 페이지로 리다이렉트
-  //   return null; // 함수 종료
-  // }
 
   const {data} = await fetchUserAbsence();
 
@@ -64,7 +56,7 @@ const absenceRender = async () => {
           <button type="button" class="${styles.closeBtn} closeBtn">
             <img src="/src/img/close-x-svgrepo-com.svg" alt="닫기">
           </button>
-          <form action="#" method="POST">
+          <form>
             <div class="${styles.formWrap}">
               <div class="${styles.formList}">
                 <div class="${styles.label}">부재항목</div>
@@ -81,15 +73,15 @@ const absenceRender = async () => {
               <div class="${styles.formList}">
                 <div class="${styles.label}">시작일시</div>
                 <div class="${styles.dateTime}">
-                  <input type="text" class="${styles.reqStartDate}" placeholder="yyyy-mm-dd">
-                  <input type="text" class="${styles.reqStartTime}" placeholder="hh:mm">
+                  <input type="text" id="reqStartDate" class="${styles.reqStartDate}" placeholder="yyyy-mm-dd">
+                  <input type="text" id="reqStartTime" class="${styles.reqStartTime}" placeholder="hh:mm">
                 </div>
               </div>
               <div class="${styles.formList}">
                 <div class="${styles.label}">종료일시</div>
                 <div class="${styles.dateTime}">
-                  <input type="text" class="${styles.reqEndDate}" placeholder="yyyy-mm-dd">
-                  <input type="text" class="${styles.reqEndTime}" placeholder="hh:mm">
+                  <input type="text" id="reqEndDate" class="${styles.reqEndDate}" placeholder="yyyy-mm-dd">
+                  <input type="text" id="reqEndTime" class="${styles.reqEndTime}" placeholder="hh:mm">
                 </div>
               </div>
               <div class="${styles.formList}">
@@ -98,7 +90,7 @@ const absenceRender = async () => {
               </div>
             </div>
           </form>
-          <button type="submit" class="${styles.submitBtn}">신청하기</button>
+          <button type="submit" id="submitBtn" class="${styles.submitBtn}">신청하기</button>
         </div>
       </div>
   

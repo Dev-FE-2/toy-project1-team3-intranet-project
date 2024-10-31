@@ -3,6 +3,7 @@ import { renderUserAbsenceList } from './absenceRender';
 
 // const userSn = localStorage.getItem('userSn');
 const userSn = 'USER_00000001'; // 테스트 데이터
+
 let currentSearchType = '';
 let currentSearchTerm = '';
 
@@ -16,6 +17,26 @@ export const fetchUserAbsence = async (page = 1, searchType = '', searchTerm = '
   } catch (error) {
     console.error('Error fetching items:', error);
     return { data: [], page, size: 10, totalCount: 0, totalPage: 1 };
+  }
+}
+
+const requestAbsence =  async (formData) => {
+  const url = `/api/user/absence/request`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // JSON 형식으로 전송
+      },
+      body: JSON.stringify(Object.fromEntries(formData))
+    });
+    if (!response.ok) throw new Error('Failed to request absence');
+    const result = await response.json();
+    alert(result.message);
+    window.location.href = '/user/absence';
+  } catch (error) {
+    console.error('Error request absence:', error);
   }
 }
 
@@ -111,6 +132,74 @@ const absenceFunc = async () => {
   const searchType = document.getElementById('searchType');
   const searchBtn = document.getElementById('searchBtn');
   const paginationContainer = document.getElementById('pagination');
+  const submitBtn = document.getElementById('submitBtn');
+  const requestForm = document.querySelector('form');
+  const reqType = document.querySelector('[name=reqType]');
+  const reqStartDate = document.getElementById('reqStartDate');
+  const reqStartTime = document.getElementById('reqStartTime');
+  const reqEndDate = document.getElementById('reqEndDate');
+  const reqEndTime = document.getElementById('reqEndTime');
+  const reqContent = document.querySelector('[name=reqContent]');
+
+  submitBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const confirmMsg = '부재를 신청하시겠습니까?';
+
+    // 입력 항목 유효성 검사
+    if (confirm(confirmMsg) && validate()) {
+      const reqStartDateTime = reqStartDate.value + ' ' + reqStartTime.value + ':00';
+      const reqEndDateTime = reqEndDate.value + ' ' + reqEndTime.value + ':00';
+
+      const formData = new FormData();
+      formData.append('reqType', reqType.value);
+      formData.append('reqStartDateTime', reqStartDateTime);
+      formData.append('reqEndDateTime', reqEndDateTime);
+      formData.append('reqContent', reqContent.value.trim());
+      formData.append('userSn', userSn);
+
+      requestAbsence(formData);
+    }
+  })
+
+  const validate = () => {
+    // yyyy-mm-dd 형식을 위한 정규 표현식
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    // hh:mm 형식을 위한 정규 표현식
+    const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
+
+    if (!reqType.value) {
+      alert('부재 항목을 선택해주세요');
+      return false;
+    }
+
+    if (!datePattern.test(reqStartDate.value)) {
+      alert("부재 시작 날짜를 확인해주세요");
+      return false;
+    }
+
+    if (!timePattern.test(reqStartTime.value)) {
+      alert("부재 시작 시간을 확인해주세요");
+      return false;
+    }
+
+    if (!datePattern.test(reqEndDate.value)) {
+      alert("부재 종료 날짜를 확인해주세요");
+      return false;
+    }
+
+      if (!timePattern.test(reqEndTime.value)) {
+      alert("부재 종료 시간을 확인해주세요");
+      return false;
+    }
+
+    // if (!reqContent.value.trim()) {
+    //   alert('세부내용을 입력해주세요');
+    //   return false;
+    // }
+
+    return true;
+  };
 
   const searchWorks = async () => {
     currentSearchTerm = searchTerm.value.toLowerCase(); // 전역 변수에 검색어 저장
