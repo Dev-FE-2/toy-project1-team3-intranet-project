@@ -33,8 +33,6 @@ const getTotalAbsenceCount = (userSn, searchType, searchTerm) => {
 };
 
 router.get('/', async (req, res) => {
-
-  console.log("=== req : " + JSON.stringify(req.query));
   let { page, size, userSn, searchType, searchTerm } = req.query;
   page = parseInt(page) || 1; // 기본 페이지 = 1
   size = parseInt(size) || 10; // 기본 개수 = 10
@@ -51,14 +49,11 @@ router.get('/', async (req, res) => {
 
     // 검색어 처리
     if (searchType) {
-      query += ` AND ABSENCE_TYPE = ?`;
-      params.push([`${searchType}`]);
+      query += ` AND ABSENCE_TYPE = '${searchType}'`;
     }
     if (searchTerm) {
-      query += ` AND ABSENCE_DETAIL_CONTENT LIKE ?`;
-      params.push([`%${searchTerm}%`]);
+      query += ` AND ABSENCE_DETAIL_CONTENT LIKE '%${searchTerm}%'`;
     }
-
     // 정렬
     query += ' ORDER BY ABSENCE_REQUEST_DATE_TIME DESC LIMIT ? OFFSET ?';
     params.push(size, offset);

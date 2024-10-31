@@ -25,8 +25,8 @@ const absenceRender = async () => {
       </div>
   
       <div class="${styles.searchWrap}">
-        <input type="text" class="${styles.searchInput}" placeholder="검색" />
-        <select name="type" class="${styles.typeSelect}">
+        <input type="text" id="searchTerm" class="${styles.searchInput}" placeholder="검색" />
+        <select name="type" id="searchType" class="${styles.typeSelect}">
           <option value="">부재 항목 선택</option>
           <option value="연차">연차</option>
           <option value="오전반차">오전반차</option>
@@ -35,7 +35,7 @@ const absenceRender = async () => {
           <option value="공가">공가</option>
           <option value="병가">병가</option>
         </select>
-        <button type="button" class="${styles.searchBtn}">
+        <button id="searchBtn" type="button" class="${styles.searchBtn}">
           <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </div>
@@ -54,11 +54,7 @@ const absenceRender = async () => {
         </tbody>
       </table>
       
-      <div class="${styles.pagination}">
-        <div class="${styles.pageBtn}"><a href="#" class="${styles.prev}"><</a></div>
-        <div class="${styles.pageBtn} ${styles.active}"><a href="#" class="${styles.num}">1</a></div>
-        <div class="${styles.pageBtn}"><a href="#" class="${styles.num}">2</a></div>
-        <div class="${styles.pageBtn}"><a href="#" class="${styles.next}">></a></div>
+      <div id="pagination" class="${styles.pagination}">
       </div>
   
       <div class="${styles.modal} modal">
