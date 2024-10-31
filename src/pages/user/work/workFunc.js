@@ -4,7 +4,7 @@ import { renderWorkList } from "./workRender";
 // const userSn = localStorage.getItem('userSn');
 const userSn = 'USER_00000001'; // 테스트용
 
-export const fetchWorks = async (page = 1, userInfo = userSn, searchTerm = '') => {
+export const fetchWorks = async (page = 1, searchTerm = '', userInfo = userSn) => {
   const url = `/api/user/work?userSn=${encodeURIComponent(userInfo)}&page=${page}&search=${encodeURIComponent(searchTerm)}`;
 
   try {
@@ -89,8 +89,9 @@ const handlePagination = async (event, totalPage) => {
  * 부재 리스트 업데이트 함수
  * @param {number} page 현재 페이지
  */
-const updateWorkList = async (page = 1) => {
-  const { data, totalPage } = await fetchWorks(page);
+const updateWorkList = async (searchTerm = '', page = 1) => {
+  console.log("=== search : " + searchTerm);
+  const { data, totalPage } = await fetchWorks(page, searchTerm);
 
   // 부재 리스트 렌더링
   document.getElementById('workList').innerHTML = renderWorkList(data);
@@ -107,10 +108,10 @@ const workFunc = async () => {
   const paginationContainer = document.getElementById('pagination');
 
   const searchWorks = async () => {
-    currentSearchTerm = searchInput.value.toLowerCase(); // 전역 변수에 검색어 저장
+    const searchTerm = searchInput.value.toLowerCase(); // 전역 변수에 검색어 저장
 
     // 검색어에 맞는 데이터를 받아와 렌더링
-    await updateWorkList();
+    await updateWorkList(searchTerm);
   };
 
   // 첫 번째 페이지로 초기화
@@ -124,11 +125,11 @@ const workFunc = async () => {
   // 검색 이벤트 리스너
   searchBtn.addEventListener('click', searchWorks);
 
-  // searchInput.addEventListener('keyup', (e) => {
-  //   if (e.key === 'Enter') {
-  //     searchWorks();
-  //   }
-  // });
+  searchInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+      searchWorks();
+    }
+  });
 };
 
 export default workFunc;

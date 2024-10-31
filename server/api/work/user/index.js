@@ -43,11 +43,11 @@ router.get('/', async (req, res) => {
     const params = [];
 
     // 검색어 처리
-    // if (search) {
-    //   query += ` AND WORK_DATE LIKE ?`;
-    //   const searchParam = `%${search}%`;
-    //   params.push(searchParam);
-    // }
+    if (search) {
+      query += ` AND WORK_DATE LIKE ?`;
+      const searchParam = `%${search}%`;
+      params.push(searchParam);
+    }
 
     // 정렬
     query += ' ORDER BY WORK_DATE DESC LIMIT ? OFFSET ?';
