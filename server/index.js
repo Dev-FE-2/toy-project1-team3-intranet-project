@@ -46,7 +46,7 @@ const WORK_API_URL = {
 
 const ABSENCE_API_URL = {
   user: `${userPath}/absence`,
-}
+};
 
 app.use(morgan('dev'));
 app.use(express.static('dist'));
