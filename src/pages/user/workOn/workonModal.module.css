@@ -1,0 +1,51 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.checkWork {
+  max-width: 1000;
+  width: 90%;
+  height: auto;
+  padding: 26px 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.checkWork > h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.checkWork > h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.checkWork span {
+  margin: 10px;
+  font-size: 18px;
+}
+
+.confirmButton {
+  background-color: black;
+  color: white;
+}
+
+.checkWork button {
+  width: 60%;
+  padding: 10px 0;
+  font-size: 22px;
+}
