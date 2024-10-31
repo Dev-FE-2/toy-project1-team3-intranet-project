@@ -28,7 +28,7 @@ const routes = {
   '/admin/profileForm': ProfileForm,
 
   //user
-  '/user/absence': UserAbsence,
+  '/user/absence': { ...UserAbsence, async: true },
   '/user/notice': Notice.list,
   '/user/notice/view': Notice.view,
   '/user/profile':UserProfile,
