@@ -33,7 +33,7 @@ const routes = {
   '/user/notice/view': Notice.view,
   '/user/profile':UserProfile,
   '/user/profile/profileForm':UserProfileForm,
-  '/user/work':WorkCheck
+  '/user/work':{ ...WorkCheck, async: true }
 };
 
 export default routes;
