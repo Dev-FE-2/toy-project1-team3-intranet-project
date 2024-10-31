@@ -32,19 +32,22 @@ const viewRender = async () => {
           </div>
           <div class="${styles['form-list']}">
             <div class="${styles.label}">내용</div>
-            <div class="${styles.content}">${viewData.content}</div>
+            <div class="${styles.content}">
+              <div class="${styles['pre-white']}">${viewData.content}</div>
+            </div>
           </div>
           <div class="${styles['form-list']}">
             <div class="${styles.label}">이미지</div>
             <div class="${styles.content}">
-              <!-- 이미지 작업은 추후 예정 -->
-              ${viewData.image ? `<img src="${viewData.image}" />` : '-'}
+              ${viewData.image
+                ? `<img src="data:image/jpeg;base64,${viewData.image}" alt="${viewData.image_name}" />`
+                : '-'}
             </div>
           </div>
         </div>
 
         <div class="${styles['btn-wrap']} ${viewStyles['btn-wrap']}">
-          ${isShowBtn(viewData.user_id)
+          ${isShowBtn(viewData.user_sn)
             ? `<a
             href="${updatePath}"
             class="${styles.btn} ${viewStyles.btn}"
@@ -52,7 +55,7 @@ const viewRender = async () => {
             수정하기
           </a>`
             : ''}
-          ${isShowBtn(viewData.user_id)
+          ${isShowBtn(viewData.user_sn)
             ? `
           <button
             type="button"
