@@ -42,6 +42,13 @@ database.serialize(() => {
       USER_SERIAL_NUMBER TEXT NOT NULL,
       FOREIGN KEY(USER_SERIAL_NUMBER) REFERENCES USER(USER_SERIAL_NUMBER)
     )`);
+  /*
+   * .run(`
+   * INSERT INTO USER( USER_SERIAL_NUMBER, USER_ID, USER_PW, USER_GRADE, USER_NAME, USER_PHONE_NUMBER, USER_EMAIL)
+   * VALUES( "USER_00000000", "testid", "testpw1!", 0, "홍길동", "010-0000-0000", "test@test.com")
+   * `);
+   * 아이디 중복 검사 쿼리 동작시 데이터가 없을 경우, 에러 반환하기에 테스트 데이터 로우 1개 추가함으로써 해소함.
+   */
 });
 
 export default database;
