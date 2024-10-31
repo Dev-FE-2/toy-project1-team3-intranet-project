@@ -6,7 +6,16 @@ const router = async () => {
   const app = document.querySelector('#app');
   const path = window.location.pathname;
 
-  const { render, init, async } = routes[path] || {};
+  // 경로 매칭 및 파라미터 가져오기
+  const matchedRoute = matchRoute(path);
+
+  if (!matchedRoute) {
+    app.innerHTML = '<h1>Page Not Found</h1>';
+    return;
+  }
+
+  const { render, init, async } = matchedRoute.route || {};
+  // const params = matchedRoute.params;
 
   // 페이지 렌더링
   app.innerHTML =
@@ -17,6 +26,25 @@ const router = async () => {
   // 이벤트 리스너 추가 실행
   init();
   layoutInit();
+};
+
+// 동적 경로 매칭 함수
+const matchRoute = (path) => {
+  for (const route in routes) {
+    const routeRegex = new RegExp(`^${route.replace(/:\w+/g, '(\\w+)')}$`);
+    const match = path.match(routeRegex);
+
+    if (match) {
+      // 첫 번째 매칭 요소는 경로 전체, 이후는 매개변수
+      const params =
+        route.match(/:\w+/g)?.map((param, idx) => ({
+          [param.slice(1)]: match[idx + 1],
+        })) || [];
+
+      return { route: routes[route], params: Object.assign({}, ...params) };
+    }
+  }
+  return null;
 };
 
 export default router;

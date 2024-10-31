@@ -8,7 +8,7 @@ const router = express.Router();
  * @param {string} search - 검색어
  * @returns 총 공지 개수 반환
  */
-const getTotalNoticeCount = (search) => {
+export const getTotalNoticeCount = (search) => {
   return new Promise((resolve, reject) => {
     let query = 'SELECT COUNT(*) as totalCount FROM NOTICE';
     query += search
@@ -46,36 +46,84 @@ router.get('/', async (req, res) => {
 
     // 검색어 처리
     if (search) {
-      query += ' WHERE NOTICE_TITLE LIKE ? OR NOTICE_CONTENT LIKE ?';
+      query += ' WHERE title LIKE ? OR content LIKE ?';
       const searchParam = `%${search}%`;
       params.push(searchParam, searchParam);
     }
 
     // 정렬 및 페이지네이션
-    query += ' ORDER BY datetime(NOTICE_DATE_TIME) DESC LIMIT ? OFFSET ?';
+    query += ' ORDER BY datetime(date) DESC LIMIT ? OFFSET ?';
     params.push(size, offset);
 
     // 특정 페이지의 notice 데이터 조회
     db.all(query, params, (err, rows) => {
       if (err) {
         console.error(err);
-        res.status(500).json({ error: 'notice 데이터 조회 실패' });
-        return;
-      }
+        res.status(500).json({ error: '공지 데이터 조회 실패' });
+      } else {
+        // 이미지 필드를 Base64로 변환
+        rows = rows.map((row) => {
+          if (row.image) {
+            row.image = Buffer.from(row.image).toString('base64');
+          }
+          return row;
+        });
 
-      res.json({
-        status: 'OK',
-        page,
-        size,
-        totalPage,
-        totalCount,
-        data: rows,
-      });
+        // 결과 반환
+        res.json({
+          status: 'OK',
+          page,
+          size,
+          totalPage,
+          totalCount,
+          data: rows,
+        });
+      }
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: '총 공지 개수 조회 실패' });
+    res.status(500).json({ error: '공지 총 개수 조회 실패' });
   }
+});
+
+/**
+ * NOTICE 상세 데이터 조회
+ */
+router.get('/:noticeSn', (req, res) => {
+  const noticeSn = req.params.noticeSn;
+
+  const query = `
+    SELECT 
+      NOTICE_SERIAL_NUMBER AS sn,
+      NOTICE_TITLE AS title,
+      NOTICE_CONTENT AS content,
+      NOTICE_IMAGE AS image,
+      NOTICE_IMAGE_NAME AS image_name,
+      NOTICE_DATE_TIME AS date,
+      USER_SERIAL_NUMBER AS user_sn 
+    FROM NOTICE 
+    WHERE sn = ?
+  `;
+
+  db.get(query, [noticeSn], (err, row) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: '공지 데이터 조회 실패' });
+      return;
+    } else if (!row) {
+      res.status(404).json({ error: '공지 데이터 없음' });
+    } else {
+      res.json({
+        sn: row.sn,
+        title: row.title,
+        content: row.content,
+        image: row.image ? Buffer.from(row.image).toString('base64') : null,
+        image_name: row.image_name,
+        date: row.date,
+        user_sn: row.user_sn,
+      });
+    }
+  });
 });
 
 export default router;
