@@ -23,7 +23,7 @@ const routes = {
   '/admin/notice/view': Notice.view,
   '/admin/notice/insert': Notice.form,
   '/admin/notice/update': Notice.form,
-  '/admin/userList': UserList,
+  '/admin/userList': { ...UserList, async: true},
   '/admin/profile': Profile,
   '/admin/profileForm': ProfileForm,
 

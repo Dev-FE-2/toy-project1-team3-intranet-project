@@ -41,7 +41,30 @@ database.serialize(() => {
       NOTICE_DATE_TIME TEXT DEFAULT (datetime('now', 'localtime')),
       USER_SERIAL_NUMBER TEXT NOT NULL,
       FOREIGN KEY(USER_SERIAL_NUMBER) REFERENCES USER(USER_SERIAL_NUMBER)
-    )`);
+    )`)
+    // .run(`
+    //   INSERT INTO USER (
+    //     USER_SERIAL_NUMBER,
+    //     USER_ID,
+    //     USER_PW,
+    //     USER_GRADE,
+    //     USER_NAME,
+    //     USER_PHONE_NUMBER,
+    //     USER_EMAIL,
+    //     USER_RANK,
+    //     USER_IMAGE
+    // ) VALUES 
+    // ('USR001', 'john_doe', 'password123', 1, '조던', '010-1234-5678', 'john@example.com', '과장', NULL),
+    // ('USR002', 'jane_smith', 'securepass456', 0, '스미스', '010-2345-6789', 'jane@example.com', '팀장', NULL),
+    // ('USR003', 'bob_johnson', 'bobpass789', 1, '밥', '010-3456-7890', 'bob@example.com', '과장', NULL),
+    // ('USR004', 'alice_williams', 'alicepass321', 0, '엘리스', '010-4567-8901', 'alice@example.com', '사원', NULL),
+    // ('USR005', 'charlie_brown', 'charliepwd654', 0, '브라운', '010-5678-9012', 'charlie@example.com', '인턴', NULL),
+    // ('USR006', 'start_devleop', 'charliepwd612', 1, '찰리', '010-5678-5222', 'charlie@example.com', '사원', NULL),
+    // ('USR007', 'hello_world', 'charliepwd642', 1, '철수', '010-5338-5222', 'cha8lie@example.com', '사원', NULL),
+    // ('USR008', '1234asdf', 'charli12612', 1, '엘리자베스', '010-3333-5222', 'c4arlie@example.com', '사원', NULL),
+    // ('USR009', 'qwe123', 'charliepwd612', 1, '브라보', '010-5678-5442', 'char1e@example.com', '사원', NULL),
+    // ('USR010', 'dave_dive', 'charl32pwd612', 1, '다이브', '010-5678-4422', 'chalie@example.com', '사원', NULL),
+    //   `);
   /*
    * .run(`
    * INSERT INTO USER( USER_SERIAL_NUMBER, USER_ID, USER_PW, USER_GRADE, USER_NAME, USER_PHONE_NUMBER, USER_EMAIL)
