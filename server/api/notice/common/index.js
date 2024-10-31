@@ -8,7 +8,7 @@ const router = express.Router();
  * @param {string} search - 검색어
  * @returns 총 공지 개수 반환
  */
-const getTotalNoticeCount = (search) => {
+export const getTotalNoticeCount = (search) => {
   return new Promise((resolve, reject) => {
     let query = 'SELECT COUNT(*) as totalCount FROM NOTICE';
     query += search
@@ -91,7 +91,7 @@ router.get('/:noticeSn', (req, res) => {
       NOTICE_CONTENT AS content,
       NOTICE_IMAGE AS image,
       NOTICE_DATE_TIME AS date,
-      USER_SERIAL_NUMBER AS user_id 
+      USER_SERIAL_NUMBER AS user_sn 
     FROM NOTICE 
     WHERE NOTICE_SERIAL_NUMBER = ?
   `;
