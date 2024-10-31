@@ -55,7 +55,8 @@ export const renderNotices = (data) => {
             item.sn,
             item.title,
             item.content,
-            item.date.split(' ')[0]
+            item.date.split(' ')[0],
+            item.image
           );
         })
         .join('')
