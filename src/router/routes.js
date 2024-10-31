@@ -8,7 +8,8 @@ import Profile from '../pages/admin/profile';
 import UserProfile from '../pages/user/profile';
 import ProfileForm from '../pages/admin/profileForm';
 import UserProfileForm from '../pages/user/profileForm';
-import WorkCheck from '../pages/user/work'
+import WorkCheck from '../pages/user/work';
+import workOn from '../pages/user/workOn';
 
 // 페이지 구조 저장 + 렌더링 페이지 정리
 // async : 비동기 데이터 사용 여부
@@ -18,22 +19,30 @@ const routes = {
   '/signUp': SignUp,
 
   //admin
-  '/admin/absence': AdminAbsence,
+  '/admin/absence': { ...AdminAbsence, async: true },
   '/admin/notice': { ...Notice.list, async: true },
+<<<<<<< HEAD
   '/admin/notice/view': Notice.view,
   '/admin/notice/insert': Notice.form,
   '/admin/notice/update': Notice.form,
   '/admin/userList': { ...UserList, async: true},
+=======
+  '/admin/notice/view/:noticeSn': { ...Notice.view, async: true },
+  '/admin/notice/insert': { ...Notice.form, async: true },
+  '/admin/notice/update/:noticeSn': { ...Notice.form, async: true },
+  '/admin/userList': UserList,
+>>>>>>> 2a92d0d394a29a9830b5bbf25cc51d4a4336df41
   '/admin/profile': Profile,
   '/admin/profileForm': ProfileForm,
 
   //user
-  '/user/absence': UserAbsence,
+  '/user/absence': { ...UserAbsence, async: true },
   '/user/notice': Notice.list,
   '/user/notice/view': Notice.view,
-  '/user/profile':UserProfile,
-  '/user/profile/profileForm':UserProfileForm,
-  '/user/work':WorkCheck
+  '/user/profile': UserProfile,
+  '/user/profile/profileForm': UserProfileForm,
+  '/user/work': { ...WorkCheck, async: true },
+  '/user/workOn': workOn,
 };
 
 export default routes;
