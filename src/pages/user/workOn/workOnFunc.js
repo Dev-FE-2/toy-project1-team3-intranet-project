@@ -13,6 +13,7 @@ const workOnFunc = async () => {
   const workTime = document.getElementById('workTime');
   const attendTime = document.getElementById('attendTime');
   const isWork = document.getElementById('isWork');
+  const profileImg = document.getElementById('profileImg');
   let cancel; // 모달 확인 버튼
   let confirm; // 모달 취소 버튼
 
@@ -25,7 +26,8 @@ const workOnFunc = async () => {
     } catch (error) {
       console.log(error);
     }
-    name.innerText = userData.USER_NAME;
+    name.innerText = userData['USER_NAME'];
+    profileImg.src = userData['USER_IMAGE'];
   };
 
   const getWorkData = async () => {
