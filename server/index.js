@@ -10,6 +10,7 @@ import absenceAdminRouter from './api/absence/admin/index.js';
 import absenceUserRouter from './api/absence/user/index.js';
 import userInfoRouter from './api/user/user/user.js';
 import userUpdateRouter from './api/user/user/userUpdate.js';
+import userListAdminRouter from './api/user/admin/userListRouter.js';
 
 const THRESHOLD = 2000;
 const port = process.env.PORT || 8080;
@@ -54,6 +55,10 @@ const ABSENCE_API_URL = {
   user: `${userPath}/absence`,
 };
 
+const USERLIST_API_URL = {
+  admin: `${adminPath}/userList`,
+};
+
 app.use(morgan('dev'));
 app.use(express.static('dist'));
 app.use(express.json());
@@ -75,6 +80,7 @@ app.use(ABSENCE_API_URL.user, absenceUserRouter);
 // user 라우터 연결
 app.use(USER_API_URL.userInfo, userInfoRouter);
 app.use(USER_API_URL.userUpdate, userUpdateRouter);
+app.use(USERLIST_API_URL.admin, userListAdminRouter);
 
 app.listen(port, () => {
   console.log(`ready to ${port}`);
