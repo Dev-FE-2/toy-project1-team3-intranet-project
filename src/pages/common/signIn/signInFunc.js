@@ -39,7 +39,11 @@ const signInFunc = async () => {
     signInUser();
   });
 
-  if (window.localStorage.getItem('userGrade')) {
+  // 사용자 권한을 확인하고 사용자 위치 라우팅
+  if (window.localStorage.getItem('userGrade') == '0') {
+    window.location.href = '/admin/userList';
+  } else if (window.localStorage.getItem('userGrade') == '1') {
+    window.location.href = '/user/workOn';
   }
 };
 
