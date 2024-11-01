@@ -5,6 +5,7 @@ import routes from './routes';
 const router = async () => {
   const app = document.querySelector('#app');
   const path = window.location.pathname;
+  const userGrade = localStorage.getItem('userGrade');
 
   // 경로 매칭 및 파라미터 가져오기
   const matchedRoute = matchRoute(path);
@@ -14,8 +15,17 @@ const router = async () => {
     return;
   }
 
-  const { render, init, async } = matchedRoute.route || {};
+  const { render, init, async, grade } = matchedRoute.route || {};
   // const params = matchedRoute.params;
+
+  if (path !== '/' && path !== '/signUp') {
+    // 권한 확인 후 접근 제한
+    if (Number(grade) !== Number(userGrade)) {
+      alert('로그인이 필요합니다 grade : '+ grade + ', userGrade : ' + userGrade);
+      window.location.replace('/');
+      return;
+    }
+  }
 
   // 페이지 렌더링
   app.innerHTML =
