@@ -36,7 +36,7 @@
 
 .headerRightWrap .signOutBtn {
   margin-left: 10px;
-  text-indent: -1000px;
+  text-indent: -10000px;
   background-image: url('/src/img/logout_icon.svg');
   background-repeat: no-repeat;
   background-position: center;
