@@ -12,7 +12,7 @@ const workOnRender = () => `
           <div class="${style.workOnItem}">
             <div class="${style.division}">임직원</div>
             <div class="${style.workOnImg}">
-              <image src="/vite.svg" alt="프로필 사진"></image>
+              <image id="profileImg" src="/src/img/default_user.svg" alt="프로필 사진"></image>
             </div>
             <span id="name" class="${style.name}"></span>
           </div>

@@ -20,7 +20,7 @@ router.post('/', upload.single('image'), async (req, res) => {
   const count = await getTotalNoticeCount();
 
   // 공지 시리얼 넘버 생성
-  const newNoticeSn = `NOTICE_${String(count).padStart(8, 0)}`;
+  const newNoticeSn = `NOTICE_${String(count + 1).padStart(8, 0)}`;
 
   db.run(
     'INSERT INTO NOTICE (NOTICE_SERIAL_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_IMAGE, NOTICE_IMAGE_NAME, USER_SERIAL_NUMBER) VALUES (?, ?, ?, ?, ?, ?)',
