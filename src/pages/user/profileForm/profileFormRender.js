@@ -18,7 +18,7 @@ const profileFormRender = () => `
             </label>
           </div>
           <input id="name" type="text" class="${style.input} ${style.name}">
-          <input id="grade" type="text" class="${style.input} ${style.grade}">
+          <input id="rank" type="text" class="${style.input} ${style.grade}">
         </div>
         <div class="${style.footer}">
           <input id="email" type="text" class="${style.input} ${style.form}">

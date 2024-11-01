@@ -5,7 +5,7 @@ const profileFormFunc = async () => {
   const profileImg = document.getElementById('profileImg');
   const fileInput = document.getElementById('file');
   const name = document.getElementById('name');
-  const grade = document.getElementById('grade');
+  const rank = document.getElementById('rank');
   const email = document.getElementById('email');
   const phone = document.getElementById('phone');
   const updateUser = document.getElementById('updateUser');
@@ -48,7 +48,7 @@ const profileFormFunc = async () => {
   const postUserData = async () => {
     const params = {
       userSn: userSn,
-      grade: grade.value,
+      rank: rank.value,
       name: name.value,
       phone: phone.value,
       email: email.value,
@@ -85,7 +85,7 @@ const profileFormFunc = async () => {
   }
 
   name.value = userData['USER_NAME'];
-  grade.value = userData['USER_GRADE'];
+  rank.value = userData['USER_RANK'];
   email.value = userData['USER_EMAIL'];
   phone.value = userData['USER_PHONE_NUMBER'];
 

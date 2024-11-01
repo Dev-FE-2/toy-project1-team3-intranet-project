@@ -30,7 +30,7 @@ const profileFunc = async () => {
   }
 
   name.textContent = userData['USER_NAME'];
-  grade.textContent = userData['USER_GRADE'];
+  grade.textContent = userData['USER_RANK'];
   email.textContent = userData['USER_EMAIL'];
   phone.textContent = userData['USER_PHONE_NUMBER'];
 

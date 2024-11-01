@@ -26,13 +26,13 @@ router.get('/', async (req, res) => {
 });
 
 router.put('/', (req, res) => {
-  const { userSn, grade, name, phone, email, profileImage } = req.body;
+  const { userSn, rank, name, phone, email, profileImage } = req.body;
 
   const query = `
-   UPDATE USER SET USER_GRADE = ?, USER_NAME = ?, USER_PHONE_NUMBER = ?, USER_EMAIL = ?, USER_IMAGE = ? 
+   UPDATE USER SET USER_RANK = ?, USER_NAME = ?, USER_PHONE_NUMBER = ?, USER_EMAIL = ?, USER_IMAGE = ? 
    WHERE USER_SERIAL_NUMBER = ?
   `;
-  const params = [grade, name, phone, email, profileImage, userSn];
+  const params = [rank, name, phone, email, profileImage, userSn];
 
   db.all(query, params, (err) => {
     if (err) {
