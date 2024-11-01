@@ -21,7 +21,7 @@ const router = async () => {
   if (path !== '/' && path !== '/signUp') {
     // 권한 확인 후 접근 제한
     if (Number(grade) !== Number(userGrade)) {
-      alert('로그인이 필요합니다 grade : '+ grade + ', userGrade : ' + userGrade);
+      alert('로그인이 필요합니다');
       window.location.replace('/');
       return;
     }
