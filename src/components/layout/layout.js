@@ -14,21 +14,29 @@ const Layout = (children) => {
       <a href="/admin/absence">부재관리</a>
       <a href="/admin/notice">공지사항</a>`;
 
-  return `
+  return /* HTML */ `
     <div class="${style.layout}">
       <header class="${style.header}">
         <button type="button" id="menu" class="${style.hamburger}"></button>
-          ${shortCut}
-        <h1>인트라넷</h1>
+        ${shortCut}
+        <div class="${style.headerRightWrap}">
+          <h1>인트라넷</h1>
+          <button
+            type="button"
+            class="${style.signOutBtn}"
+            id="signOutBtn"
+            title="로그아웃"
+          >
+            로그아웃
+          </button>
+        </div>
         <nav id="navigate" class="${style.navigate} hidden">
-          <div class="${style.shortCut}">
-            ${shortCut}
-          </div>
+          <div class="${style.shortCut}">${shortCut}</div>
         </nav>
       </header>
       ${children}
     </div>
-    `;
+  `;
 };
 
 export default Layout;
