@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
       });
     }
     // 사용자 시리얼 넘버 생성
-    USER_SERIAL_NUMBER = `USER_${String(rows[0]['count']).padStart(8, 0)}`;
+    USER_SERIAL_NUMBER = `USER_${String(rows[0]['count'] + 1).padStart(8, 0)}`;
     res.json({
       status: 'OK',
       data: USER_SERIAL_NUMBER,

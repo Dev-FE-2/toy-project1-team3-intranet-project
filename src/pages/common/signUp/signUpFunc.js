@@ -128,7 +128,12 @@ const signUpFunc = () => {
         USER_EMAIL: email.value,
       };
 
-      createUser(params);
+      createUser(params).then((res) => {
+        if (res.status === 'OK') {
+          alert('회원가입이 완료되었습니다.');
+          window.location.replace('/');
+        }
+      });
     }
   });
 };
