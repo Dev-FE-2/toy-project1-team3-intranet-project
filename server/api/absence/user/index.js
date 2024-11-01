@@ -10,20 +10,18 @@ const router = express.Router();
  * @param {string} searchTerm - 세부내용 검색
  * @returns 총 공지 개수 반환
  */
-const getTotalAbsenceCount = (userSn, searchType, searchTerm) => {
+const getTotalAbsenceCount = (userSn, searchType = '', searchTerm = '') => {
   return new Promise((resolve, reject) => {
     let query = `SELECT COUNT(*) as totalCount FROM ABSENCE WHERE USER_SERIAL_NUMBER = '${userSn}'`;
-    const params = [];
+
     if (searchType) {
-      query += ` AND ABSENCE_TYPE = ?`;
-      params.push([`${searchType}`]);
+      query += ` AND ABSENCE_TYPE = '${searchType}'`;
     }
     if (searchTerm) {
-      query += ` AND ABSENCE_DETAIL_CONTENT LIKE ?`;
-      params.push([`%${searchTerm}%`]);
+      query += ` AND ABSENCE_DETAIL_CONTENT LIKE '%${searchTerm}%'`;
     }
 
-    db.get(query, params, (err, result) => {
+    db.get(query, [], (err, result) => {
       if (err) {
         return reject(err);
       }
@@ -79,6 +77,27 @@ router.get('/', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: '총 개수 조회 실패' });
   }
+});
+
+router.post('/request', async (req, res) => {
+  let { reqType, reqStartDateTime, reqEndDateTime, reqContent, userSn } = req.body;
+
+  const count = await getTotalAbsenceCount(userSn) + 1;
+  const absenceSn = `ABSENCE_${String(count).padStart(8, 0)}`;
+
+  const sql = `
+  INSERT INTO ABSENCE (ABSENCE_SERIAL_NUMBER, ABSENCE_TYPE, ABSENCE_REQUEST_DATE_TIME, USER_SERIAL_NUMBER, ABSENCE_START_DATE_TIME, ABSENCE_END_DATE_TIME, ABSENCE_DETAIL_CONTENT)
+    VALUES ('${absenceSn}', '${reqType}', datetime('now', 'localtime'), '${userSn}', '${reqStartDateTime}', '${reqEndDateTime}', '${reqContent}')
+  `;
+
+  db.run(sql, [], (err) => { 
+    if (err) {
+      return res.status(500)
+      .json({ message: '부재 신청 실패', error: err });
+    }
+
+    res.json({ message: '부재가 신청되었습니다.'});
+  });
 });
 
 export default router;
