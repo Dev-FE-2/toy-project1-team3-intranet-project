@@ -7,11 +7,10 @@ import {fetchUsers} from './userListFunc';
     return data.map((item) => `
       <tr onclick="location.href='${curPath}/profile:${item.id}'">
         <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td>
-        <td class="${style.td} ${style.profileImg}"><img src="${item.image}" alt="${item.name} 프로필사진" class="${style.image}"></td>
         <td class="${style.td} ${style.name}">${item.name}</td>
         <td class="${style.td} ${style.email}">${item.email}</td>
         <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
-        <td class="${style.td} ${style.division}">${item.grade ? "관리자": "임직원"}</td>
+        <td class="${style.td} ${style.division}">${item.grade ? "임직원": "관리자"}</td>
       </tr>
     `).join('');
   };
@@ -74,7 +73,6 @@ const userListRender = async () => {
           <thead>
             <tr>
               <th class="${style.th} checkbox"></th>
-              <th class="${style.th} ${style.profileImg}">프로필 사진</th>
               <th class="${style.th} name">이름</th>
               <th class="${style.th} ${style.email}">이메일</th>
               <th class="${style.th} ${style.phoneNumber}">휴대폰번호</th>

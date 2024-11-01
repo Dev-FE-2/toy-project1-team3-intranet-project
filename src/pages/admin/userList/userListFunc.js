@@ -66,7 +66,6 @@ const filterTableRows= (data) =>{
   return `
     <tr onclick="location.href='${curPath}/profile:${data.id}'">
       <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td>
-      <td class="${style.td} ${style.profileImg}"><img src="${data.image}" alt="${data.name} 프로필사진" class="${style.image}"></td>
       <td class="${style.td} ${style.name}">${data.name}</td>
       <td class="${style.td} ${style.email}">${data.email}</td>
       <td class="${style.td} ${style.phoneNumber}">${data.phoneNumber}</td>
