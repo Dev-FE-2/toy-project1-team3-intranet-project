@@ -19,23 +19,23 @@ const routes = {
   '/signUp': SignUp,
 
   //admin
-  '/admin/absence': { ...AdminAbsence, async: true },
-  '/admin/notice': { ...Notice.list, async: true },
-  '/admin/notice/view/:noticeSn': { ...Notice.view, async: true },
-  '/admin/notice/insert': { ...Notice.form, async: true },
-  '/admin/notice/update/:noticeSn': { ...Notice.form, async: true },
-  '/admin/userList': UserList,
-  '/admin/user/:userSN': Profile,
-  '/admin/user/profileForm/:userSn': ProfileForm,
+  '/admin/absence': { ...AdminAbsence, async: true, grade: 0 },
+  '/admin/notice': { ...Notice.list, async: true, grade: 0 },
+  '/admin/notice/view/:noticeSn': { ...Notice.view, async: true, grade: 0 },
+  '/admin/notice/insert': { ...Notice.form, async: true, grade: 0 },
+  '/admin/notice/update/:noticeSn': { ...Notice.form, async: true, grade: 0 },
+  '/admin/userList': { ...UserList, grade: 0 },
+  '/admin/user/:userSN': { ...Profile, grade: 0 },
+  '/admin/user/profileForm/:userSn': { ...ProfileForm, grade: 0 },
 
   //user
-  '/user/absence': { ...UserAbsence, async: true },
-  '/user/notice': Notice.list,
-  '/user/notice/view': Notice.view,
-  '/user/profile': UserProfile,
-  '/user/profile/profileForm': UserProfileForm,
-  '/user/work': { ...WorkCheck, async: true },
-  '/user/workOn': workOn,
+  '/user/absence': { ...UserAbsence, async: true, grade: 1 },
+  '/user/notice': { ...Notice.list, async: true, grade: 1 },
+  '/user/notice/view': { ...Notice.view, async: true, grade: 1 },
+  '/user/profile': { ...UserProfile, grade: 1 },
+  '/user/profile/profileForm': { ...UserProfileForm, grade: 1 },
+  '/user/work': { ...WorkCheck, async: true, grade: 1 },
+  '/user/workOn': { ...workOn, grade: 1 },
 };
 
 export default routes;
