@@ -22,7 +22,7 @@ const profileFunc = async () => {
 
   const userData = await getUserData();
 
-  const defaultImage = '/public/vite.svg';
+  const defaultImage = '/src/img/default_user.svg';
   if (userData['USER_IMAGE']) {
     profileImg.src = userData['USER_IMAGE'];
   } else {
