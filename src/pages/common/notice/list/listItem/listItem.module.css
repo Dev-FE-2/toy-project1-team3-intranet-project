@@ -7,11 +7,23 @@
 }
 
 .thumbnail-box {
-    background-color: gray;
+    position: relative;
     padding-top: 100%;
     overflow: hidden;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    background-color: gray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.thumbnail-box.noimg::before {
+    content: 'No Image';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .info-box {

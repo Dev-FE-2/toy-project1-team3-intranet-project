@@ -6,6 +6,11 @@ import workUserRouter from './api/work/user/index.js';
 import signUpRouter from './api/user/common/userInfo.js';
 import userSignInRouter from './api/user/common/index.js';
 import workOnRouter from './api/work/user/workOn.js';
+import absenceAdminRouter from './api/absence/admin/index.js';
+import absenceUserRouter from './api/absence/user/index.js';
+import userInfoRouter from './api/user/user/user.js';
+import userUpdateRouter from './api/user/user/userUpdate.js';
+import userListAdminRouter from './api/user/admin/userListRouter.js';
 
 const THRESHOLD = 2000;
 const port = process.env.PORT || 8080;
@@ -31,6 +36,8 @@ const adminPath = `${apiPathPrefix}/admin`;
 const USER_API_URL = {
   signUp: `${userPath}/signup`,
   signIn: `${userPath}/signIn`,
+  userInfo: `${userPath}/userInfo`,
+  userUpdate: `${userPath}/userUpdate`,
 };
 
 const NOTICE_API_URL = {
@@ -41,6 +48,15 @@ const NOTICE_API_URL = {
 const WORK_API_URL = {
   user: `${userPath}/work`,
   workOn: `${userPath}/workOn`,
+};
+
+const ABSENCE_API_URL = {
+  admin: `${adminPath}/absence`,
+  user: `${userPath}/absence`,
+};
+
+const USERLIST_API_URL = {
+  admin: `${adminPath}/userList`,
 };
 
 app.use(morgan('dev'));
@@ -56,6 +72,15 @@ app.use(WORK_API_URL.workOn, workOnRouter);
 
 // work 라우터 연결
 app.use(WORK_API_URL.user, workUserRouter);
+
+// absence 라우터 연결
+app.use(ABSENCE_API_URL.admin, absenceAdminRouter);
+app.use(ABSENCE_API_URL.user, absenceUserRouter);
+
+// user 라우터 연결
+app.use(USER_API_URL.userInfo, userInfoRouter);
+app.use(USER_API_URL.userUpdate, userUpdateRouter);
+app.use(USERLIST_API_URL.admin, userListAdminRouter);
 
 app.listen(port, () => {
   console.log(`ready to ${port}`);

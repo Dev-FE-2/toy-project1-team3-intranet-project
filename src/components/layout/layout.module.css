@@ -29,6 +29,28 @@
   font-weight: 600;
 }
 
+.headerRightWrap {
+  display: flex;
+  align-items: center;
+}
+
+.headerRightWrap .signOutBtn {
+  margin-left: 10px;
+  text-indent: -10000px;
+  background-image: url('/src/img/logout_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
+  background-color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+}
+
+.headerRightWrap .signOutBtn:hover {
+  background-color: #ddd;
+}
+
 @media (max-width: 1280px) {
   .layout {
     flex-direction: column;
@@ -39,6 +61,7 @@
     position: fixed;
     top: 60px;
     left: 0;
+    z-index: 1;
   }
 
   .shortCut {
@@ -98,7 +121,6 @@
     font-size: 24px;
     font-weight: 600;
     display: block;
-    margin-right: 20px;
   }
 
   .flex {

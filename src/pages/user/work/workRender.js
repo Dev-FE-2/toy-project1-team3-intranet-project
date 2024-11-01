@@ -50,7 +50,7 @@ const workRender = async () => {
 export const renderWorkList = (data) => {
   return data.length > 0 ? data.map((item) => `
     <tr>
-      <td>${item.WORK_DATE}</td>
+      <td>${item.WORK_DATE.split(' ')[0]}</td>
       <td>${item.WORK_START_DATE_TIME.split(' ')[1].slice(0, 5)}</td>
       <td>${item.WORK_END_DATE_TIME.split(' ')[1].slice(0, 5)}</td>
     </tr>`

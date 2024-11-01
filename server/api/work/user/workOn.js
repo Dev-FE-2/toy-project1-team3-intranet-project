@@ -90,7 +90,7 @@ router.put('/', async (req, res) => {
   const sql = `
   UPDATE WORK
   SET WORK_END_DATE_TIME = datetime('now', 'localtime')
-  WHERE USER_SERIAL_NUMBER = ?
+  WHERE USER_SERIAL_NUMBER = ? and date(WORK_DATE) = date('now','localtime')
   `;
 
   const params = [userSn];
