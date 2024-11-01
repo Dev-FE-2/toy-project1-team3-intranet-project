@@ -5,16 +5,18 @@ const profileFormRender = () => `
     <div class="${style.profileBox}">
       <div class="${style.contentsBox}">
         <div class="${style.profileItem}">
-          <input type="text" class="${style.input} ${style.division}">
-          <label for="file" class="${style.imgForm}">
-            <div class="${style.profileImg}">
+          <div class="${style.imgForm}">
+            <div>
+              <button id="closeButton" class="${style.closeButton} hidden"></button>
+            </div>
+            <label for="file" class="${style.profileImg}">
               <img id="profileImg" src="/src/img/default_user.svg" alt="">
-            </div>
-            <div class="${style.changeImg}">
-              <img  class="${style.rotateIcon}" src="/src/img/rotate_icon.svg" alt="아이콘">
-              <input id="file" type="file" class="${style.file}" />
-            </div>
-          </label>
+              <div class="${style.changeImg}">
+                <img  class="${style.rotateIcon}" src="/src/img/rotate_icon.svg" alt="아이콘">
+                <input id="file" type="file" class="${style.file}" />
+              </div>
+            </label>
+          </div>
           <input id="name" type="text" class="${style.input} ${style.name}">
           <input id="grade" type="text" class="${style.input} ${style.grade}">
         </div>
@@ -25,7 +27,6 @@ const profileFormRender = () => `
       </div>
       <div class="${style.btnWrap}">
         <button id="updateUser" class="${style.btn}">수정하기</button>
-        <botton class="${style.btn} ${style.btnRed}">삭제하기</botton>
         <button id="cancel" class="${style.btn} ${style.btnGray}">취소</button>
       </div>
     </div>
