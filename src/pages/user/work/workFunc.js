@@ -1,8 +1,7 @@
 import styles from './work.module.css';
 import { renderWorkList } from "./workRender";
 
-// const userSn = localStorage.getItem('userSn');
-const userSn = 'USER_00000001';
+const userSn = localStorage.getItem('userSn');
 let currentSearchTerm = '';
 
 export const fetchWorks = async (page = 1, searchTerm = '', userInfo = userSn) => {
