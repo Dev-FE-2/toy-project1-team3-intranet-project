@@ -24,7 +24,7 @@ const routes = {
   '/admin/notice/view/:noticeSn': { ...Notice.view, async: true, grade: 0 },
   '/admin/notice/insert': { ...Notice.form, async: true, grade: 0 },
   '/admin/notice/update/:noticeSn': { ...Notice.form, async: true, grade: 0 },
-  '/admin/userList': { ...UserList, grade: 0 },
+  '/admin/userList': { ...UserList, async:true, grade: 0 },
   '/admin/user/:userSn': { ...Profile, grade: 0 },
   '/admin/user/profileForm/:userSn': { ...ProfileForm, grade: 0 },
 

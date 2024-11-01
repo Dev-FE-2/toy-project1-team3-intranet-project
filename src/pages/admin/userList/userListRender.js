@@ -10,7 +10,7 @@ import {fetchUsers} from './userListFunc';
         <td class="${style.td} ${style.name}">${item.name}</td>
         <td class="${style.td} ${style.email}">${item.email}</td>
         <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
-        <td class="${style.td} ${style.division}">${item.grade ? "관리자": "임직원"}</td>
+        <td class="${style.td} ${style.division}">${item.grade ? "임직원": "관리자"}</td>
       </tr>
     `).join('');
   };
