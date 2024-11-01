@@ -1,36 +1,43 @@
 import style from './userList.module.css';
-import {fetchUsers} from './userListFunc';
+import { fetchUsers } from './userListFunc';
 
-  // 테이블의 행을 렌더링하는 함수
-  export const renderTableRows = (data) => {
-    const curPath = window.location.pathname;
-    return data.map((item) => `
-      <tr onclick="location.href='${curPath}/profile:${item.id}'">
-        <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td>
+// 테이블의 행을 렌더링하는 함수
+export const renderTableRows = (data) => {
+  console.log(data);
+  return data
+    .map(
+      (item) => `
+      <tr onclick="location.href='/admin/user/${item.userSn}'">
         <td class="${style.td} ${style.name}">${item.name}</td>
         <td class="${style.td} ${style.email}">${item.email}</td>
         <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
-        <td class="${style.td} ${style.division}">${item.grade ? "임직원": "관리자"}</td>
+        <td class="${style.td} ${style.division}">${item.grade ? '임직원' : '관리자'}</td>
       </tr>
-    `).join('');
-  };
-
+    `
+    )
+    .join('');
+};
+{
+  /* <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td> */
+}
 
 // 페이지네이션 버튼을 렌더링하는 함수
 export const pagination = (currentPage, totalPage) => {
-    const pageButton = [];
-    const startPage = Math.max(currentPage - 5, 1);
+  const pageButton = [];
+  const startPage = Math.max(currentPage - 5, 1);
 
-    const endPage = Math.min(startPage + 9, totalPage);
-    
-    for(let i = startPage; i <= endPage; i++) {
-      pageButton.push(
+  const endPage = Math.min(startPage + 9, totalPage);
+
+  for (let i = startPage; i <= endPage; i++) {
+    pageButton.push(
       `<button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `${style.unSelectBtn}`}">
       ${i}
       </button>
-    `)};
-    
-    return ` 
+    `
+    );
+  }
+
+  return ` 
     <ul>
       <button class="${style.unSelectBtn} prev"
       ${currentPage === 1 ? 'disabled' : ''}>
@@ -41,18 +48,14 @@ export const pagination = (currentPage, totalPage) => {
       ${currentPage === totalPage ? 'disabled' : ''}>
         >
       </button>
-    </ul>`
-  };
-
-
+    </ul>`;
+};
 
 const userListRender = async () => {
-  const  userData  = await fetchUsers(); // 패치함수 실행
-  const totalCount = userData.totalCount // 총 임직원
-  const data = userData.data // 임직원 데이터
-  console.log(userData)
-
-
+  const userData = await fetchUsers(); // 패치함수 실행
+  const totalCount = userData.totalCount; // 총 임직원
+  const data = userData.data; // 임직원 데이터
+  console.log(userData);
 
   return `
     <div class="${style.userListWrapper}">
@@ -91,9 +94,6 @@ const userListRender = async () => {
         </section>
         </div>
         `;
-}
-
-
-
+};
 
 export default userListRender;
