@@ -30,8 +30,8 @@ const routes = {
 
   //user
   '/user/absence': { ...UserAbsence, async: true, grade: 1 },
-  '/user/notice': { ...Notice.list, grade: 1 },
-  '/user/notice/view': { ...Notice.view, grade: 1 },
+  '/user/notice': { ...Notice.list, async: true, grade: 1 },
+  '/user/notice/view': { ...Notice.view, async: true, grade: 1 },
   '/user/profile': { ...UserProfile, grade: 1 },
   '/user/profile/profileForm': { ...UserProfileForm, grade: 1 },
   '/user/work': { ...WorkCheck, async: true, grade: 1 },
