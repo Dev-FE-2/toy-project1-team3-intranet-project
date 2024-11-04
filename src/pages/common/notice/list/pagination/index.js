@@ -19,6 +19,14 @@ const pagination = (currentPage, totalPages) => {
     <ul class="${styles.pagination}">
       <li>
         <button
+          class="${styles.prev} first"
+          ${currentPage === 1 ? 'disabled' : ''}
+        >
+          &lt;&lt;
+        </button>
+      </li>
+      <li>
+        <button
           class="${styles.prev} prev"
           ${currentPage === 1 ? 'disabled' : ''}
         >
@@ -32,6 +40,14 @@ const pagination = (currentPage, totalPages) => {
           ${currentPage === totalPages ? 'disabled' : ''}
         >
           &gt;
+        </button>
+      </li>
+      <li>
+        <button
+          class="${styles.next} last"
+          ${currentPage === totalPages ? 'disabled' : ''}
+        >
+          &gt;&gt;
         </button>
       </li>
     </ul>
