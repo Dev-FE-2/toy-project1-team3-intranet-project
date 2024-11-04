@@ -42,6 +42,11 @@ const pagination = (currentPage, totalPages) => {
   return /* HTML */ `
     <ul class="${styles.pagination}">
       <li class="${styles.pageBtn}">
+        <button class="first" ${currentPage === 1 ? 'disabled' : ''}>
+          &lt;&lt;
+        </button>
+      </li>
+      <li class="${styles.pageBtn}">
         <button class="prev" ${currentPage === 1 ? 'disabled' : ''}>
           &lt;
         </button>
@@ -50,6 +55,11 @@ const pagination = (currentPage, totalPages) => {
       <li class="${styles.pageBtn}">
         <button class="next" ${currentPage === totalPages ? 'disabled' : ''}>
           &gt;
+        </button>
+      </li>
+      <li class="${styles.pageBtn}">
+        <button class="last" ${currentPage === totalPages ? 'disabled' : ''}>
+          &gt;&gt;
         </button>
       </li>
     </ul>
@@ -82,6 +92,10 @@ const handlePagination = async (event, totalPage) => {
     newPage = currentPage - 1;
   } else if (target.classList.contains('next') && currentPage < totalPage) {
     newPage = currentPage + 1;
+  } else if (target.classList.contains('first') && currentPage > 1) {
+    newPage = 1;
+  } else if (target.classList.contains('last') && currentPage < totalPage) {
+    newPage = totalPage;
   } else {
     newPage = parseInt(target.innerText, 10);
   }
