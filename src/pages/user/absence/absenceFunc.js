@@ -6,6 +6,13 @@ const userSn = localStorage.getItem('userSn');
 let currentSearchType = '';
 let currentSearchTerm = '';
 
+/**
+ * 부재 리스트 데이터 호출
+ * @param {number} page 현재 페이지 번호
+ * @param {string} searchType 부재 항목
+ * @param {string} searchTerm 검색어
+ * @param {string} userInfo 사용자 ID
+ */ 
 export const fetchUserAbsence = async (page = 1, searchType = '', searchTerm = '', userInfo = userSn) => {
   const url = `/api/user/absence?userSn=${encodeURIComponent(userInfo)}&page=${page}&searchType=${encodeURIComponent(searchType)}&searchTerm=${encodeURIComponent(searchTerm)}`;
 
@@ -19,6 +26,10 @@ export const fetchUserAbsence = async (page = 1, searchType = '', searchTerm = '
   }
 }
 
+/**
+ * 부재 신청
+ * @param {object} formData 신청 폼에 입력된 데이터
+ */ 
 const requestAbsence =  async (formData) => {
   const url = `/api/user/absence/request`;
 
@@ -39,6 +50,7 @@ const requestAbsence =  async (formData) => {
   }
 }
 
+// 페이지네이션 버튼 생성
 const pagination = (currentPage, totalPages) => {
   const pageButtons = [];
   const startPage = Math.max(currentPage - 5, 1);
@@ -192,11 +204,6 @@ const absenceFunc = async () => {
       return false;
     }
 
-    // if (!reqContent.value.trim()) {
-    //   alert('세부내용을 입력해주세요');
-    //   return false;
-    // }
-
     return true;
   };
 
@@ -225,17 +232,18 @@ const absenceFunc = async () => {
     }
   });
 
+  // 부재 신청 버튼 클릭시 모달 열림
   modalOpen.addEventListener('click',function(){
-    //display 속성을 block로 변경
     modal.style.display = 'block';
   });
-  //닫기 버튼을 눌렀을 때 모달팝업이 닫힘
+
+  // 닫기 버튼 클릭시 모달 닫힘
   modalClose.addEventListener('click',function(){
-    //display 속성을 none으로 변경
       modal.style.display = 'none';
   });
+
+  // 모달 바깥 배경 클릭시 모달 닫힘
   modalBack.addEventListener('click',function(){
-    //display 속성을 none으로 변경
       modal.style.display = 'none';
   });
 };
