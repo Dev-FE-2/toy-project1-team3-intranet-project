@@ -24,7 +24,7 @@ const viewRender = async () => {
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 상세</h1>
 
-        <div class="${styles['form-wrap']}">
+        <section class="${styles['form-wrap']}">
           <input type="hidden" id="noticeSn" value="${noticeSn}" />
           <div class="${styles['form-list']}">
             <div class="${styles.label}">제목</div>
@@ -44,7 +44,7 @@ const viewRender = async () => {
                 : '-'}
             </div>
           </div>
-        </div>
+        </section>
 
         <div class="${styles['btn-wrap']} ${viewStyles['btn-wrap']}">
           ${isShowBtn(viewData.user_sn)
