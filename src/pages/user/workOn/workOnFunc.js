@@ -85,8 +85,9 @@ const workOnFunc = async () => {
 
   const onModal = () => {
     if (workData['isWork'] != 2) {
-      modal.innerHTML = `<div class="${style.modal}">
-        <div class="${style.checkWork}">
+      modal.innerHTML = `
+      <article class="${style.modal}">
+        <section class="${style.checkWork}">
           <h2>${workData['isWork'] ? '퇴근' : '출근'} 확인</h2>
           <h3>${workData['isWork'] ? '퇴근' : '출근'}을 처리 하시겠습니까?</h3>
           <div>
@@ -108,8 +109,8 @@ const workOnFunc = async () => {
           <button id="cancel" type="button" class="cancelButton">
             취소
           </button>
-        </div>
-      </div>`;
+        </section>
+      </article>`;
 
       confirm = document.getElementById('confirm');
       confirm.addEventListener('click', () => {

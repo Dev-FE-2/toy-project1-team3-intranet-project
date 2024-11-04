@@ -58,41 +58,38 @@ const userListRender = async () => {
   console.log(userData);
 
   return `
-    <div class="${style.userListWrapper}">
+    <main class="${style.userListWrapper}">
       <div class="${style.userListheader}">
         <div class="${style.headerLeft}">
           <div class="${style.title}">임직원 관리</div>
           <div id="userCount" class="${style.subTitle}">총 ${totalCount}명의 임직원</div>
         </div>
         <div class="${style.headerRight}">
-          
-            <input type="text" id="searchInput"class="${style.input}" placeholder="이름 또는 이메일로 검색하기">
-          
+          <input type="text" id="searchInput"class="${style.input}" placeholder="이름 또는 이메일로 검색하기" />
         </div>
       </div>
 
-      <section class="${style.tableSection}">
+      <article class="${style.tableSection}">
         <table class="${style.table}">
           <thead>
             <tr>
-              <th class="${style.th} checkbox"></th>
-              <th class="${style.th} name">이름</th>
-              <th class="${style.th} ${style.email}">이메일</th>
-              <th class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
-              <th class="${style.th} ${style.division}">구분</th>
+              <th scope="col" class="${style.th} checkbox"></th>
+              <th scope="col" class="${style.th} name">이름</th>
+              <th scope="col" class="${style.th} ${style.email}">이메일</th>
+              <th scope="col" class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
+              <th scope="col" class="${style.th} ${style.division}">구분</th>
             </tr>
           </thead>
           <tbody id="userTableBody">
             ${renderTableRows(data)}
           </tbody>
         </table>
-        <div class="${style.pagination}">
-          <div id="paginationButtons" class="${style.paginationBtn}">           
-
+        <nav class="${style.pagination}">
+          <div id="paginationButtons" class="${style.paginationBtn}">
           </div>
-        </div>
-        </section>
-        </div>
+        </nav>
+      </article>
+    </main>
         `;
 };
 

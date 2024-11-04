@@ -29,7 +29,7 @@ const formRender = async (id) => {
   }
 
   return /* HTML */ `
-    <div class="${styles.container}">
+    <main class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">${pageTitle}</h1>
 
@@ -37,7 +37,7 @@ const formRender = async (id) => {
           ${id
             ? `<input type="hidden" id="noticeSn" value="${noticeSn}" />`
             : ''}
-          <div class="${styles['form-wrap']}">
+          <section class="${styles['form-wrap']}">
             <p class="${formStyles.desc}">* 표시가 있는 항목은 필수입니다.</p>
             <div class="${styles['form-list']}">
               <div class="${styles.label} ${formStyles.label}">* 제목</div>
@@ -55,8 +55,8 @@ const formRender = async (id) => {
               <div class="${styles.label} ${formStyles.label}">* 내용</div>
               <div class="${styles.content}">
                 <textarea name="content" placeholder="내용을 입력하세요">
-${data?.content || ''}</textarea
-                >
+                  ${data?.content || ''}
+                </textarea>
               </div>
             </div>
             <div class="${styles['form-list']}">
@@ -90,9 +90,9 @@ ${data?.content || ''}</textarea
                 </button>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div class="${styles['btn-wrap']} ${formStyles['btn-wrap']}">
+          <section class="${styles['btn-wrap']} ${formStyles['btn-wrap']}">
             <button type="submit" class="${styles.btn} ${formStyles.btn}">
               ${submitText}
             </button>
@@ -103,10 +103,10 @@ ${data?.content || ''}</textarea
             >
               이전으로
             </button>
-          </div>
+          </section>
         </form>
       </div>
-    </div>
+    </main>
   `;
 };
 

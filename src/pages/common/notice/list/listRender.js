@@ -9,7 +9,7 @@ const listRender = async () => {
   const { data, totalCount } = await getNotices(1);
 
   return /* HTML */ `
-    <div class="${styles.container}">
+    <main class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 관리</h1>
         <div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
@@ -17,7 +17,7 @@ const listRender = async () => {
             <span>공지 등록</span>
           </a>
         </div>
-        <div class="${listStyles['list-wrap__header']}">
+        <section class="${listStyles['list-wrap__header']}">
           <div class="${listStyles['count-desc']}">
             총 <span id="noticeCnt">${totalCount}</span>개의 공지
           </div>
@@ -36,13 +36,13 @@ const listRender = async () => {
               <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" />
             </button>
           </div>
-        </div>
-        <div id="noticeList" class="${listStyles['list-wrap__body']}">
+        </section>
+        <section id="noticeList" class="${listStyles['list-wrap__body']}">
           ${renderNotices(data)}
-        </div>
-        <div id="pagingContainer"></div>
+        </section>
+        <nav id="pagingContainer"></nav>
       </div>
-    </div>
+    </main>
   `;
 };
 
