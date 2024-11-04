@@ -3,7 +3,6 @@ import { fetchUsers } from './userListFunc';
 
 // 테이블의 행을 렌더링하는 함수
 export const renderTableRows = (data) => {
-  console.log(data);
   return data
     .map(
       (item) => `
@@ -55,7 +54,6 @@ const userListRender = async () => {
   const userData = await fetchUsers(); // 패치함수 실행
   const totalCount = userData.totalCount; // 총 임직원
   const data = userData.data; // 임직원 데이터
-  console.log(userData);
 
   return `
     <div class="${style.userListWrapper}">
