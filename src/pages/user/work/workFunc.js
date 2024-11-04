@@ -4,6 +4,12 @@ import { renderWorkList } from "./workRender";
 const userSn = localStorage.getItem('userSn');
 let currentSearchTerm = '';
 
+/**
+ * 출근 리스트 데이터 호출
+ * @param {number} page 현재 페이지 번호
+ * @param {string} searchTerm 검색어
+ * @param {string} userInfo 사용자ID
+ */
 export const fetchWorks = async (page = 1, searchTerm = '', userInfo = userSn) => {
   const url = `/api/user/work?userSn=${encodeURIComponent(userInfo)}&page=${page}&search=${encodeURIComponent(searchTerm)}`;
 
@@ -17,6 +23,7 @@ export const fetchWorks = async (page = 1, searchTerm = '', userInfo = userSn) =
   }
 }
 
+// 페이지네이션 버튼 생성
 const pagination = (currentPage, totalPages) => {
   const pageButtons = [];
   const startPage = Math.max(currentPage - 5, 1);
