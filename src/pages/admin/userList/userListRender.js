@@ -75,7 +75,6 @@ const userListRender = async () => {
         <table class="${style.table}">
           <thead>
             <tr>
-              <th class="${style.th} checkbox"></th>
               <th class="${style.th} name">이름</th>
               <th class="${style.th} ${style.email}">이메일</th>
               <th class="${style.th} ${style.phoneNumber}">휴대폰번호</th>

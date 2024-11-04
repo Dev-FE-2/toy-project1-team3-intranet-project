@@ -48,17 +48,7 @@ const updateUserList = async (page = 1) => {
 
   setupPagination(totalPage, page);
 };
-//검색
-// const search = async (searchTerm) => {
-//   const data = await fetchUsers()
-//   const userData = data.data
-//   // searchTerm을 포함하는 항목만 필터링
-//   const filteredUsers = userData.filter(user =>
-//     user.name.includes(searchTerm) || user.email.includes(searchTerm)
-//   );
-//   console.log(filteredUsers)
-//   return filteredUsers
-// }
+
 //검색 결과 렌더링
 const filterTableRows = (data) => {
   const curPath = window.location.pathname;
