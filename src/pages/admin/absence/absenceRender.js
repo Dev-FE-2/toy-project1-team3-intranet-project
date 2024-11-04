@@ -51,6 +51,7 @@ const absenceRender = async () => {
   `;
 }
 
+// 부재 리스트 출력
 export const renderAdminAbsenceList = (data) => {
   return data.length > 0 ? data.map((item) => `
     <tr>
