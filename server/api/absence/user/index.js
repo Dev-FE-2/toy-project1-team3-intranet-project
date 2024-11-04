@@ -30,6 +30,7 @@ const getTotalAbsenceCount = (userSn, searchType = '', searchTerm = '') => {
   });
 };
 
+// 부재 리스트 데이터 받아오기
 router.get('/', async (req, res) => {
   let { page, size, userSn, searchType, searchTerm } = req.query;
   page = parseInt(page) || 1; // 기본 페이지 = 1
@@ -79,6 +80,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// 부재 신청하기
 router.post('/request', async (req, res) => {
   let { reqType, reqStartDateTime, reqEndDateTime, reqContent, userSn } = req.body;
 
