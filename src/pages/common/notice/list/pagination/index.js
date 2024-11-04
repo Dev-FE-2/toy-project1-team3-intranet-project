@@ -2,8 +2,10 @@ import styles from './pagination.module.css';
 
 const pagination = (currentPage, totalPages) => {
   const pageButtons = [];
-  const startPage = Math.max(currentPage - 5, 1);
-  const endPage = Math.min(startPage + 9, totalPages);
+  const groupSize = 10; // 항상 10개 단위로 표시
+  const currentGroup = Math.ceil(currentPage / groupSize); // 현재 페이지 그룹 계산
+  const startPage = (currentGroup - 1) * groupSize + 1; // 현재 그룹의 시작 페이지
+  const endPage = Math.min(startPage + groupSize - 1, totalPages); // 현재 그룹의 끝 페이지 (총 페이지 수를 초과하지 않도록)
 
   for (let i = startPage; i <= endPage; i++) {
     pageButtons.push(
