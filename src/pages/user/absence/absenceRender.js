@@ -49,18 +49,18 @@ const absenceRender = async () => {
       <div id="pagination" class="${styles.pagination}">
       </div>
   
-      <div class="${styles.modal} modal">
-        <div class="${styles.modalBack} modalBack"></div>
+      <div id="requestModal" class="${styles.modal}">
+        <div id="modalBack" class="${styles.modalBack}"></div>
         <div class="${styles.modalPopup}">
           <h1>부재 신청</h1>
-          <button type="button" class="${styles.closeBtn} closeBtn">
+          <button type="button" id="closeBtn" class="${styles.closeBtn}">
             <img src="/src/img/close-x-svgrepo-com.svg" alt="닫기">
           </button>
-          <form>
+          <form id="requestForm">
             <div class="${styles.formWrap}">
               <div class="${styles.formList}">
                 <div class="${styles.label}">부재항목</div>
-                <select name="reqType" class="${styles.reqType}">
+                <select name="reqType" id="reqType" class="${styles.reqType}">
                   <option value="">부재 항목 선택</option>
                   <option value="연차">연차</option>
                   <option value="오전반차">오전반차</option>
@@ -86,7 +86,7 @@ const absenceRender = async () => {
               </div>
               <div class="${styles.formList}">
                 <div class="${styles.label}">세부내용</div>
-                <textarea name="reqContent" class="${styles.reqContent}"></textarea>
+                <textarea name="reqContent" id="reqContent" class="${styles.reqContent}"></textarea>
               </div>
             </div>
           </form>
