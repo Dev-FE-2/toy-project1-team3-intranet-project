@@ -3,14 +3,6 @@ import { fetchAdminAbsence } from './absenceFunc';
 
 // 페이지 렌더링
 const absenceRender = async () => {
-  const userSn = localStorage.getItem('userSn');
-
-  // 로그인이 안 되어있다면 화면 진입 불가하도록
-  // if (!userSn) {
-  //   alert('로그인을 해주세요.');
-  //   window.location.replace('/'); // 로그인 페이지로 리다이렉트
-  //   return null; // 함수 종료
-  // }
 
   const {data} = await fetchAdminAbsence();
 
@@ -59,6 +51,7 @@ const absenceRender = async () => {
   `;
 }
 
+// 부재 리스트 출력
 export const renderAdminAbsenceList = (data) => {
   return data.length > 0 ? data.map((item) => `
     <tr>

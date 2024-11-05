@@ -4,6 +4,12 @@ import { renderAdminAbsenceList } from './absenceRender';
 let currentSearchType = '';
 let currentSearchTerm = '';
 
+/**
+ * 부재 리스트 데이터 호출
+ * @param {number} page 현재 페이지 번호
+ * @param {string} searchType 부재 항목
+ * @param {string} searchTerm 검색어
+ */ 
 export const fetchAdminAbsence = async (page = 1, searchType = '', searchTerm = '') => {
   const url = `/api/admin/absence?page=${page}&searchType=${encodeURIComponent(searchType)}&searchTerm=${encodeURIComponent(searchTerm)}`;
 
@@ -17,6 +23,7 @@ export const fetchAdminAbsence = async (page = 1, searchType = '', searchTerm = 
   }
 }
 
+// 페이지네이션 버튼 생성
 const pagination = (currentPage, totalPages) => {
   const pageButtons = [];
   const startPage = Math.max(currentPage - 5, 1);
@@ -35,6 +42,11 @@ const pagination = (currentPage, totalPages) => {
   return /* HTML */ `
     <ul class="${styles.pagination}">
       <li class="${styles.pageBtn}">
+        <button class="first" ${currentPage === 1 ? 'disabled' : ''}>
+          &lt;&lt;
+        </button>
+      </li>
+      <li class="${styles.pageBtn}">
         <button class="prev" ${currentPage === 1 ? 'disabled' : ''}>
           &lt;
         </button>
@@ -43,6 +55,11 @@ const pagination = (currentPage, totalPages) => {
       <li class="${styles.pageBtn}">
         <button class="next" ${currentPage === totalPages ? 'disabled' : ''}>
           &gt;
+        </button>
+      </li>
+      <li class="${styles.pageBtn}">
+        <button class="last" ${currentPage === totalPages ? 'disabled' : ''}>
+          &gt;&gt;
         </button>
       </li>
     </ul>
@@ -75,6 +92,10 @@ const handlePagination = async (event, totalPage) => {
     newPage = currentPage - 1;
   } else if (target.classList.contains('next') && currentPage < totalPage) {
     newPage = currentPage + 1;
+  } else if (target.classList.contains('first') && currentPage > 1) {
+    newPage = 1;
+  } else if (target.classList.contains('last') && currentPage < totalPage) {
+    newPage = totalPage;
   } else {
     newPage = parseInt(target.innerText, 10);
   }
@@ -107,7 +128,8 @@ const absenceFunc = async () => {
   const paginationContainer = document.getElementById('pagination');
 
   const searchWorks = async () => {
-    currentSearchTerm = searchTerm.value.toLowerCase(); // 전역 변수에 검색어 저장
+    // 전역 변수에 검색어 저장
+    currentSearchTerm = searchTerm.value.toLowerCase();
     currentSearchType = searchType.value;
 
     // 검색어에 맞는 데이터를 받아와 렌더링

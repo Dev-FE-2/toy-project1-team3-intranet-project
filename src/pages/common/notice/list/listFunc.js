@@ -55,8 +55,12 @@ const handlePagination = async (event, totalPage) => {
 
   if (target.classList.contains('prev') && currentPage > 1) {
     newPage = currentPage - 1;
+  } else if (target.classList.contains('first') && currentPage > 1) {
+    newPage = 1;
   } else if (target.classList.contains('next') && currentPage < totalPage) {
     newPage = currentPage + 1;
+  } else if (target.classList.contains('last') && currentPage < totalPage) {
+    newPage = totalPage;
   } else {
     newPage = parseInt(target.innerText, 10);
   }
