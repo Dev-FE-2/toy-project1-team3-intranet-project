@@ -4,15 +4,6 @@ import { getNoticeById } from '../view/viewFunc';
 
 // 페이지 렌더링
 const formRender = async (id) => {
-  const userSn = localStorage.getItem('userSn');
-
-  // 로그인이 안 되어있다면 화면 진입 불가하도록
-  if (!userSn) {
-    alert('로그인을 해주세요.');
-    window.location.replace('/'); // 로그인 페이지로 리다이렉트
-    return null; // 함수 종료
-  }
-
   const path = window.location.pathname;
   let pageTitle = '';
   let submitText = '';
@@ -39,28 +30,39 @@ const formRender = async (id) => {
             : ''}
           <section class="${styles['form-wrap']}">
             <p class="${formStyles.desc}">* 표시가 있는 항목은 필수입니다.</p>
-            <div class="${styles['form-list']}">
-              <div class="${styles.label} ${formStyles.label}">* 제목</div>
+            <div class="${styles['form-list']}" role="group">
+              <label for="title" class="${styles.label} ${formStyles.label}"
+                >* 제목</label
+              >
               <div class="${styles.content}">
                 <input
                   type="text"
                   name="title"
+                  id="title"
                   class="${styles.input}"
                   placeholder="제목을 입력하세요"
                   value="${data?.title || ''}"
                 />
               </div>
             </div>
-            <div class="${styles['form-list']}">
-              <div class="${styles.label} ${formStyles.label}">* 내용</div>
+            <div class="${styles['form-list']}" role="group">
+              <label for="content" class="${styles.label} ${formStyles.label}"
+                >* 내용</label
+              >
               <div class="${styles.content}">
-                <textarea name="content" placeholder="내용을 입력하세요">
+                <textarea
+                  id="content"
+                  name="content"
+                  placeholder="내용을 입력하세요"
+                >
                   ${data?.content || ''}
                 </textarea>
               </div>
             </div>
-            <div class="${styles['form-list']}">
-              <div class="${styles.label} ${formStyles.label}">이미지</div>
+            <div class="${styles['form-list']}" role="group">
+              <label for="noticeImg" class="${styles.label} ${formStyles.label}"
+                >이미지</label
+              >
               <div class="${styles.content}">
                 <input
                   type="file"

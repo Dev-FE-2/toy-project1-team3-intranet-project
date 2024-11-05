@@ -25,9 +25,8 @@ const getTotalWorkCount = (userSn, search) => {
   });
 };
 
+// 출근 리스트 데이터 받아오기
 router.get('/', async (req, res) => {
-
-  console.log("=== req : " + JSON.stringify(req.query));
   let { page, size, userSn, search } = req.query;
   page = parseInt(page) || 1; // 기본 페이지 = 1
   size = parseInt(size) || 10; // 기본 개수 = 10

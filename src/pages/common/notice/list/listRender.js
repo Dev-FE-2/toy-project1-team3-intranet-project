@@ -6,17 +6,20 @@ import { getNotices } from './listFunc';
 // 페이지 렌더링
 const listRender = async () => {
   const currentPath = window.location.pathname;
-  const { data, totalCount } = await getNotices(1);
+  const userGrade = parseInt(localStorage.getItem('userGrade'));
+  const { data, totalCount } = await getNotices();
 
   return /* HTML */ `
     <main class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 관리</h1>
-        <div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
+        ${userGrade
+          ? ''
+          : `<div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
           <a href="${currentPath}/insert" class="${styles.btn} ${styles.plus}">
             <span>공지 등록</span>
           </a>
-        </div>
+        </div>`}
         <section class="${listStyles['list-wrap__header']}">
           <div class="${listStyles['count-desc']}">
             총 <span id="noticeCnt">${totalCount}</span>개의 공지
