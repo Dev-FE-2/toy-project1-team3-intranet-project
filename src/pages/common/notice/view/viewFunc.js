@@ -17,7 +17,6 @@ const deleteNoticeById = async (serialNumber) => {
   try {
     const response = await fetch(`/api/admin/notice/${serialNumber}`, {
       method: 'DELETE',
-      body: { serialNumber },
     });
     if (!response.ok) throw new Error('Failed to delete notice');
     return await response.json();
@@ -29,25 +28,23 @@ const deleteNoticeById = async (serialNumber) => {
 
 const viewFunc = () => {
   const path = window.location.pathname;
-  const deleteBtn = document.getElementById('deleteBtn');
+  const deleteBtn = document.querySelector('#deleteBtn');
+  if (!deleteBtn) return;
 
-  if (deleteBtn) {
-    deleteBtn.addEventListener('click', () => {
-      if (confirm('게시글을 삭제하시겠습니까?')) {
-        deleteNoticeById(document.getElementById('noticeSn').value)
-          .then((res) => {
-            if (res.status === 'OK') {
-              alert(res.message);
-              window.location.href = path.slice(0, path.indexOf('/view'));
-            }
-          })
-          .catch((error) => {
-            console.error(error);
-            alert(error.error);
-          });
-      }
-    });
-  }
+  deleteBtn.addEventListener('click', async () => {
+    const confirmDelete = confirm('게시글을 삭제하시겠습니까?');
+    if (!confirmDelete) return;
+
+    const noticeSn = document.querySelector('#noticeSn').value;
+    const res = await deleteNoticeById(noticeSn);
+
+    if (res && res.status === 'OK') {
+      alert(res.message);
+      window.location.href = path.slice(0, path.indexOf('/view'));
+    } else {
+      alert(res.error);
+    }
+  });
 };
 
 export default viewFunc;
