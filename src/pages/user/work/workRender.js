@@ -39,6 +39,7 @@ const workRender = async () => {
   </div>
   `};
 
+// 출근 리스트 출력
 export const renderWorkList = (data) => {
   return data.length > 0 ? data.map((item) => `
     <tr>

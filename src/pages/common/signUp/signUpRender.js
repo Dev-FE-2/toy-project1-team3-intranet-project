@@ -4,7 +4,7 @@ const signUpRender = () => `
   <main class="${style.container}">
     <div class="${style.signUpBox}">
       <h1>회원가입</h1>
-      <form>
+      <form onsubmit="return false;">
         <!-- 아이디 입력 라벨 -->
         <label for="id">
           <span>아이디</span>
@@ -59,7 +59,7 @@ const signUpRender = () => `
             type="text"
             name="phone"
             id="phone"
-            placeholder="휴대폰번호 ( - ) 포함 13자리"
+            placeholder="휴대폰번호 11자리"
           />
         </label>
 
