@@ -7,7 +7,7 @@ import { getNotices } from './listFunc';
 const listRender = async () => {
   const currentPath = window.location.pathname;
   const userGrade = parseInt(localStorage.getItem('userGrade'));
-  const { data, totalCount } = await getNotices(1);
+  const { data, totalCount } = await getNotices();
 
   return /* HTML */ `
     <main class="${styles.container}">
