@@ -26,6 +26,13 @@ const signUpFunc = () => {
     name: new RegExp(/^[가-힣]+$/),
   };
 
+  const setPhoneNumber = ({ target }) => {
+    target.value = target.value
+      .replace(/[^0-9]/g, '')
+      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+      .replace(/(\-{1,2})$/g, '');
+  };
+
   const createUser = async (body) => {
     try {
       const response = await axios.post('/api/user/signup', body);
@@ -88,7 +95,7 @@ const signUpFunc = () => {
   };
 
   id.addEventListener('change', () => (verify = false));
-
+  phone.addEventListener('input', setPhoneNumber);
   button.addEventListener('click', async () => {
     const params = { id: id.value };
     if (id.value) {
