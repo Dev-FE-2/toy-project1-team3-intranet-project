@@ -16,15 +16,13 @@ export const renderTableRows = (data) => {
     )
     .join('');
 };
-{
-  /* <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td> */
-}
+
 
 // 페이지네이션 버튼을 렌더링하는 함수
 export const pagination = (currentPage, totalPage) => {
   const pageButton = [];
-  const startPage = Math.max(currentPage - 5, 1);
 
+  const startPage = Math.max(currentPage - 5, 1);
   const endPage = Math.min(startPage + 9, totalPage);
 
   for (let i = startPage; i <= endPage; i++) {
