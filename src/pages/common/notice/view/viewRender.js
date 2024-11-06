@@ -18,9 +18,7 @@ const viewRender = async (noticeSn) => {
     : '';
 
   return /* HTML */ `
-    <main class="${styles.container}">
-      <div class="${styles.inner}">
-        <h1 class="${styles.h1}">기업공지 상세</h1>
+    
 
         <section class="${styles['form-wrap']}">
           <input type="hidden" id="noticeSn" value="${noticeSn}" />
@@ -55,8 +53,6 @@ const viewRender = async (noticeSn) => {
             이전으로
           </a>
         </section>
-      </div>
-    </main>
   `;
 };
 
