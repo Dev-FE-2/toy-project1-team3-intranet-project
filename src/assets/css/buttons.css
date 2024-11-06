@@ -1,14 +1,12 @@
 /* 기본 버튼 */
 button{
-  width: 87px;
-  height: 36px;
   font-family: 'Pretendard';
   font-size: var(--fs-body-sm);
   font-weight: var(--fw-body);
   color: #fff;
   background-color: var(--primary);
   border: 0.5px solid var(--line-light);
-  border-radius: 5px;
+  border-radius: var(--radius);
   padding: 0;
 }
 button:hover{
