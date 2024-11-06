@@ -53,7 +53,6 @@ const userListRender = async () => {
   const data = userData.data; // 임직원 데이터
 
   return `
-    <main class="${style.userListWrapper}">
       <div class="${style.userListheader}">
         <div class="${style.headerLeft}">
           <div class="${style.title}">임직원 관리</div>
@@ -84,7 +83,6 @@ const userListRender = async () => {
           </div>
         </nav>
       </article>
-    </main>
         `;
 };
 

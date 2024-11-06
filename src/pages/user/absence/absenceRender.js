@@ -6,7 +6,6 @@ const absenceRender = async () => {
   const { data } = await fetchUserAbsence();
 
   return `
-  <main class="${styles.page}">
     <h1 class="${styles.title}">부재 관리</h1>
   
     <div class="${styles.content}">
@@ -94,7 +93,6 @@ const absenceRender = async () => {
       </section>
   
     </div>
-  </main>
   `;
 };
 

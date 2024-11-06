@@ -1,20 +1,13 @@
-
-.userListWrapper{
-  width: 100%;
-  height: 100%;
-  width: auto;
-  align-items: center;
-}
-.title{
+.title {
   font-size: 24px;
   font-weight: 800;
   position: absolute;
   top: 0;
 }
-.subTitle{
+.subTitle {
   font-size: 12px;
   font-weight: 800;
-  color: #6C727F;
+  color: #6c727f;
   position: absolute;
   bottom: 0;
 }
@@ -27,13 +20,12 @@
   position: relative;
   top: 0px;
   left: 0px;
-  
 }
-.rightBtn{
+.rightBtn {
   position: absolute;
   right: 0;
 }
-.btnBlack{
+.btnBlack {
   width: 90px;
   font-size: 12px;
   font-weight: 800;
@@ -41,15 +33,15 @@
   color: white;
   background-color: black;
 }
-.btnRed{
+.btnRed {
   width: 90px;
   font-size: 12px;
   font-weight: 800;
   padding: 7px 5px;
-  color:white;
-  background-color: #C04B35;
+  color: white;
+  background-color: #c04b35;
 }
-.btn{
+.btn {
   display: inline-block;
   border-radius: 4px;
   cursor: pointer;
@@ -69,54 +61,54 @@
 }
 
 /* SECTION */
-.tableSection{
+.tableSection {
   position: relative;
   width: 100%;
   height: 500px;
   text-align: center;
   margin-top: 20px;
 }
-.table{
+.table {
   margin: auto;
   width: 70%;
 }
-.th{
+.th {
   font-size: 12px;
   font-weight: 800;
   text-align: center;
   margin: auto;
 }
-.td{
+.td {
   height: 50px;
   font-size: 12px;
   font-weight: 400;
   text-align: center;
   margin: auto;
 }
-.image{
+.image {
   width: 50px;
   height: 50px;
   cursor: pointer;
   text-align: center;
   margin: auto;
 }
-.name{
+.name {
   cursor: pointer;
 }
 /* PAGINATION */
-.pagination{
+.pagination {
   position: absolute;
   width: 100%;
   margin: 50px auto 0;
 }
-.paginationBtn{
+.paginationBtn {
   font-size: 12px;
   font-weight: 800;
   width: 100%;
   height: 33px;
-  padding: 0; 
+  padding: 0;
 }
-.selectBtn{
+.selectBtn {
   background-color: black;
   color: white;
   width: 33px;
@@ -124,7 +116,7 @@
   border-radius: 4px;
   cursor: pointer;
 }
-.unSelectBtn{
+.unSelectBtn {
   border: 2px solid #f2f2f2;
   background-color: white;
   width: 33px;
@@ -133,12 +125,9 @@
   cursor: pointer;
 }
 
-@media (max-width:1280px){
-  .userListWrapper{
-    width: 90%;
-  }
+@media (max-width: 1280px) {
   .profileImg,
-  .email{
-    display:none;
+  .email {
+    display: none;
   }
 }
