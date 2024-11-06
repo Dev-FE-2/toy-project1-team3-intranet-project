@@ -1,7 +1,6 @@
 import style from './profileForm.module.css';
 // 페이지 렌더링
 const profileFormRender = () => `
-  <main class="${style.container}">
     <div class="${style.profileBox}">
       <article class="${style.contentsBox}">
         <section class="${style.profileItem}">
@@ -30,7 +29,6 @@ const profileFormRender = () => `
         <button id="cancel" class="${style.btn} ${style.btnGray}">취소</button>
       </footer>
     </div>
-  </main>
 `;
 
 export default profileFormRender;

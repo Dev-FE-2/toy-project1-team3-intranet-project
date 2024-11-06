@@ -1,13 +1,40 @@
 .a { color: inherit; }
 .input[type="file"] { position: absolute; width: 0; height: 0; padding: 0; border: 0; }
 
-.btn-wrap { display: flex; }
-.btn { display: inline-block; font-size: 12px; font-weight: 500; color: #fff; background-color: #000; border-radius: 4px; padding: 9px 11px 8px; cursor: pointer;}
-.btn.red { background-color: #C04B35; }
-.btn.gray { background-color: #999999; }
-.btn > span { display: inline-block; }
-.btn.plus > span { padding-left: 15px; background: url("/src/assets/img/plus_icon.svg") no-repeat; background-size: 10px; background-position: left top; }
-.btn.trash > span { padding-left: 17px; background: url("/src/assets/img/close_icon.svg") no-repeat; background-size: 15px; background-position: left bottom -1px; }
+.btn-wrap {
+  display: flex;
+}
+.btn {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #000;
+  border-radius: 4px;
+  padding: 9px 11px 8px;
+  cursor: pointer;
+}
+.btn.red {
+  background-color: #c04b35;
+}
+.btn.gray {
+  background-color: #999999;
+}
+.btn > span {
+  display: inline-block;
+}
+.btn.plus > span {
+  padding-left: 15px;
+  background: url('/src/assets/img/plus_icon.svg') no-repeat;
+  background-size: 10px;
+  background-position: left top;
+}
+.btn.trash > span {
+  padding-left: 17px;
+  background: url('/src/assets/img/close_icon.svg') no-repeat;
+  background-size: 15px;
+  background-position: left bottom -1px;
+}
 
 /* 등록/수정, 상세 페이지 폼 형태 */
 .form-wrap {
@@ -15,42 +42,42 @@
 }
 
 .form-list {
-    display: flex;
-    margin-bottom: 20px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .form-list:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .label {
-    flex: 0 0 100px;
-    font-size: 14px;
-    font-weight: 700;
+  flex: 0 0 100px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .content {
-    flex: 1 1 auto;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 14px;
-    font-weight: 400;
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .content .pre-white {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 .content .btn {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .content img {
-    width: 100%;
+  width: 100%;
 }
 
 @media (max-width: 1280px) {
-    .label {
-        flex-basis: 70px;
-    }
+  .label {
+    flex-basis: 70px;
+  }
 }

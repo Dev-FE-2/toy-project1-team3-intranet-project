@@ -2,7 +2,6 @@ import style from './signIn.module.css';
 
 // 페이지 렌더링
 const signInRender = () => `
-    <main class="${style.container}">
       <div class="${style.loginBox}">
         <h1>로그인</h1>
         <form id="loginForm" class=${style.loginForm}>
@@ -34,7 +33,6 @@ const signInRender = () => `
           </div>
         </form>
       </div>
-    </main>
   `;
 
 export default signInRender;
