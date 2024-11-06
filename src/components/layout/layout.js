@@ -34,7 +34,7 @@ const Layout = (children) => {
           <button
             type="button"
             class="${style.signOutBtn} ${style.navSignOut}"
-            id="signOutBtn"
+            id="navSignOutBtn"
             title="로그아웃"
           >
             로그아웃
@@ -48,7 +48,7 @@ const Layout = (children) => {
           <button
             type="button"
             class="${style.signOutBtn} ${style.headSignOut}"
-            id="signOutBtn"
+            id="headSignOutBtn"
             title="로그아웃"
           >
             로그아웃
