@@ -4,20 +4,13 @@ import { getNoticeById } from '../view/viewFunc';
 
 // 페이지 렌더링
 const formRender = async (id) => {
+  const isUpdateMode = Boolean(id);
   const path = window.location.pathname;
-  let pageTitle = '';
-  let submitText = '';
-  let noticeSn = '';
-  let data = null;
-  if (id) {
-    pageTitle = '기업공지 수정';
-    submitText = '수정하기';
-    noticeSn = path.slice(path.lastIndexOf('/') + 1);
-    data = await getNoticeById(noticeSn);
-  } else {
-    pageTitle = '기업공지 등록';
-    submitText = '등록하기';
-  }
+  const noticeSn = isUpdateMode ? path.slice(path.lastIndexOf('/') + 1) : '';
+  const data = isUpdateMode ? await getNoticeById(noticeSn) : null;
+
+  const pageTitle = isUpdateMode ? '기업공지 수정' : '기업공지 등록';
+  const submitText = isUpdateMode ? '수정하기' : '등록하기';
 
   return /* HTML */ `
     <main class="${styles.container}">

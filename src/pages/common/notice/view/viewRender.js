@@ -1,23 +1,21 @@
+import { getUserGrade, getUserSerialNumber } from '../../../../utils/userUtils';
 import styles from '../notice.module.css';
 import viewStyles from './noticeView.module.css';
 import { getNoticeById } from './viewFunc';
 
 // 페이지 렌더링
-const viewRender = async () => {
-  const path = window.location.pathname;
-  const updatePath = path.replace('view', 'update');
-  const backPath = path.slice(0, path.indexOf('/view'));
+const viewRender = async (noticeSn) => {
+  const { updatePath, backPath } = getPaths();
 
-  const noticeSn = path.slice(path.lastIndexOf('/') + 1);
   const viewData = await getNoticeById(noticeSn);
+  if (!viewData) {
+    console.error('Notice data not found');
+    return `<div class="${styles.container}">공지사항을 불러올 수 없습니다.</div>`;
+  }
 
-  // 수정/삭제 버튼 렌더링 제어
-  const isShowBtn = (user_sn) => {
-    // 관리자이며, 본인이 작성한 글일 때만 보임
-    const userInfo = localStorage.getItem('userSn');
-    const userGrade = parseInt(localStorage.getItem('userGrade'));
-    return userInfo === user_sn && userGrade === 0;
-  };
+  const btnMarkup = isUserAuthorized(viewData.user_sn)
+    ? getActionButtons(updatePath, viewData.user_sn)
+    : '';
 
   return /* HTML */ `
     <main class="${styles.container}">
@@ -39,33 +37,17 @@ const viewRender = async () => {
           <div class="${styles['form-list']}">
             <div class="${styles.label}">이미지</div>
             <div class="${styles.content}">
-              ${viewData.image
-                ? `<img src="data:image/jpeg;base64,${viewData.image}" alt="${viewData.image_name}" />`
-                : '-'}
+              ${
+                viewData.image
+                  ? `<img src="data:image/jpeg;base64,${viewData.image}" alt="${viewData.image_name}" />`
+                  : '-'
+              }
             </div>
           </div>
         </section>
 
-        <section class="${styles['btn-wrap']} ${viewStyles['btn-wrap']}">
-          ${isShowBtn(viewData.user_sn)
-            ? `<a
-            href="${updatePath}"
-            class="${styles.btn} ${viewStyles.btn}"
-          >
-            수정하기
-          </a>`
-            : ''}
-          ${isShowBtn(viewData.user_sn)
-            ? `
-          <button
-            type="button"
-            id="deleteBtn"
-            class="${styles.btn} ${styles.red} ${viewStyles.btn}"
-          >
-            삭제하기
-          </button>
-          `
-            : ''}
+        <div class="${styles['btn-wrap']} ${viewStyles['btn-wrap']}">
+          ${btnMarkup}
           <a
             href="${backPath}"
             class="${styles.btn} ${styles.gray} ${viewStyles.btn}"
@@ -76,6 +58,28 @@ const viewRender = async () => {
       </div>
     </main>
   `;
+};
+
+// 수정 버튼 반환 함수
+const getActionButtons = (updatePath) => `
+  <a href="${updatePath}" class="${styles.btn} ${viewStyles.btn}">수정하기</a>
+  <button type="button" id="deleteBtn" class="${styles.btn} ${styles.red} ${viewStyles.btn}">
+    삭제하기
+  </button>
+`;
+
+// 접속한 사용자의 글 수정 권한 확인 함수
+const isUserAuthorized = (userSn) =>
+  getUserSerialNumber() === userSn && getUserGrade() === 0;
+
+// 관련 경로 가져오는 함수
+const getPaths = () => {
+  const path = window.location.pathname;
+  return {
+    path,
+    updatePath: path.replace('view', 'update'),
+    backPath: path.slice(0, path.indexOf('/view')),
+  };
 };
 
 export default viewRender;

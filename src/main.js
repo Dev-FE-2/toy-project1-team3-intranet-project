@@ -1,4 +1,5 @@
 import './reset.css';
+import './styles.css';
 import router from './router/router';
 
 const initApp = async () => {
