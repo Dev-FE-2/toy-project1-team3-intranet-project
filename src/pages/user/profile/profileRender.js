@@ -9,7 +9,7 @@ const profileRender = () => `
         <section class="${style.profileItem}">
           <div class="${style.division}">임직원</div>
           <div class="${style.profileImg}">
-            <img id="profileImg" src='/src/img/default_user.svg' alt="프로필 사진" />
+            <img id="profileImg" src='/src/assets/img/default_user.svg' alt="프로필 사진" />
           </div>
           <div id="name" class="${style.name}">홍길동</div>
           <div id="grade" class="${style.grade}">대리</div>

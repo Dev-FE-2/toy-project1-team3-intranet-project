@@ -2,7 +2,7 @@ import axios from 'axios';
 import style from './workonModal.module.css';
 
 const userSn = window.localStorage.getItem('userSn');
-const DEFAULT_IMAGE = '/src/img/default_user.svg';
+const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
 
 // 사용자 정보 가져오기
 const getUserData = async () => {

@@ -10,9 +10,9 @@ const profileFormRender = () => `
               <button id="closeButton" class="${style.closeButton} hidden"></button>
             </div>
             <label for="file" class="${style.profileImg}">
-              <img id="profileImg" src="/src/img/default_user.svg" alt="" />
+              <img id="profileImg" src="/src/assets/img/default_user.svg" alt="" />
               <div class="${style.changeImg}">
-                <img  class="${style.rotateIcon}" src="/src/img/rotate_icon.svg" alt="아이콘" />
+                <img  class="${style.rotateIcon}" src="/src/assets/img/rotate_icon.svg" alt="아이콘" />
                 <input id="file" type="file" class="${style.file}"/>
               </div>
             </label>

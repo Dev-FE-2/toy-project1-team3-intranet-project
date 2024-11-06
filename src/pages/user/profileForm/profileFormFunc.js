@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const DEFAULT_IMAGE = '/src/img/default_user.svg';
+const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
 let base64Image;
 
 // 사용자 정보 가져오기

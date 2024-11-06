@@ -3,8 +3,7 @@ import { fetchAdminAbsence } from './absenceFunc';
 
 // 페이지 렌더링
 const absenceRender = async () => {
-
-  const {data} = await fetchAdminAbsence();
+  const { data } = await fetchAdminAbsence();
 
   return `
   <main class="${styles.page}">
@@ -24,7 +23,7 @@ const absenceRender = async () => {
           <option value="병가">병가</option>
         </select>
         <button id="searchBtn" type="button" class="${styles.searchBtn}">
-          <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
+          <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </section>
 
@@ -49,11 +48,14 @@ const absenceRender = async () => {
     </div>
   </main>
   `;
-}
+};
 
 // 부재 리스트 출력
 export const renderAdminAbsenceList = (data) => {
-  return data.length > 0 ? data.map((item) => `
+  return data.length > 0
+    ? data
+        .map(
+          (item) => `
     <tr>
       <td>${item.ABSENCE_REQUEST_DATE_TIME.split(' ')[0].slice(0, 10)}</td>
       <td>${item.ABSENCE_START_DATE_TIME} ~ ${item.ABSENCE_END_DATE_TIME}</td>
@@ -61,9 +63,9 @@ export const renderAdminAbsenceList = (data) => {
       <td>${item.ABSENCE_DETAIL_CONTENT}</td>
       <td>${item.USER_NAME}</td>
     </tr> `
-  ).join('')
-  : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
-}
-
+        )
+        .join('')
+    : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
+};
 
 export default absenceRender;

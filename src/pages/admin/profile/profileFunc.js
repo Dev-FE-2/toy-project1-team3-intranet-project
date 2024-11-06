@@ -19,7 +19,7 @@ const updateProfile = (userData) => {
   const email = document.getElementById('email');
   const phone = document.getElementById('phone');
 
-  const defaultImage = '/src/img/default_user.svg';
+  const defaultImage = '/src/assets/img/default_user.svg';
   profileImg.src = userData['USER_IMAGE'] || defaultImage;
 
   name.textContent = userData['USER_NAME'];

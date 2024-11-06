@@ -15,8 +15,8 @@ textarea { width: 100%; min-height: 300px; font-size: 12px; font-weight: 400; re
 .btn.red { background-color: #C04B35; }
 .btn.gray { background-color: #999999; }
 .btn > span { display: inline-block; }
-.btn.plus > span { padding-left: 15px; background: url("/src/img/plus_icon.svg") no-repeat; background-size: 10px; background-position: left top; }
-.btn.trash > span { padding-left: 17px; background: url("/src/img/close_icon.svg") no-repeat; background-size: 15px; background-position: left bottom -1px; }
+.btn.plus > span { padding-left: 15px; background: url("/src/assets/img/plus_icon.svg") no-repeat; background-size: 10px; background-position: left top; }
+.btn.trash > span { padding-left: 17px; background: url("/src/assets/img/close_icon.svg") no-repeat; background-size: 15px; background-position: left bottom -1px; }
 
 /* 등록/수정, 상세 페이지 폼 형태 */
 .form-wrap {

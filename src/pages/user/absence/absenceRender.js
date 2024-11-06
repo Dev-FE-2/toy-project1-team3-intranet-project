@@ -3,8 +3,7 @@ import { fetchUserAbsence } from './absenceFunc';
 
 // 페이지 렌더링
 const absenceRender = async () => {
-
-  const {data} = await fetchUserAbsence();
+  const { data } = await fetchUserAbsence();
 
   return `
   <main class="${styles.page}">
@@ -28,7 +27,7 @@ const absenceRender = async () => {
           <option value="병가">병가</option>
         </select>
         <button id="searchBtn" type="button" class="${styles.searchBtn}">
-          <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
+          <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </section>
   
@@ -54,7 +53,7 @@ const absenceRender = async () => {
         <div class="${styles.modalPopup}">
           <h1>부재 신청</h1>
           <button type="button" id="closeBtn" class="${styles.closeBtn}">
-            <img src="/src/img/close-x-svgrepo-com.svg" alt="닫기" />
+            <img src="/src/assets/img/close-x-svgrepo-com.svg" alt="닫기" />
           </button>
           <form id="requestForm">
             <article class="${styles.formWrap}">
@@ -97,18 +96,22 @@ const absenceRender = async () => {
     </div>
   </main>
   `;
-}
+};
 
 export const renderUserAbsenceList = (data) => {
-  return data.length > 0 ? data.map((item) => `
+  return data.length > 0
+    ? data
+        .map(
+          (item) => `
     <tr>
       <td>${item.ABSENCE_REQUEST_DATE_TIME.split(' ')[0].slice(0, 10)}</td>
       <td>${item.ABSENCE_START_DATE_TIME} ~ ${item.ABSENCE_END_DATE_TIME}</td>
       <td>${item.ABSENCE_TYPE}</td>
       <td>${item.ABSENCE_DETAIL_CONTENT}</td>
     </tr> `
-  ).join('')
-  : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
-}
+        )
+        .join('')
+    : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
+};
 
 export default absenceRender;
