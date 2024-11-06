@@ -1,0 +1,43 @@
+/* 기본 버튼 */
+button{
+  width: 87px;
+  height: 36px;
+  font-family: 'Pretendard';
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
+  color: #fff;
+  background-color: var(--primary);
+  border: 0.5px solid var(--line-light);
+  border-radius: 5px;
+  padding: 0;
+}
+button:hover{
+  cursor: pointer;
+  background-color: var(--primary-hover);
+}
+button:disabled{
+  background-color: var(--disabled);
+  opacity: var(--disabled-opacity);
+  cursor: default;
+}
+
+/* 색 지정 */
+.whiteBtn{
+  background-color: var(--bg-front);
+}
+.garyBtn{
+  background-color: var(--point-gray);
+}
+.skinBtn{
+  background-color: var(--point-skin);
+}
+.mintBtn{
+  background-color: var(--point-mint);
+}
+
+/* 버튼 템플릿 */
+.searchBtn{
+  width: 30px;
+  height: 30px;
+  background-color: var(--point-skin);
+}
