@@ -6,7 +6,6 @@ const workRender = async () => {
   const { data } = await fetchWorks();
 
   return `
-  <main class="${styles.page}">  
     <h1 class="${styles.title}">출근 관리</h1>
 
     <article class="${styles.content}">
@@ -35,7 +34,6 @@ const workRender = async () => {
       </nav>
 
     </article>
-  </main>
   `;
 };
 

@@ -1,7 +1,6 @@
 import style from './profile.module.css';
 // 페이지 렌더링
 const profileRender = () => `
-  <main class="${style.container}">
     <div class="${style.profileBox}">
       <article class="${style.contentsBox}">
         <div class="${style.title}">임직원 프로필</div>
@@ -20,7 +19,6 @@ const profileRender = () => `
         </section>
       </article>
     </div>
-  </main>
 `;
 
 export default profileRender;
