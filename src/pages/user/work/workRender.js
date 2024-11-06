@@ -1,3 +1,4 @@
+import '../../../assets/css/buttons.css'
 import styles from './work.module.css';
 import { fetchWorks } from './workFunc';
 
@@ -12,7 +13,7 @@ const workRender = async () => {
 
       <section class="${styles.searchWrap}">
         <input type="search" id="searchInput" class="${styles.searchInput}" placeholder="날짜 검색" />
-        <button type="button" id="searchBtn" class="${styles.searchBtn}">
+        <button type="button" id="searchBtn" class="searchBtn">
           <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </section>

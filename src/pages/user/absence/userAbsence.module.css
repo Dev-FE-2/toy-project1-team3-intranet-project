@@ -16,16 +16,9 @@
   width: 100px;
   height: 25px;
   box-sizing: border-box;
-  background-color: #000;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 4px;
   border: none;
   margin-bottom: 8px;
   line-height: 25px;
-}
-.absenceBtn:hover {
-  cursor: pointer;
 }
 
 .searchWrap {
@@ -55,14 +48,9 @@
   border: none;
   background-color: transparent;
 }
-.searchBtn:hover {
-  cursor: pointer;
-}
 .searchIcon {
   width: 18px;
   height: 18px;
-  padding-top: 3px;
-  margin-left: 8px;
 }
 
 .absenceList {
@@ -102,17 +90,9 @@
   width: 33px;
   height: 33px;
   box-sizing: border-box;
-  border: 2px solid #f2f2f2;
-  border-radius: 5px;
-  color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.pagination .pageBtn button.active {
-  color: #fff;
-  border-color: #000;
-  background-color: #000;
 }
 
 .modal {
@@ -200,15 +180,9 @@
 .modalPopup .submitBtn {
   width: 72px;
   height: 30px;
-  background-color: #000;
-  color: #fff;
   border: none;
-  border-radius: 4px;
   display: block;
   margin: 0 auto;
-}
-.modalPopup .submitBtn:hover {
-  cursor: pointer;
 }
 
 @media (max-width: 1280px) {
