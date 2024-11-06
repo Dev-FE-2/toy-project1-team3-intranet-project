@@ -1,7 +1,6 @@
 import style from './workOn.module.css';
 // 페이지 렌더링
 const workOnRender = () => `
-    <main id="container" class="${style.container}">
       <article id="modal"></article>
       <article class="${style.workOnBox}">
         <div class="${style.contentsBox}">
@@ -30,7 +29,6 @@ const workOnRender = () => `
           </section>
         </div>
       </article>
-    </main>
   `;
 
 export default workOnRender;

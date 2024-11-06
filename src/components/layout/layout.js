@@ -54,7 +54,9 @@ const Layout = (children) => {
             로그아웃
           </button>
         </header>
-        <div class="${style.mainContent}">${children}</div>
+        <main class="${style.mainContent}">
+          <div class="${style.contentBox}">${children}</div>
+        </main>
       </div>
     </div>
   `;
