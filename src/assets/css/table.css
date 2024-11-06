@@ -1,6 +1,6 @@
 table {
     width: 100%;
-    line-height: 45px;
+    line-height: 20px;
     margin: 20px auto 0;
     text-align: center;
     border-collapse: collapse;
@@ -10,9 +10,11 @@ table th {
     font-size: var(--fs-body);
     font-weight: var(--fw-head);
     border-bottom: 1px solid var(--line-light);
+    padding-bottom: 10px;
 }
-table tr {
+table td {
     font-size: var(--fs-body);
     font-weight: var(--fw-body);
     border-bottom: 1px solid var(--line-light);
+    padding: 11px 0;
 }

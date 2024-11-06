@@ -1,3 +1,4 @@
+import '../../../assets/css/buttons.css';
 import style from './signUp.module.css';
 
 const signUpRender = () => `

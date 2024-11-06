@@ -35,16 +35,17 @@
     align-items: center;
 }
 
-.search-btn {
+/* .search-btn {
     width: 26px;
     height: 26px;
     background-color: transparent;
     padding: 4px;
     margin-left: 5px;
-}
+} */
 
 .search-btn img {
-    width: 100%;
+    width: 18px;
+    height: 18px;
 }
 
 @media (max-width: 1280px) {

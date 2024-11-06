@@ -54,19 +54,7 @@ textarea {
 }
 .btn {
   display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  color: #fff;
-  background-color: #000;
-  border-radius: 4px;
   padding: 9px 11px 8px;
-  cursor: pointer;
-}
-.btn.red {
-  background-color: #c04b35;
-}
-.btn.gray {
-  background-color: #999999;
 }
 .btn > span {
   display: inline-block;

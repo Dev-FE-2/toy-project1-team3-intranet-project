@@ -1,3 +1,4 @@
+import '../../../assets/css/buttons.css'
 import style from './userList.module.css';
 import { fetchUsers } from './userListFunc';
 
@@ -25,25 +26,30 @@ export const pagination = (currentPage, totalPage) => {
   const endPage = Math.min(startPage + 9, totalPage);
 
   for (let i = startPage; i <= endPage; i++) {
-    pageButton.push(
-      `<button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `${style.unSelectBtn}`}">
-      ${i}
-      </button>
-    `
-    );
+    pageButton.push(`
+      <li>
+        <button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `unSelectBtn`}">
+        ${i}
+        </button>
+      </li>
+    `);
   }
 
   return ` 
-    <ul>
-      <button class="${style.unSelectBtn} prev"
-      ${currentPage === 1 ? 'disabled' : ''}>
-        <
-      </button>
-      ${pageButton.join('')}
-      <button class="${style.unSelectBtn} next"
-      ${currentPage === totalPage ? 'disabled' : ''}>
-        >
-      </button>
+    <ul class="${style.paginationBtn}">
+      <li>
+        <button class="${style.unSelectBtn} prev"
+        ${currentPage === 1 ? 'disabled' : ''}>
+          <
+        </button>
+      </li>
+        ${pageButton.join('')}
+      <li>
+        <button class="${style.unSelectBtn} next"
+        ${currentPage === totalPage ? 'disabled' : ''}>
+          >
+        </button>
+      </li>
     </ul>`;
 };
 
@@ -67,7 +73,6 @@ const userListRender = async () => {
         <table class="${style.table}">
           <thead>
             <tr>
-              <th scope="col" class="${style.th} checkbox"></th>
               <th scope="col" class="${style.th} name">이름</th>
               <th scope="col" class="${style.th} ${style.email}">이메일</th>
               <th scope="col" class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
@@ -79,11 +84,11 @@ const userListRender = async () => {
           </tbody>
         </table>
         <nav class="${style.pagination}">
-          <div id="paginationButtons" class="${style.paginationBtn}">
+          <div id="paginationButtons">
           </div>
         </nav>
       </article>
-        `;
+  `;
 };
 
 export default userListRender;
