@@ -7,7 +7,6 @@ table {
     border-spacing: 0;
 }
 table th {
-    font-weight: bold;
     font-size: var(--fs-body);
     font-weight: var(--fw-head);
     border-bottom: 1px solid var(--line-light);
