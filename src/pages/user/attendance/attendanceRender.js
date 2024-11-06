@@ -1,4 +1,3 @@
-import '../../../assets/css/buttons.css'
 import style from './attendance.module.css';
 // 페이지 렌더링
 const attendanceRender = () => `
