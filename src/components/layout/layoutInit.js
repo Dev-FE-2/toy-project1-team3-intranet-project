@@ -1,7 +1,8 @@
 const layoutInit = () => {
   const menu = document.querySelector('#menu');
   const navigate = document.querySelector('#navigate');
-  const signOutBtn = document.querySelector('#signOutBtn');
+  const navSignOutBtn = document.querySelector('#navSignOutBtn');
+  const headSignOutBtn = document.querySelector('#headSignOutBtn');
 
   const openModal = () => {
     if (menu) {
@@ -26,7 +27,8 @@ const layoutInit = () => {
 
   menu.addEventListener('click', openModal);
   navigate.addEventListener('click', closeModal);
-  signOutBtn.addEventListener('click', signOut);
+  navSignOutBtn.addEventListener('click', signOut);
+  headSignOutBtn.addEventListener('click', signOut);
 };
 
 export default layoutInit;
