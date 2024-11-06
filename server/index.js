@@ -5,7 +5,7 @@ import noticeCommonRouter from './api/notice/common/index.js';
 import workUserRouter from './api/work/user/index.js';
 import signUpRouter from './api/user/common/userInfo.js';
 import userSignInRouter from './api/user/common/index.js';
-import workOnRouter from './api/work/user/workOn.js';
+import attendanceRouter from './api/work/user/attendance.js';
 import absenceAdminRouter from './api/absence/admin/index.js';
 import absenceUserRouter from './api/absence/user/index.js';
 import userInfoRouter from './api/user/user/user.js';
@@ -47,7 +47,7 @@ const NOTICE_API_URL = {
 
 const WORK_API_URL = {
   user: `${userPath}/work`,
-  workOn: `${userPath}/workOn`,
+  attendance: `${userPath}/attendance`,
 };
 
 const ABSENCE_API_URL = {
@@ -68,7 +68,7 @@ app.use(NOTICE_API_URL.admin, noticeAdminRouter);
 app.use(NOTICE_API_URL.common, noticeCommonRouter);
 app.use(USER_API_URL.signUp, signUpRouter);
 app.use(USER_API_URL.signIn, userSignInRouter);
-app.use(WORK_API_URL.workOn, workOnRouter);
+app.use(WORK_API_URL.attendance, attendanceRouter);
 
 // work 라우터 연결
 app.use(WORK_API_URL.user, workUserRouter);
