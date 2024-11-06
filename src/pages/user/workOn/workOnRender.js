@@ -6,7 +6,6 @@ const workOnRender = () => `
       <article class="${style.workOnBox}">
         <div class="${style.contentsBox}">
           <div class="${style.boxHeader}">
-            <h1 class="${style.title}">마이 프로필</h1>
             <span id="isWork">출근전</span>
           </div>
           <section class="${style.workOnItem}">
