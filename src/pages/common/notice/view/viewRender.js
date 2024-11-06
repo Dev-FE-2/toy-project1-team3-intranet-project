@@ -20,7 +20,7 @@ const viewRender = async () => {
   };
 
   return /* HTML */ `
-    <div class="${styles.container}">
+    <main class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 상세</h1>
 
@@ -46,7 +46,7 @@ const viewRender = async () => {
           </div>
         </section>
 
-        <div class="${styles['btn-wrap']} ${viewStyles['btn-wrap']}">
+        <section class="${styles['btn-wrap']} ${viewStyles['btn-wrap']}">
           ${isShowBtn(viewData.user_sn)
             ? `<a
             href="${updatePath}"
@@ -72,9 +72,9 @@ const viewRender = async () => {
           >
             이전으로
           </a>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   `;
 };
 
