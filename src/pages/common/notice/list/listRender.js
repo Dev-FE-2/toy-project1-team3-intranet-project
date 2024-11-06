@@ -1,3 +1,4 @@
+import '../../../../assets/css/buttons.css';
 import styles from '../notice.module.css';
 import listStyles from './noticeList.module.css';
 import listItem from './listItem';
@@ -15,7 +16,7 @@ const listRender = async () => {
       ${userGrade
         ? ''
         : `<div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
-          <button href="${currentPath}/insert" class="${styles.btn} ${styles.plus}">
+          <button onclick="location.href='${currentPath}/insert'" class="${styles.btn} ${styles.plus}">
             <span>공지 등록</span>
           </button>
         </div>`}
