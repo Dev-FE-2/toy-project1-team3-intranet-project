@@ -22,6 +22,7 @@ button:disabled{
 /* 색 지정 */
 .whiteBtn{
   background-color: var(--bg-front);
+  color: var(--text-black);
 }
 .garyBtn{
   background-color: var(--point-gray);
@@ -38,4 +39,20 @@ button:disabled{
   width: 30px;
   height: 30px;
   background-color: var(--point-skin);
+}
+
+/* 페이지네이션 */
+ul > li > button{
+  width: 35px;
+  height: 35px;
+  border-radius: 70%;
+  margin-left: 5px;
+}
+.unSelectBtn{
+  background-color: var(--bg-front);
+  color: var(--text-black);
+}
+.first, .prev, .next, .last{
+  color: var(--text-black);
+  font-weight: bold;
 }
