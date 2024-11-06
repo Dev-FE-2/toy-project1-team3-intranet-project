@@ -24,7 +24,7 @@ button:disabled{
   background-color: var(--bg-front);
   color: var(--text-black);
 }
-.garyBtn{
+.grayBtn{
   background-color: var(--point-gray);
 }
 .skinBtn{
@@ -40,7 +40,17 @@ button:disabled{
   height: 30px;
   background-color: var(--point-skin);
 }
-
+.plusBtn{
+  font-family: 'Pretendard';
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
+  color: #fff;
+  background-color: var(--primary);
+  border: 0.5px solid var(--line-light);
+  border-radius: 5px;
+  padding: 10px 20px 9px;
+  cursor: pointer;
+}
 /* 페이지네이션 */
 ul > li > button{
   width: 35px;

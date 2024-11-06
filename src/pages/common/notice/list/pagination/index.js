@@ -1,3 +1,4 @@
+import '../../../../../assets/css/buttons.css';
 import styles from './pagination.module.css';
 
 const pagination = (currentPage, totalPages) => {

@@ -1,3 +1,4 @@
+import '../../../assets/css/buttons.css';
 import style from './profileForm.module.css';
 // 페이지 렌더링
 const profileFormRender = () => `
@@ -26,7 +27,7 @@ const profileFormRender = () => `
       </article>
       <footer class="${style.btnWrap}">
         <button id="updateUser" class="${style.btn}">수정하기</button>
-        <button id="cancel" class="${style.btn} ${style.btnGray}">취소</button>
+        <button id="cancel" class="${style.btn} garyBtn">취소</button>
       </footer>
     </div>
 `;
