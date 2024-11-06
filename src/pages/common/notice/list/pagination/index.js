@@ -10,7 +10,7 @@ const pagination = (currentPage, totalPages) => {
   for (let i = startPage; i <= endPage; i++) {
     pageButtons.push(
       `<li>
-         <button class="${i === currentPage ? `${styles.active} current-page` : ''}">
+         <button class="${i === currentPage ? `${styles.active} current-page` : 'unSelectBtn'}">
            ${i}
          </button>
        </li>`
