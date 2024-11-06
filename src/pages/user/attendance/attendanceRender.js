@@ -1,15 +1,15 @@
-import style from './workOn.module.css';
+import style from './attendance.module.css';
 // 페이지 렌더링
-const workOnRender = () => `
+const attendanceRender = () => `
       <article id="modal"></article>
-      <article class="${style.workOnBox}">
+      <article class="${style.attendanceBox}">
         <div class="${style.contentsBox}">
           <div class="${style.boxHeader}">
             <span id="isWork">출근전</span>
           </div>
-          <section class="${style.workOnItem}">
+          <section class="${style.attendanceItem}">
             <div class="${style.division}">임직원</div>
-            <div class="${style.workOnImg}">
+            <div class="${style.attendanceImg}">
               <img id="profileImg" src="/src/assets/img/default_user.svg" alt="프로필 사진" />
             </div>
             <span id="name" class="${style.name}"></span>
@@ -31,4 +31,4 @@ const workOnRender = () => `
       </article>
   `;
 
-export default workOnRender;
+export default attendanceRender;
