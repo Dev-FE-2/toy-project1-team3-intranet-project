@@ -3,7 +3,6 @@ import { fetchUsers } from './userListFunc';
 
 // 테이블의 행을 렌더링하는 함수
 export const renderTableRows = (data) => {
-  console.log(data);
   return data
     .map(
       (item) => `
@@ -17,15 +16,13 @@ export const renderTableRows = (data) => {
     )
     .join('');
 };
-{
-  /* <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td> */
-}
+
 
 // 페이지네이션 버튼을 렌더링하는 함수
 export const pagination = (currentPage, totalPage) => {
   const pageButton = [];
-  const startPage = Math.max(currentPage - 5, 1);
 
+  const startPage = Math.max(currentPage - 5, 1);
   const endPage = Math.min(startPage + 9, totalPage);
 
   for (let i = startPage; i <= endPage; i++) {
@@ -55,7 +52,6 @@ const userListRender = async () => {
   const userData = await fetchUsers(); // 패치함수 실행
   const totalCount = userData.totalCount; // 총 임직원
   const data = userData.data; // 임직원 데이터
-  console.log(userData);
 
   return `
     <div class="${style.userListWrapper}">
@@ -75,7 +71,6 @@ const userListRender = async () => {
         <table class="${style.table}">
           <thead>
             <tr>
-              <th class="${style.th} checkbox"></th>
               <th class="${style.th} name">이름</th>
               <th class="${style.th} ${style.email}">이메일</th>
               <th class="${style.th} ${style.phoneNumber}">휴대폰번호</th>

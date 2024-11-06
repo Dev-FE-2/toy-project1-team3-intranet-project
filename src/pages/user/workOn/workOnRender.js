@@ -6,13 +6,12 @@ const workOnRender = () => `
       <div class="${style.workOnBox}">
         <div class="${style.contentsBox}">
           <div class="${style.boxHeader}">
-            <h1 class="${style.title}">마이 프로필</h1>
             <span id="isWork">출근전</span>
           </div>
           <div class="${style.workOnItem}">
             <div class="${style.division}">임직원</div>
             <div class="${style.workOnImg}">
-              <image id="profileImg" src="/src/img/default_user.svg" alt="프로필 사진"></image>
+              <img id="profileImg" src="/src/img/default_user.svg"></img>
             </div>
             <span id="name" class="${style.name}"></span>
           </div>
