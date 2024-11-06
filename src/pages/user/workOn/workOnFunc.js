@@ -27,7 +27,11 @@ const workOnFunc = async () => {
       console.log(error);
     }
     name.innerText = userData['USER_NAME'];
-    profileImg.src = userData['USER_IMAGE'];
+    if (userData['USER_IMAGE']) {
+      profileImg.src = userData['USER_IMAGE'];
+    } else {
+      profileImg.src = '/src/img/default_user.svg';
+    }
   };
 
   const getWorkData = async () => {
