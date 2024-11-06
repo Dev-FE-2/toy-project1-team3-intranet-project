@@ -46,7 +46,7 @@ const checkUserGrade = () => {
   if (userGrade === '0') {
     window.location.href = '/admin/userList';
   } else if (userGrade === '1') {
-    window.location.href = '/user/workOn';
+    window.location.href = '/user/attendance';
   }
 };
 
