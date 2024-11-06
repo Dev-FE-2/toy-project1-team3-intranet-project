@@ -11,7 +11,7 @@ const Notice = {
     init: listFunc,
   },
   view: {
-    render: viewRender,
+    render: () => viewRender(window.location.pathname.split('/').pop()),
     init: viewFunc,
   },
   form: {
