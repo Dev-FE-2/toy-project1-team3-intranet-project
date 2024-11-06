@@ -3,29 +3,21 @@ import { fetchWorks } from './workFunc';
 
 // 페이지 렌더링
 const workRender = async () => {
-  const userSn = localStorage.getItem('userSn');
-
-  // 로그인이 안 되어있다면 화면 진입 불가하도록
-  if (!userSn) {
-    alert('로그인을 해주세요.');
-    window.location.replace('/'); // 로그인 페이지로 리다이렉트
-    return null; // 함수 종료
-  }
 
   const {data} = await fetchWorks();
   
   return `
-  <div class="${styles.page}">  
+  <main class="${styles.page}">  
     <h1 class="${styles.title}">출근 관리</h1>
 
-    <div class="${styles.content}">
+    <article class="${styles.content}">
 
-      <div class="${styles.searchWrap}">
+      <section class="${styles.searchWrap}">
         <input type="search" id="searchInput" class="${styles.searchInput}" placeholder="날짜 검색" />
         <button type="button" id="searchBtn" class="${styles.searchBtn}">
           <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
-      </div>
+      </section>
 
       <table class="${styles.workList}">
         <thead>
@@ -40,13 +32,14 @@ const workRender = async () => {
         </tbody>
       </table>
       
-      <div id="pagination" class="${styles.pagination}">
-      </div>
+      <nav id="pagination" class="${styles.pagination}">
+      </nav>
 
-    </div>
-  </div>
+    </article>
+  </main>
   `};
 
+// 출근 리스트 출력
 export const renderWorkList = (data) => {
   return data.length > 0 ? data.map((item) => `
     <tr>

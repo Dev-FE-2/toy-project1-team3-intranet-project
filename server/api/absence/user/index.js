@@ -10,10 +10,13 @@ const router = express.Router();
  * @param {string} searchTerm - 세부내용 검색
  * @returns 총 공지 개수 반환
  */
-const getTotalAbsenceCount = (userSn, searchType = '', searchTerm = '') => {
+const getTotalAbsenceCount = (userSn = '', searchType = '', searchTerm = '') => {
   return new Promise((resolve, reject) => {
-    let query = `SELECT COUNT(*) as totalCount FROM ABSENCE WHERE USER_SERIAL_NUMBER = '${userSn}'`;
+    let query = `SELECT COUNT(*) as totalCount FROM ABSENCE WHERE 1=1`;
 
+    if (userSn) {
+      query += ` AND USER_SERIAL_NUMBER = '${userSn}'`
+    }
     if (searchType) {
       query += ` AND ABSENCE_TYPE = '${searchType}'`;
     }
@@ -30,6 +33,7 @@ const getTotalAbsenceCount = (userSn, searchType = '', searchTerm = '') => {
   });
 };
 
+// 부재 리스트 데이터 받아오기
 router.get('/', async (req, res) => {
   let { page, size, userSn, searchType, searchTerm } = req.query;
   page = parseInt(page) || 1; // 기본 페이지 = 1
@@ -79,16 +83,19 @@ router.get('/', async (req, res) => {
   }
 });
 
+// 부재 신청하기
 router.post('/request', async (req, res) => {
+  console.log("=== req : " + JSON.stringify(req.body));
   let { reqType, reqStartDateTime, reqEndDateTime, reqContent, userSn } = req.body;
 
-  const count = await getTotalAbsenceCount(userSn) + 1;
+  const count = await getTotalAbsenceCount() + 1;
   const absenceSn = `ABSENCE_${String(count).padStart(8, 0)}`;
 
   const sql = `
   INSERT INTO ABSENCE (ABSENCE_SERIAL_NUMBER, ABSENCE_TYPE, ABSENCE_REQUEST_DATE_TIME, USER_SERIAL_NUMBER, ABSENCE_START_DATE_TIME, ABSENCE_END_DATE_TIME, ABSENCE_DETAIL_CONTENT)
     VALUES ('${absenceSn}', '${reqType}', datetime('now', 'localtime'), '${userSn}', '${reqStartDateTime}', '${reqEndDateTime}', '${reqContent}')
   `;
+  console.log("=== QUERY : " + sql);
 
   db.run(sql, [], (err) => { 
     if (err) {
