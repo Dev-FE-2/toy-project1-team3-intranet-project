@@ -11,7 +11,7 @@ const workOnRender = () => `
           <section class="${style.workOnItem}">
             <div class="${style.division}">임직원</div>
             <div class="${style.workOnImg}">
-              <img id="profileImg" src="/src/img/default_user.svg" alt="프로필 사진" />
+              <img id="profileImg" src="/src/assets/img/default_user.svg" alt="프로필 사진" />
             </div>
             <span id="name" class="${style.name}"></span>
           </section>

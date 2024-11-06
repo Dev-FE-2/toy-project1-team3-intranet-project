@@ -36,7 +36,10 @@ const listRender = async () => {
               id="searchBtn"
               class="${listStyles['search-btn']}"
             >
-              <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" />
+              <img
+                src="/src/assets/img/search-svgrepo-com.svg"
+                alt="검색 아이콘"
+              />
             </button>
           </div>
         </section>
