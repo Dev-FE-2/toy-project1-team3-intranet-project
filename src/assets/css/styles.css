@@ -54,6 +54,7 @@
 html, body {
     color: var(--text-black);
     background-color: var(--bg-back);
+    font-family: 'Pretendard';
 }
 
 /* 로더 css */
