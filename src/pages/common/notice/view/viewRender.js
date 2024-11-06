@@ -18,7 +18,7 @@ const viewRender = async (noticeSn) => {
     : '';
 
   return /* HTML */ `
-    <div class="${styles.container}">
+    <main class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">기업공지 상세</h1>
 
@@ -37,9 +37,11 @@ const viewRender = async (noticeSn) => {
           <div class="${styles['form-list']}">
             <div class="${styles.label}">이미지</div>
             <div class="${styles.content}">
-              ${viewData.image
-                ? `<img src="data:image/jpeg;base64,${viewData.image}" alt="${viewData.image_name}" />`
-                : '-'}
+              ${
+                viewData.image
+                  ? `<img src="data:image/jpeg;base64,${viewData.image}" alt="${viewData.image_name}" />`
+                  : '-'
+              }
             </div>
           </div>
         </section>
@@ -52,9 +54,9 @@ const viewRender = async (noticeSn) => {
           >
             이전으로
           </a>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   `;
 };
 

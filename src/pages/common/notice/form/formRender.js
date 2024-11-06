@@ -13,7 +13,7 @@ const formRender = async (id) => {
   const submitText = isUpdateMode ? '수정하기' : '등록하기';
 
   return /* HTML */ `
-    <div class="${styles.container}">
+    <main class="${styles.container}">
       <div class="${styles.inner}">
         <h1 class="${styles.h1}">${pageTitle}</h1>
 
@@ -48,8 +48,8 @@ const formRender = async (id) => {
                   name="content"
                   placeholder="내용을 입력하세요"
                 >
-${data?.content || ''}</textarea
-                >
+                  ${data?.content || ''}
+                </textarea>
               </div>
             </div>
             <div class="${styles['form-list']}" role="group">
@@ -87,7 +87,7 @@ ${data?.content || ''}</textarea
             </div>
           </section>
 
-          <div class="${styles['btn-wrap']} ${formStyles['btn-wrap']}">
+          <section class="${styles['btn-wrap']} ${formStyles['btn-wrap']}">
             <button type="submit" class="${styles.btn} ${formStyles.btn}">
               ${submitText}
             </button>
@@ -98,10 +98,10 @@ ${data?.content || ''}</textarea
             >
               이전으로
             </button>
-          </div>
+          </section>
         </form>
       </div>
-    </div>
+    </main>
   `;
 };
 

@@ -1,21 +1,21 @@
 import style from './workOn.module.css';
 // 페이지 렌더링
 const workOnRender = () => `
-    <div id="container" class="${style.container}">
-      <div id="modal"></div>
-      <div class="${style.workOnBox}">
+    <main id="container" class="${style.container}">
+      <article id="modal"></article>
+      <article class="${style.workOnBox}">
         <div class="${style.contentsBox}">
           <div class="${style.boxHeader}">
             <span id="isWork">출근전</span>
           </div>
-          <div class="${style.workOnItem}">
+          <section class="${style.workOnItem}">
             <div class="${style.division}">임직원</div>
             <div class="${style.workOnImg}">
-              <img id="profileImg" src="/src/img/default_user.svg"></img>
+              <img id="profileImg" src="/src/img/default_user.svg" alt="프로필 사진" />
             </div>
             <span id="name" class="${style.name}"></span>
-          </div>
-          <div class="${style.attendBox}">
+          </section>
+          <section class="${style.attendBox}">
             <button id="attendButton" type="button">출근하기</button>
             <div class="${style.attendFooter}">
               <div>
@@ -27,10 +27,10 @@ const workOnRender = () => `
                 <span id="attendTime">-</span>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   `;
 
 export default workOnRender;
