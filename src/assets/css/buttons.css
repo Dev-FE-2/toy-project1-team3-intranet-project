@@ -6,7 +6,7 @@ button{
   color: #fff;
   background-color: var(--primary);
   border: 0.5px solid var(--line-light);
-  border-radius: 5px;
+  border-radius: var(--radius);
   padding: 0;
 }
 button:hover{
