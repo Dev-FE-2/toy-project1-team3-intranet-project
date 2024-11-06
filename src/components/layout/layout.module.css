@@ -37,7 +37,7 @@
 .headerRightWrap .signOutBtn {
   margin-left: 10px;
   text-indent: -10000px;
-  background-image: url('/src/img/logout_icon.svg');
+  background-image: url('/src/assets/img/logout_icon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 18px;
@@ -94,7 +94,7 @@
     border: none;
     border-top: 1px solid black;
     background-color: white;
-    background-image: url('/src/img/config_icon.svg');
+    background-image: url('/src/assets/img/config_icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -107,7 +107,7 @@
     padding: 0 30px;
     border: none;
     background-color: transparent;
-    background-image: url('/src/img/hamburger_icon.svg');
+    background-image: url('/src/assets/img/hamburger_icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;

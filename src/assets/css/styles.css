@@ -1,0 +1,84 @@
+/* 공통 CSS 파일 */
+
+:root {
+    /* font-size */
+    --fs-head: 20px;
+    --fs-body: 16px;
+    --fs-body-sm: 14px;
+    
+    /* font-weight */
+    --fw-head: 700;
+    --fw-body-lg: 500;
+    --fw-body: 400;
+    
+    /* common color */
+    --primary: #3A645F;
+    --primary-hover: #657F7F;
+    --point-gray: #A9A9A9;
+    --point-mint: #8AA89E;
+    --point-skin: #FFAB91;
+    
+    /* text-color */
+    --text-black: #000000;
+    --text-red: #E57373;
+    --text-green: #49B537;
+    --text-gray: var(--point-gray);
+    
+    /* bg-color */
+    --bg-front: #FFFFFF;
+    --bg-back: #F2ECE4;
+    
+    /* line-color */
+    --line-light: #D9D9D9;
+    --line-strong: #585858;
+    
+    /* dim-color */
+    --dim: rgba(0,0,0,0.7);
+    
+    /* disabled-color */
+    --disabled: var(--primary);
+    --disabled-opacity: 30%;
+    
+    /* border-radius */
+    --radius: 5px;
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --fs-head: 16px;
+        --fs-body: 14px;
+        --fs-body-sm: 12px;
+    }
+}
+
+html, body {
+    color: var(--text-black);
+    background-color: var(--bg-back);
+    font-family: 'Pretendard';
+}
+
+/* 로더 css */
+#loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 40px;
+    height: 40px;
+    border: 5px solid #3498db;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

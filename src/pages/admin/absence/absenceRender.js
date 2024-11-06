@@ -3,24 +3,15 @@ import { fetchAdminAbsence } from './absenceFunc';
 
 // 페이지 렌더링
 const absenceRender = async () => {
-  const userSn = localStorage.getItem('userSn');
-
-  // 로그인이 안 되어있다면 화면 진입 불가하도록
-  // if (!userSn) {
-  //   alert('로그인을 해주세요.');
-  //   window.location.replace('/'); // 로그인 페이지로 리다이렉트
-  //   return null; // 함수 종료
-  // }
-
-  const {data} = await fetchAdminAbsence();
+  const { data } = await fetchAdminAbsence();
 
   return `
-  <div class="${styles.page}">
+  <main class="${styles.page}">
     <h1 class="${styles.title}">부재 관리</h1>
 
     <div class="${styles.content}">
 
-      <div class="${styles.searchWrap}">
+      <section class="${styles.searchWrap}">
         <input type="text" id="searchTerm" class="${styles.searchInput}" placeholder="검색" />
         <select name="type" id="searchType" class="${styles.typeSelect}">
           <option value="">부재 항목 선택</option>
@@ -32,9 +23,9 @@ const absenceRender = async () => {
           <option value="병가">병가</option>
         </select>
         <button id="searchBtn" type="button" class="${styles.searchBtn}">
-          <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
+          <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
-      </div>
+      </section>
 
       <table class="${styles.absenceList}">
         <thead>
@@ -51,16 +42,20 @@ const absenceRender = async () => {
         </tbody>
       </table>
       
-      <div id="pagination" class="${styles.pagination}">
-      </div>
+      <nav id="pagination" class="${styles.pagination}">
+      </nav>
       
     </div>
-  </div>
+  </main>
   `;
-}
+};
 
+// 부재 리스트 출력
 export const renderAdminAbsenceList = (data) => {
-  return data.length > 0 ? data.map((item) => `
+  return data.length > 0
+    ? data
+        .map(
+          (item) => `
     <tr>
       <td>${item.ABSENCE_REQUEST_DATE_TIME.split(' ')[0].slice(0, 10)}</td>
       <td>${item.ABSENCE_START_DATE_TIME} ~ ${item.ABSENCE_END_DATE_TIME}</td>
@@ -68,9 +63,9 @@ export const renderAdminAbsenceList = (data) => {
       <td>${item.ABSENCE_DETAIL_CONTENT}</td>
       <td>${item.USER_NAME}</td>
     </tr> `
-  ).join('')
-  : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
-}
-
+        )
+        .join('')
+    : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
+};
 
 export default absenceRender;
