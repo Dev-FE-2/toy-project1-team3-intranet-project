@@ -23,25 +23,39 @@ const Layout = (children) => {
 
   return /* HTML */ `
     <div class="${style.layout}">
-      <header class="${style.header}">
-        <button type="button" id="menu" class="${style.hamburger}"></button>
-        ${navigate()}
-        <div class="${style.headerRightWrap}">
-          <h1>인트라넷</h1>
+      <nav id="navigate" class="${style.navigate} mobile-hidden">
+        <div class="${style.navBox}">
+          <h1 class="title">인트라넷</h1>
+          <div class="${style.shortCut}">
+            <a>출결신청</a>
+            <a>출결신청</a>
+            <a>출결신청</a>
+          </div>
           <button
             type="button"
-            class="${style.signOutBtn}"
+            class="${style.signOutBtn} ${style.navSignOut}"
             id="signOutBtn"
             title="로그아웃"
           >
             로그아웃
           </button>
         </div>
-        <nav id="navigate" class="${style.navigate} hidden">
-          <div class="${style.shortCut}">${navigate()}</div>
-        </nav>
-      </header>
-      ${children}
+      </nav>
+      <div class="${style.container}">
+        <header class="${style.header}">
+          <h2 class="pageName">페이지 이름</h2>
+          <button type="button" id="menu" class="${style.hamburger}"></button>
+          <button
+            type="button"
+            class="${style.signOutBtn} ${style.headSignOut}"
+            id="signOutBtn"
+            title="로그아웃"
+          >
+            로그아웃
+          </button>
+        </header>
+        <div class="${style.mainContent}">${children}</div>
+      </div>
     </div>
   `;
 };
