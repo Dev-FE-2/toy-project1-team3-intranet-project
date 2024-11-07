@@ -42,6 +42,10 @@ const handlePagination = async (event, totalPage) => {
     newPage = currentPage - 1;
   } else if (target.classList.contains('next') && currentPage < totalPage) {
     newPage = currentPage + 1;
+  } else if (target.classList.contains('first') && currentPage > 1) {
+    newPage = 1;
+  } else if (target.classList.contains('last') && currentPage < totalPage) {
+    newPage = totalPage;
   } else {
     newPage = parseInt(target.innerText, 10);
   }
@@ -54,7 +58,10 @@ const handlePagination = async (event, totalPage) => {
 
 //페이지네이션
 const setupPagination = (totalPage) => {
-  if(totalPage > 0){
+  if(totalPage < 1){
+    const paginationButtons = document.getElementById('paginationButtons');
+    paginationButtons.innerHTML = pagination(state.currentPage, 1);
+  } else{
     const paginationButtons = document.getElementById('paginationButtons');
     paginationButtons.innerHTML = pagination(state.currentPage, totalPage);
   }
@@ -91,6 +98,7 @@ const initEventLister = (totalPage) => {
       searchUsers()
     }
   })
+  document.getElementById('searchBtn').addEventListener('click',searchUsers)
 }
 
 //최초 초기화 함수
