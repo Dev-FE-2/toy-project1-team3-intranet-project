@@ -24,27 +24,8 @@ body{
   justify-content: flex-end;
   align-items: center;
 }
-.searchInput {
-  width: 180px;
-  height: 25px;
-  box-sizing: border-box;
-  line-height: 25px;
-  padding-left: 5px;
-  border-radius: 4px;
-  border: 1px solid #000;
-}
 .typeSelect {
-  width: 130px;
-  height: 25px;
-  box-sizing: border-box;
-  line-height: 25px;
-  margin-left: 8px;
-  border-radius: 4px;
-  border: 1px solid #000;
-}
-.searchBtn {
-  border: none;
-  background-color: transparent;
+  margin: 0 5px;
 }
 .searchIcon {
   width: 18px;
@@ -105,11 +86,10 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #000;
   border-radius: 25px;
   z-index: 1;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: var(--bg-front);
   padding: 30px;
 }
 .modalPopup .formWrap {
@@ -120,7 +100,7 @@ body{
   margin-bottom: 30px;
 }
 .modalPopup .formList .label {
-  width: 75px;
+  width: 76px;
   font-weight: bold;
   font-size: 110%;
   margin-right: 50px;
@@ -128,13 +108,9 @@ body{
 .modalPopup .formList .reqType,
 .modalPopup .formList .dateTime,
 .modalPopup .formList .reqContent {
-  width: calc(100% - 122px);
+  width: calc(100% - 125px);
   max-width: 290px;
   box-sizing: border-box;
-}
-.modalPopup .formList .reqType {
-  border: 1px solid #000;
-  border-radius: 4px;
 }
 .modalPopup .formList .dateTime {
   display: flex;
@@ -142,19 +118,14 @@ body{
 }
 .modalPopup .formList .dateTime input {
   width: 50%;
-  max-width: 142px;
+  max-width: 140px;
+  min-width: 95px;
   box-sizing: border-box;
-  border: 1px solid #000;
-  border-radius: 4px;
-  padding-left: 5px;
 }
 .modalPopup .formList .reqContent {
   height: 150px;
   outline: none;
   resize: none;
-  border: 1px solid #000;
-  border-radius: 4px;
-  padding-left: 5px;
 }
 .modalPopup .submitBtn {
   width: 72px;
