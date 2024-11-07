@@ -1,4 +1,5 @@
 import '../../../assets/css/buttons.css'
+import '../../../assets/css/table.css';
 import styles from './work.module.css';
 import { fetchWorks } from './workFunc';
 
@@ -7,8 +8,6 @@ const workRender = async () => {
   const { data } = await fetchWorks();
 
   return `
-    <h1 class="${styles.title}">출근 관리</h1>
-
     <article class="${styles.content}">
 
       <section class="${styles.searchWrap}">
