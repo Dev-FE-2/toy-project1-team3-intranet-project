@@ -1,4 +1,4 @@
-import '../../../assets/css/buttons.css'
+import '../../../assets/css/buttons.css';
 import '../../../assets/css/table.css';
 import styles from './work.module.css';
 import { fetchWorks } from './workFunc';
@@ -46,7 +46,7 @@ export const renderWorkList = (data) => {
     <tr>
       <td>${item.WORK_DATE.split(' ')[0]}</td>
       <td>${item.WORK_START_DATE_TIME.split(' ')[1].slice(0, 5)}</td>
-      <td>${item.WORK_END_DATE_TIME.split(' ')[1].slice(0, 5)}</td>
+      <td>${item.WORK_END_DATE_TIME?.split(' ')[1].slice(0, 5) || '-'}</td>
     </tr>`
         )
         .join('')
