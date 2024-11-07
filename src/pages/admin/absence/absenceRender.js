@@ -1,4 +1,6 @@
 import '../../../assets/css/buttons.css'
+import '../../../assets/css/input.css'
+import '../../../assets/css/select.css'
 import '../../../assets/css/table.css';
 import styles from './adminAbsence.module.css';
 import { fetchAdminAbsence } from './absenceFunc';
