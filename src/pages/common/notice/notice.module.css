@@ -1,57 +1,10 @@
-* {
-  box-sizing: border-box;
-}
-
-.inner {
-  max-width: 1340px;
-  padding: 0 30px;
-  margin: 0 auto;
-}
-
-.h1 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.a {
-  text-decoration: none;
-  color: inherit;
-}
-.input[type='text'],
-.input[type='search'] {
-  min-width: 240px;
-  font-size: 12px;
-  font-weight: 400;
-  outline: none;
-  border: 1px solid #000;
-  padding: 5px 10px;
-  border-radius: 4px;
-}
-.input[type='file'] {
-  position: absolute;
-  width: 0;
-  height: 0;
-  padding: 0;
-  border: 0;
-}
-.input[readonly] {
-  cursor: default;
-}
-textarea {
-  width: 100%;
-  min-height: 300px;
-  font-size: 12px;
-  font-weight: 400;
-  resize: none;
-  outline: none;
-  border: 1px solid #000;
-  padding: 5px 10px;
-  border-radius: 4px;
-}
+.a { color: inherit; }
+.input[type="file"] { position: absolute; width: 0; height: 0; padding: 0; border: 0; }
 
 .btn-wrap {
   display: flex;
 }
+
 .btn {
   display: inline-block;
   padding: 9px 11px 8px;
@@ -63,20 +16,18 @@ textarea {
   padding-left: 15px;
   background: url('/src/assets/img/plus_icon.svg') no-repeat;
   background-size: 10px;
-  background-position: left top;
+  background-position: left top 1px;
 }
 .btn.trash > span {
   padding-left: 17px;
   background: url('/src/assets/img/close_icon.svg') no-repeat;
   background-size: 15px;
-  background-position: left bottom -1px;
+  background-position: left bottom;
 }
 
 /* 등록/수정, 상세 페이지 폼 형태 */
 .form-wrap {
-  border: 1px solid #000;
-  padding: 20px;
-  margin-top: 30px;
+    padding: 20px;
 }
 
 .form-list {
@@ -90,16 +41,16 @@ textarea {
 
 .label {
   flex: 0 0 100px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-head);
 }
 
 .content {
   flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
 }
 
 .content .pre-white {
