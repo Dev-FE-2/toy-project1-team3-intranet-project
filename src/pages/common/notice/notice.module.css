@@ -4,7 +4,8 @@
 .btn-wrap {
   display: flex;
 }
-/* .btn {
+
+.btn {
   display: inline-block;
   padding: 9px 11px 8px;
 }
@@ -15,14 +16,14 @@
   padding-left: 15px;
   background: url('/src/assets/img/plus_icon.svg') no-repeat;
   background-size: 10px;
-  background-position: left top;
+  background-position: left top 1px;
 }
 .btn.trash > span {
   padding-left: 17px;
   background: url('/src/assets/img/close_icon.svg') no-repeat;
   background-size: 15px;
-  background-position: left bottom -1px;
-} */
+  background-position: left bottom;
+}
 
 /* 등록/수정, 상세 페이지 폼 형태 */
 .form-wrap {

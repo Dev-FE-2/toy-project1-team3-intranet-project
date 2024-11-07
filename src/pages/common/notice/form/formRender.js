@@ -84,14 +84,8 @@ ${data?.content || ''}
       </section>
 
       <section class="${styles['btn-wrap']} ${formStyles['btn-wrap']}">
-        <button type="submit" class="${styles.btn} ${formStyles.btn}">
-          ${submitText}
-        </button>
-        <button
-          type="button"
-          id="backBtn"
-          class="${styles.btn} ${formStyles.btn} grayBtn"
-        >
+        <button type="submit" class="${formStyles.btn}">${submitText}</button>
+        <button type="button" id="backBtn" class="${formStyles.btn} grayBtn">
           이전으로
         </button>
       </section>
