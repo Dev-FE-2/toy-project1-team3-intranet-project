@@ -1,13 +1,3 @@
-.title {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.content {
-  margin: 20px auto 0;
-}
-
 .searchWrap {
   display: flex;
   justify-content: flex-end;
@@ -42,23 +32,6 @@
   height: 18px;
 }
 
-.absenceList {
-  width: 100%;
-  line-height: 39px;
-  margin: 20px auto 0;
-  text-align: left;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.absenceList th {
-  background-color: #f2f2f2;
-  border: none;
-}
-.absenceList th:first-child,
-.absenceList td:first-child {
-  padding-left: 10px;
-}
-
 .pagination {
   display: flex;
   align-items: center;
@@ -88,8 +61,4 @@
     display: none;
   }
 
-  .absenceList th:nth-child(2),
-  .absenceList td:nth-child(2) {
-    padding-left: 10px;
-  }
 }
