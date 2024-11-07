@@ -123,6 +123,10 @@ const initEventListeners = () => {
 };
 
 const formFunc = async () => {
+  if (!document.querySelector('#noticeSn')) {
+    // insert에서 textarea 태그 내 여백 제거
+    document.querySelector('[name=content]').value = '';
+  }
   initEventListeners();
 };
 

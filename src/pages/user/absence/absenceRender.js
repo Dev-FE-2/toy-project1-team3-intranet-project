@@ -1,4 +1,4 @@
-import '../../../assets/css/buttons.css'
+import '../../../assets/css/buttons.css';
 import styles from './userAbsence.module.css';
 import { fetchUserAbsence } from './absenceFunc';
 
