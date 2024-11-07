@@ -38,7 +38,27 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 40px;
+}
+
+.shortCut > a {
+  font-weight: var(--fw-head);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.ableLink {
+  color: var(--primary);
+}
+
+.disableLink {
   color: var(--text-gray);
+}
+
+.shortCut > a > img {
+  width: 24px;
+  height: 24px;
 }
 
 .container {
