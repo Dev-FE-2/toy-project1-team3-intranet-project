@@ -1,4 +1,5 @@
-import '../../../assets/css/buttons.css';
+import '../../../assets/css/buttons.css'
+import '../../../assets/css/table.css';
 import styles from './userAbsence.module.css';
 import { fetchUserAbsence } from './absenceFunc';
 
@@ -7,10 +8,7 @@ const absenceRender = async () => {
   const { data } = await fetchUserAbsence();
 
   return `
-    <h1 class="${styles.title}">부재 관리</h1>
-  
-    <div class="${styles.content}">
-      
+    <div>      
       <div class="${styles.absenceRequest}">
         <button id="absenceBtn" class="${styles.absenceBtn}">+ 부재 신청</button>
       </div>
@@ -58,7 +56,7 @@ const absenceRender = async () => {
           <form id="requestForm">
             <article class="${styles.formWrap}">
               <section class="${styles.formList}">
-                <div class="${styles.label}">부재항목</div>
+                <div class="${styles.label}">* 부재항목</div>
                 <select name="reqType" id="reqType" class="${styles.reqType}">
                   <option value="">부재 항목 선택</option>
                   <option value="연차">연차</option>
@@ -70,14 +68,14 @@ const absenceRender = async () => {
                 </select>
               </section>
               <section class="${styles.formList}">
-                <div class="${styles.label}">시작일시</div>
+                <div class="${styles.label}">* 시작일시</div>
                 <div class="${styles.dateTime}">
                   <input type="text" id="reqStartDate" class="${styles.reqStartDate}" placeholder="yyyy-mm-dd">
                   <input type="text" id="reqStartTime" class="${styles.reqStartTime}" placeholder="hh:mm">
                 </div>
               </section>
               <section class="${styles.formList}">
-                <div class="${styles.label}">종료일시</div>
+                <div class="${styles.label}">* 종료일시</div>
                 <div class="${styles.dateTime}">
                   <input type="text" id="reqEndDate" class="${styles.reqEndDate}" placeholder="yyyy-mm-dd">
                   <input type="text" id="reqEndTime" class="${styles.reqEndTime}" placeholder="hh:mm">
