@@ -1,4 +1,5 @@
 import '../../../../assets/css/input.css';
+import '../../../../assets/css/buttons.css';
 import styles from '../notice.module.css';
 import listStyles from './noticeList.module.css';
 import listItem from './listItem';
@@ -14,9 +15,9 @@ const listRender = async () => {
     ${userGrade
       ? ''
       : `<div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
-          <a href="${currentPath}/insert" class="${styles.btn} ${styles.plus}">
+          <button onclick="location.href='${currentPath}/insert'" class="${styles.btn} ${styles.plus}">
             <span>공지 등록</span>
-          </a>
+          </button>
         </div>`}
     <section class="${listStyles['list-wrap__header']}">
       <div class="${listStyles['count-desc']}">
@@ -31,7 +32,7 @@ const listRender = async () => {
         <button
           type="button"
           id="searchBtn"
-          class="${listStyles['search-btn']}"
+          class="searchBtn ${listStyles['search-btn']}"
         >
           <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" />
         </button>

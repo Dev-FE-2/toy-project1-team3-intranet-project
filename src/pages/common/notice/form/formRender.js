@@ -1,5 +1,6 @@
 import '../../../../assets/css/input.css';
 import '../../../../assets/css/textarea.css';
+import '../../../../assets/css/buttons.css';
 import styles from '../notice.module.css';
 import formStyles from './noticeForm.module.css';
 import { getNoticeById } from '../view/viewFunc';
@@ -68,13 +69,13 @@ ${data?.content || ''}
               placeholder="파일명"
               readonly
             />
-            <label for="noticeImg" class="${styles.btn} ${styles.plus}">
+            <label for="noticeImg" class="${styles.btn} ${styles.plus} plusBtn">
               <span>이미지 첨부</span>
             </label>
             <button
               type="button"
               id="deleteBtn"
-              class="${styles.btn} ${styles.red} ${styles.trash}"
+              class="${styles.btn} skinBtn ${styles.trash}"
             >
               <span>이미지 삭제</span>
             </button>
@@ -89,7 +90,7 @@ ${data?.content || ''}
         <button
           type="button"
           id="backBtn"
-          class="${styles.btn} ${styles.gray} ${formStyles.btn}"
+          class="${styles.btn} ${formStyles.btn} grayBtn"
         >
           이전으로
         </button>

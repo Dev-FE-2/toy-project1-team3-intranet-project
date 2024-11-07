@@ -1,5 +1,5 @@
 import axios from 'axios';
-import style from './workonModal.module.css';
+import style from './attendanceModal.module.css';
 
 const userSn = window.localStorage.getItem('userSn');
 const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
@@ -8,7 +8,7 @@ const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
 const getUserData = async () => {
   const query = `?userSn=${userSn}`;
   try {
-    const { data } = await axios.get(`/api/user/workOn${query}`);
+    const { data } = await axios.get(`/api/user/attendance${query}`);
     return data['data'];
   } catch (error) {
     console.error('Error fetching user data:', error);
@@ -19,7 +19,7 @@ const getUserData = async () => {
 const getWorkData = async () => {
   const query = `?userSn=${userSn}`;
   try {
-    const { data } = await axios.get(`/api/user/workOn/working${query}`);
+    const { data } = await axios.get(`/api/user/attendance/working${query}`);
     return data['data'];
   } catch (error) {
     console.error('Error fetching work data:', error);
@@ -27,7 +27,7 @@ const getWorkData = async () => {
 };
 
 // 사용자 프로필 및 출결 정보 업데이트
-const fetchWorkOnData = (userData, workData) => {
+const fetchAttendanceData = (userData, workData) => {
   const profileImg = document.getElementById('profileImg');
   const name = document.getElementById('name');
   const workTime = document.getElementById('workTime');
@@ -59,7 +59,7 @@ const updateData = async () => {
     getUserData(),
     getWorkData(),
   ]);
-  fetchWorkOnData(userData, workData);
+  fetchAttendanceData(userData, workData);
   console.log(workData);
   return { userData: userData, workData: workData };
 };
@@ -68,7 +68,7 @@ const updateData = async () => {
 const itWork = async () => {
   try {
     const params = { userSn };
-    const { data } = await axios.post('/api/user/workOn', params);
+    const { data } = await axios.post('/api/user/attendance', params);
     return data;
   } catch (error) {
     console.error('Error working:', error);
@@ -79,7 +79,7 @@ const itWork = async () => {
 const itLeave = async () => {
   try {
     const params = { userSn };
-    const { data } = await axios.put('/api/user/workOn', params);
+    const { data } = await axios.put('/api/user/attendance', params);
     return data;
   } catch (error) {
     console.error('Error leaving work:', error);
@@ -143,7 +143,7 @@ const showModal = (workData) => {
 };
 
 // 메인 함수
-const workOnFunc = async () => {
+const attendanceFunc = async () => {
   const { workData } = await updateData();
   const button = document.getElementById('attendButton');
   button.addEventListener('click', () => {
@@ -151,4 +151,4 @@ const workOnFunc = async () => {
   });
 };
 
-export default workOnFunc;
+export default attendanceFunc;
