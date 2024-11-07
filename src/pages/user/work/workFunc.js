@@ -1,3 +1,4 @@
+import '../../../assets/css/buttons.css';
 import styles from './work.module.css';
 import { renderWorkList } from "./workRender";
 
@@ -44,7 +45,7 @@ const pagination = (currentPage, totalPages) => {
   for (let i = startPage; i <= endPage; i++) {
     pageButtons.push(
       `<li class="${styles.pageBtn}">
-         <button class="${i === currentPage ? `${styles.active} currentPage` : ''}">
+         <button class="${i === currentPage ? `${styles.active} currentPage` : 'unSelectBtn'}">
            ${i}
          </button>
        </li>`

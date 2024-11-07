@@ -1,15 +1,3 @@
-.container * {
-  box-sizing: border-box;
-}
-
-.container {
-  height: 100vh;
-  background-color: #e9e9e9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .loginBox {
   width: 421px;
   height: 294px;
@@ -76,6 +64,7 @@ h1 {
   text-underline-offset: 4px;
   font-size: 12px;
   font-weight: 600;
+  color: var(--text-black);
 }
 
 .buttonBox > div {
@@ -87,15 +76,11 @@ h1 {
 
 .buttonBox > div > button {
   border-radius: 4px;
-  background-color: black;
-  color: white;
   font-size: 12px;
   font-weight: 600;
+  padding: 11px 15px;
 }
 
-button:hover {
-  cursor: pointer;
-}
 
 @media (max-width: 1280px) {
   .loginBox {

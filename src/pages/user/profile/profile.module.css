@@ -1,12 +1,3 @@
-.container {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-  background-color: #e9e9e9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .profileBox {
   box-sizing: border-box;
   width: 775px;
@@ -27,16 +18,8 @@
 }
 .btn {
   box-sizing: border-box;
-  font-size: 12px;
-  font-weight: 800;
   text-align: center;
-  cursor: pointer;
-  width: 75px;
-  height: 25px;
-  border-radius: 4px;
   padding: 7px 5px;
-  background-color: black;
-  color: white;
   position: absolute;
   top: 30px;
   right: 20px;

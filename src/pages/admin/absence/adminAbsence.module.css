@@ -1,12 +1,6 @@
-.page {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-}
-
 .title {
   font-size: 30px;
-  font-weight: bold; 
+  font-weight: bold;
   margin-top: 20px;
 }
 
@@ -46,8 +40,6 @@
 .searchIcon {
   width: 18px;
   height: 18px;
-  padding-top: 3px;
-  margin-left: 8px;
 }
 
 .absenceList {
@@ -75,43 +67,27 @@
 }
 .pagination .pageBtn {
   display: flex;
-  margin-right: 6px;
 }
-.pagination .pageBtn:last-child {
-  margin-right: 0;
+.pagination .pageBtn:first-child > button{
+  margin-left: 0;
 }
 .pagination .pageBtn button {
   text-decoration: none;
-  width: 33px;
-  height: 33px;
   box-sizing: border-box;
-  border: 2px solid #f2f2f2;
-  border-radius: 5px;
-  color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.pagination .pageBtn button.active {
-  color: #fff;
-  border-color: #000;
-  background-color: #000;
-}
 
 
 @media (max-width: 1280px) {
-  .page {
-    width: 90%;
-    margin: 0 auto;
-  }
-
   .absenceList th:first-child,
   .absenceList th:nth-child(4),
   .absenceList td:first-child,
   .absenceList td:nth-child(4) {
-      display: none;
+    display: none;
   }
-  
+
   .absenceList th:nth-child(2),
   .absenceList td:nth-child(2) {
     padding-left: 10px;

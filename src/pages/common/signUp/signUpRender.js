@@ -1,7 +1,7 @@
+import '../../../assets/css/buttons.css';
 import style from './signUp.module.css';
 
 const signUpRender = () => `
-  <main class="${style.container}">
     <div class="${style.signUpBox}">
       <h1>회원가입</h1>
       <form onsubmit="return false;">
@@ -90,7 +90,6 @@ const signUpRender = () => `
         </div>
       </form>
     </div>
-  </main>
   `;
 
 export default signUpRender;

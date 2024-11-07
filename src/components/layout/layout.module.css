@@ -1,129 +1,153 @@
 .layout {
-  max-width: 1280px;
   width: 100%;
   height: 100vh;
+  border-left: 1px solid var(--line-light);
+  border-right: 1px solid var(--line-light);
   margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.navigate {
+  width: 170px;
+  height: 100%;
+}
+
+.navBox {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid var(--line-light);
+  padding: 25px 20px;
+  background-color: var(--bg-front);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  gap: 60px;
+}
+
+.navBox > h1 {
+  font-size: 24px;
+  font-weight: var(--fw-head);
+  color: var(--primary);
+}
+
+.shortCut {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  color: var(--text-gray);
+}
+
+.container {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .header {
   width: 100%;
-  height: 60px;
-  border-bottom: 1px solid black;
-  padding: 0 20px;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 12px 20px 12px 28px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--bg-front);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
 }
 
 .hamburger {
   display: none;
-}
-
-.header a {
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.headerRightWrap {
-  display: flex;
-  align-items: center;
-}
-
-.headerRightWrap .signOutBtn {
-  margin-left: 10px;
-  text-indent: -10000px;
-  background-image: url('/src/assets/img/logout_icon.svg');
+  width: 24px;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  background-image: url('/src/assets/img/hamburger_icon.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 18px;
-  background-color: #fff;
-  width: 24px;
-  height: 24px;
-  border-radius: 5px;
+  cursor: pointer;
 }
 
-.headerRightWrap .signOutBtn:hover {
-  background-color: #ddd;
+.signOutBtn {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 8px 15px;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
+  background-color: var(--bg-front);
+  color: #171a19;
+}
+
+.navSignOut {
+  display: none;
+  margin: 0 auto;
+}
+
+.headSignOut {
+  display: block;
+}
+
+.mainContent {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.contentBox {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius);
+  background-color: var(--bg-front);
 }
 
 @media (max-width: 1280px) {
   .layout {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .navigate {
-    width: 100%;
+    width: 158px;
+    height: 100vh;
     position: fixed;
-    top: 60px;
-    left: 0;
+    top: 0;
+    right: 0;
     z-index: 1;
   }
 
-  .shortCut {
+  .navigate::before {
+    content: '';
     width: 100%;
-    max-height: 240px;
-    height: 30%;
-    padding: 20px 0;
-    border-bottom: 1px solid black;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .shortCut a {
-    display: block;
-    width: 80%;
-    padding: 5px 0;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .config {
-    width: 100%;
-    height: 50px;
-    border: none;
-    border-top: 1px solid black;
-    background-color: white;
-    background-image: url('/src/assets/img/config_icon.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
+  }
+
+  .navBox {
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid var(--line-light);
   }
 
   .hamburger {
     display: block;
-    width: 24px;
-    height: 100%;
-    padding: 0 30px;
-    border: none;
-    background-color: transparent;
-    background-image: url('/src/assets/img/hamburger_icon.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
   }
 
-  .header > a {
-    display: none;
-  }
-
-  .header h1 {
-    font-size: 24px;
-    font-weight: 600;
+  .navSignOut {
     display: block;
   }
 
-  .flex {
-    display: flex;
+  .headSignOut {
+    display: none;
   }
 }

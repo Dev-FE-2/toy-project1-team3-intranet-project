@@ -1,0 +1,29 @@
+textarea {
+    width: 100%;
+    min-height: 250px;
+    font-size: var(--fs-body-sm);
+    font-weight: var(--fw-body);
+    resize: none;
+    outline: none;
+    border: 1px solid var(--line-light);
+    padding: 10px 15px;
+    border-radius: var(--radius);
+    transition: .2s;
+}
+
+textarea:focus {
+    border-color: var(--primary);
+}
+
+textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: var(--radius);
+}
+
+textarea::-webkit-scrollbar-track {
+    background-color: var(--point-mint);
+}
