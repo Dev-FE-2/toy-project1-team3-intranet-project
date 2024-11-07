@@ -1,11 +1,9 @@
-.title {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 20px;
+body{
+  -ms-overflow-style: none;
 }
 
-.content {
-  margin: 20px auto 0;
+ ::-webkit-scrollbar {
+   display: none;
 }
 
 .absenceRequest {
@@ -53,25 +51,6 @@
   height: 18px;
 }
 
-.absenceList {
-  width: 100%;
-  line-height: 39px;
-  margin: 20px auto 0;
-  text-align: left;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.absenceList th {
-  background-color: #f2f2f2;
-  border: none;
-  font-weight: bold;
-  font-size: 110%;
-}
-.absenceList th:first-child,
-.absenceList td:first-child {
-  padding-left: 10px;
-}
-
 .pagination {
   display: flex;
   align-items: center;
@@ -101,10 +80,10 @@
 .modalBack {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, .7);
 }
 .modal .closeBtn {
   position: absolute;
@@ -141,7 +120,7 @@
   margin-bottom: 30px;
 }
 .modalPopup .formList .label {
-  width: 72px;
+  width: 75px;
   font-weight: bold;
   font-size: 110%;
   margin-right: 50px;
@@ -191,11 +170,6 @@
   .absenceList td:first-child,
   .absenceList td:last-child {
     display: none;
-  }
-
-  .absenceList th:nth-child(2),
-  .absenceList td:nth-child(2) {
-    padding-left: 10px;
   }
 
   .modalPopup {
