@@ -1,6 +1,7 @@
 import '../../../assets/css/buttons.css';
 import styles from './work.module.css';
 import { renderWorkList } from "./workRender";
+import { apiRequest } from '../../../utils/apiUtils';
 
 // 상수 정의
 const DEFAULT_PAGE = 1;
@@ -23,9 +24,7 @@ export const fetchWorks = async (page = 1, searchTerm = '') => {
   const url = `/api/user/work?userSn=${encodeURIComponent(state.userSn)}&page=${page}&search=${encodeURIComponent(searchTerm)}`;
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch items');
-    return await response.json();
+    return await apiRequest(url, {method: 'GET'});
   } catch (error) {
     console.error('Error fetching items:', error);
     return { data: [], page, size: PAGE_SIZE, totalCount: 0, totalPage: 1 };
