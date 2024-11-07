@@ -63,7 +63,7 @@ export const renderAdminAbsenceList = (data) => {
     </tr> `
         )
         .join('')
-    : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
+    : `<tr><td colspan="5">등록된 부재 기록이 없습니다.</td></tr>`;
 };
 
 export default absenceRender;
