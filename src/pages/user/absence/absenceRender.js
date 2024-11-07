@@ -1,5 +1,7 @@
 import '../../../assets/css/buttons.css'
 import '../../../assets/css/table.css';
+import '../../../assets/css/input.css';
+import '../../../assets/css/select.css';
 import styles from './userAbsence.module.css';
 import { fetchUserAbsence } from './absenceFunc';
 
