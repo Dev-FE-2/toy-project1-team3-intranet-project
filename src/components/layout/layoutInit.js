@@ -58,11 +58,13 @@ const layoutInit = () => {
     return null;
   };
 
-  menu.addEventListener('click', openModal);
-  navigate.addEventListener('click', closeModal);
-  navSignOutBtn.addEventListener('click', signOut);
-  headSignOutBtn.addEventListener('click', signOut);
-  intranetTitle.textContent = matchRoute(path, routes);
+  if (navigate) {
+    menu.addEventListener('click', openModal);
+    navigate.addEventListener('click', closeModal);
+    navSignOutBtn.addEventListener('click', signOut);
+    headSignOutBtn.addEventListener('click', signOut);
+    intranetTitle.textContent = matchRoute(path, routes);
+  }
 };
 
 export default layoutInit;
