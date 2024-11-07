@@ -1,4 +1,5 @@
 import '../../../assets/css/buttons.css'
+import '../../../assets/css/table.css';
 import style from './userList.module.css';
 import { fetchUsers } from './userListFunc';
 

@@ -1,3 +1,4 @@
+import { apiRequest } from '../../../../utils/apiUtils';
 import { renderNotices } from './listRender';
 import pagination from './pagination';
 
@@ -20,9 +21,7 @@ const state = {
 const fetchNotices = async (page = DEFAULT_PAGE, searchTerm = '') => {
   const url = `/api/common/notice?page=${page}&search=${encodeURIComponent(searchTerm)}`;
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch items');
-    return await response.json();
+    return await apiRequest(url);
   } catch (error) {
     console.error('Error fetching items:', error);
     return { data: [], page, size: PAGE_SIZE, totalCount: 0, totalPage: 1 };

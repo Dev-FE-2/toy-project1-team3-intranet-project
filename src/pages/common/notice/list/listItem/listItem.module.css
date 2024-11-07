@@ -10,9 +10,9 @@
     position: relative;
     padding-top: 100%;
     overflow: hidden;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    background-color: gray;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    background-color: var(--point-gray);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,16 +28,16 @@
 
 .info-box {
     padding: 12px 5px 10px;
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: var(--bg-front);
+    border: 1px solid var(--line-light);
     border-top: none;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
 }
 
 .title {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: var(--fs-body-sm);
+    font-weight: var(--fw-body-lg);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -46,7 +46,7 @@
 
 .content {
     font-size: 12px;
-    font-weight: 400;
+    font-weight: var(--fw-body);
     margin-bottom: 10px;
     height: 24px;
     display: -webkit-box;
@@ -57,8 +57,7 @@
 
 .date {
     font-size: 11px;
-    font-weight: 400;
-    color: #6C727F;
+    font-weight: var(--fw-body);
     text-align: right;
 }
 
