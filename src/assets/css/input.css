@@ -4,6 +4,7 @@ input[type='password'],
 input[type='email'] {
   min-width: 240px;
   height: 30px;
+  font-family: 'Pretendard';
   font-size: var(--fs-body-sm);
   font-weight: var(--fw-body);
   outline: none;
