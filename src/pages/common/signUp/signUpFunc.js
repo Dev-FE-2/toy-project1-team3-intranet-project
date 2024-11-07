@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { apiRequest } from '../../../utils/apiUtils';
 
 // 입력항목 제한을 위한 정규표현식
 const PATTERN = {
@@ -39,7 +39,7 @@ const validateInput = ({ id, pw, confirmPw, name, phone, email }, verify) => {
 // 입력한 아이디 변경시 중복검사 결과 false로 변경,
 // verify값이 false일 경우 아이디 중복검사 재실행 요청
 const handleIdVerify = (verify) => {
-  return () => (verify = false);
+  verify = false;
 };
 
 // 휴대폰 번호 하이픈(-) 자동완성 기능 함수
@@ -53,8 +53,11 @@ const setPhoneNumber = ({ target }) => {
 // 사용자 회원가입 API
 const createUser = async (body) => {
   try {
-    const response = await axios.post('/api/user/signup', body);
-    return response.data;
+    const response = await apiRequest('/api/user/signup', {
+      method: 'POST',
+      body: body,
+    });
+    return response;
   } catch (error) {
     throw new Error(error);
   }
@@ -63,8 +66,11 @@ const createUser = async (body) => {
 // 사용자 아이디 중복 유효성 검사 API
 const verification = async (body) => {
   try {
-    const response = await axios.post('/api/user/signup/verify', body);
-    return response.data;
+    const response = await apiRequest('/api/user/signup/verify', {
+      method: 'POST',
+      body: body,
+    });
+    return response;
   } catch (error) {
     throw new Error(error);
   }
@@ -73,8 +79,10 @@ const verification = async (body) => {
 // 새로운 사용자 식별번호 생성 API
 const getUserSn = async () => {
   try {
-    const response = await axios.get('/api/user/signup');
-    return response.data;
+    const { data } = await apiRequest('/api/user/signup', {
+      method: 'GET',
+    });
+    return data;
   } catch (error) {
     throw new Error(error);
   }
@@ -124,8 +132,8 @@ const handleSubmitClick = async (event, elements, verify) => {
 
     const { status } = await createUser(params);
     if (status === 'OK') {
-      alert(MESSAGE.signUpComplete);
       window.location.replace('/');
+      alert(MESSAGE.signUpComplete);
     }
   }
 };
