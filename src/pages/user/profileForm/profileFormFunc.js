@@ -1,86 +1,36 @@
 import axios from 'axios';
+import { apiRequest } from '../../../utils/apiUtils';
 
-// 기능 추가
-const profileFormFunc = async () => {
-  const profileImg = document.getElementById('profileImg');
-  const fileInput = document.getElementById('file');
+const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
+let base64Image;
+
+// 사용자 정보 가져오기
+const getUserData = async (userSn) => {
+  try {
+    const query = `?userSn=${userSn}`;
+    const { data } = await apiRequest(`/api/user/userUpdate${query}`, {
+      method: 'GET',
+    });
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }
+};
+
+// 사용자 프로필 업데이트
+const updateProfile = (profileImg, userData) => {
   const name = document.getElementById('name');
   const rank = document.getElementById('rank');
   const email = document.getElementById('email');
   const phone = document.getElementById('phone');
-  const updateUser = document.getElementById('updateUser');
   const closeButton = document.getElementById('closeButton');
-  const cancel = document.getElementById('cancel');
-  const userSn = window.localStorage.getItem('userSn');
-  let base64Image;
 
-  const fileChange = () => {
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = async (e) => {
-      if (file) {
-        base64Image = e.target.result;
-        profileImg.src = e.target.result;
-        closeButton.classList.remove('hidden');
-        console.log(closeButton);
-      } else {
-        profileImg.src = defaultImage;
-        base64Image = null;
-      }
-    };
-
-    reader.readAsDataURL(file);
-    fileInput.value = '';
-  };
-
-  const getUserData = async () => {
-    try {
-      const query = `?userSn=${userSn}`;
-      const { data } = await axios.get(`/api/user/userUpdate${query}`);
-      const response = await data['data'];
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const postUserData = async () => {
-    const params = {
-      userSn: userSn,
-      rank: rank.value,
-      name: name.value,
-      phone: phone.value,
-      email: email.value,
-      profileImage: base64Image,
-    };
-
-    try {
-      const response = await axios.put('/api/user/userUpdate', params);
-      console.log('업로드 성공:', response.data);
-      return window.location.replace(`/user/profile`);
-    } catch (error) {
-      console.error('업로드 실패:', error);
-    }
-  };
-
-  const deleteImage = async () => {
-    console.log('a');
-    profileImg.src = defaultImage;
-    base64Image = null;
-    closeButton.classList.add('hidden');
-  };
-
-  const userData = await getUserData();
-
-  const defaultImage = '/src/img/default_user.svg';
+  profileImg.src = userData['USER_IMAGE'] || DEFAULT_IMAGE;
+  base64Image = userData['USER_IMAGE'] || null;
   if (userData['USER_IMAGE']) {
-    profileImg.src = userData['USER_IMAGE'];
-    base64Image = userData['USER_IMAGE'];
     closeButton.classList.remove('hidden');
   } else {
-    profileImg.src = defaultImage;
-    base64Image = null;
     closeButton.classList.add('hidden');
   }
 
@@ -88,13 +38,100 @@ const profileFormFunc = async () => {
   rank.value = userData['USER_RANK'];
   email.value = userData['USER_EMAIL'];
   phone.value = userData['USER_PHONE_NUMBER'];
+};
 
-  fileInput.addEventListener('change', fileChange);
-  updateUser.addEventListener('click', postUserData);
-  closeButton.addEventListener('click', deleteImage);
-  cancel.addEventListener('click', () =>
-    window.location.replace(`/user/profile`)
-  );
+// 파일 변경 처리
+const handleFileChange = (fileInput, profileImg, closeButton) => {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = (e) => {
+    if (file) {
+      profileImg.src = e.target.result;
+      base64Image = e.target.result;
+      closeButton.classList.remove('hidden');
+    } else {
+      profileImg.src = DEFAULT_IMAGE;
+      base64Image = null;
+      closeButton.classList.add('hidden');
+    }
+  };
+
+  reader.readAsDataURL(file);
+  fileInput.value = '';
+};
+
+// 사용자 정보 전송
+const postUserData = async (userSn, userData) => {
+  const params = {
+    userSn,
+    ...userData,
+  };
+
+  try {
+    const response = await axios.put('/api/user/userUpdate', params);
+    console.log('업로드 성공:', response.data);
+    window.location.replace('/user/profile');
+  } catch (error) {
+    console.error('업로드 실패:', error);
+  }
+};
+
+// 이미지 삭제
+const deleteImage = (profileImg, closeButton) => {
+  profileImg.src = DEFAULT_IMAGE;
+  base64Image = null;
+  closeButton.classList.add('hidden');
+};
+
+// 이벤트 리스너 추가
+const updateData = (fileInput, profileImg, closeButton, userSn) => {
+  const updateUser = document.getElementById('updateUser');
+  const cancel = document.getElementById('cancel');
+  const name = document.getElementById('name');
+  const rank = document.getElementById('rank');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+
+  fileInput.addEventListener('change', () => {
+    handleFileChange(fileInput, profileImg, closeButton);
+  });
+
+  updateUser.addEventListener('click', () => {
+    const userData = {
+      rank: rank.value,
+      name: name.value,
+      phone: phone.value,
+      email: email.value,
+      profileImage: base64Image,
+    };
+
+    postUserData(userSn, userData);
+  });
+
+  closeButton.addEventListener('click', () => {
+    deleteImage(profileImg, closeButton);
+  });
+
+  cancel.addEventListener('click', () => {
+    window.location.replace('/user/profile');
+  });
+};
+
+// 메인 함수
+const profileFormFunc = async () => {
+  const userSn = window.localStorage.getItem('userSn');
+  const profileImg = document.getElementById('profileImg');
+
+  // 사용자 정보를 불러와서 렌더링
+  const userData = await getUserData(userSn);
+  updateProfile(profileImg, userData);
+
+  // 이벤트 리스너 추가 및 사용자 정보 수정
+  const fileInput = document.getElementById('file');
+  const closeButton = document.getElementById('closeButton');
+
+  updateData(fileInput, profileImg, closeButton, userSn);
 };
 
 export default profileFormFunc;

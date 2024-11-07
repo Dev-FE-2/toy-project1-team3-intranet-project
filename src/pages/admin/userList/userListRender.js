@@ -1,3 +1,5 @@
+import '../../../assets/css/buttons.css';
+import '../../../assets/css/table.css';
 import style from './userList.module.css';
 import { fetchUsers } from './userListFunc';
 
@@ -17,7 +19,6 @@ export const renderTableRows = (data) => {
     .join('');
 };
 
-
 // 페이지네이션 버튼을 렌더링하는 함수
 export const pagination = (currentPage, totalPage) => {
   const pageButton = [];
@@ -26,25 +27,30 @@ export const pagination = (currentPage, totalPage) => {
   const endPage = Math.min(startPage + 9, totalPage);
 
   for (let i = startPage; i <= endPage; i++) {
-    pageButton.push(
-      `<button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `${style.unSelectBtn}`}">
-      ${i}
-      </button>
-    `
-    );
+    pageButton.push(`
+      <li>
+        <button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `unSelectBtn`}">
+        ${i}
+        </button>
+      </li>
+    `);
   }
 
   return ` 
-    <ul>
-      <button class="${style.unSelectBtn} prev"
-      ${currentPage === 1 ? 'disabled' : ''}>
-        <
-      </button>
-      ${pageButton.join('')}
-      <button class="${style.unSelectBtn} next"
-      ${currentPage === totalPage ? 'disabled' : ''}>
-        >
-      </button>
+    <ul class="${style.paginationBtn}">
+      <li>
+        <button class="${style.unSelectBtn} prev"
+        ${currentPage === 1 ? 'disabled' : ''}>
+          <
+        </button>
+      </li>
+        ${pageButton.join('')}
+      <li>
+        <button class="${style.unSelectBtn} next"
+        ${currentPage === totalPage ? 'disabled' : ''}>
+          >
+        </button>
+      </li>
     </ul>`;
 };
 
@@ -54,41 +60,35 @@ const userListRender = async () => {
   const data = userData.data; // 임직원 데이터
 
   return `
-    <div class="${style.userListWrapper}">
       <div class="${style.userListheader}">
         <div class="${style.headerLeft}">
-          <div class="${style.title}">임직원 관리</div>
           <div id="userCount" class="${style.subTitle}">총 ${totalCount}명의 임직원</div>
         </div>
         <div class="${style.headerRight}">
-          
-            <input type="text" id="searchInput"class="${style.input}" placeholder="이름 또는 이메일로 검색하기">
-          
+          <input type="text" id="searchInput"class="${style.input}" placeholder="이름 또는 이메일로 검색하기" />
         </div>
       </div>
 
-      <section class="${style.tableSection}">
+      <article class="${style.tableSection}">
         <table class="${style.table}">
           <thead>
             <tr>
-              <th class="${style.th} name">이름</th>
-              <th class="${style.th} ${style.email}">이메일</th>
-              <th class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
-              <th class="${style.th} ${style.division}">구분</th>
+              <th scope="col" class="${style.th} name">이름</th>
+              <th scope="col" class="${style.th} ${style.email}">이메일</th>
+              <th scope="col" class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
+              <th scope="col" class="${style.th} ${style.division}">구분</th>
             </tr>
           </thead>
           <tbody id="userTableBody">
             ${renderTableRows(data)}
           </tbody>
         </table>
-        <div class="${style.pagination}">
-          <div id="paginationButtons" class="${style.paginationBtn}">           
-
+        <nav class="${style.pagination}">
+          <div id="paginationButtons">
           </div>
-        </div>
-        </section>
-        </div>
-        `;
+        </nav>
+      </article>
+  `;
 };
 
 export default userListRender;
