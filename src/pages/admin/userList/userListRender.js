@@ -1,5 +1,6 @@
 import '../../../assets/css/buttons.css';
 import '../../../assets/css/table.css';
+import '../../../assets/css/input.css';
 import style from './userList.module.css';
 import { fetchUsers } from './userListFunc';
 
@@ -39,16 +40,29 @@ export const pagination = (currentPage, totalPage) => {
   return ` 
     <ul class="${style.paginationBtn}">
       <li>
-        <button class="${style.unSelectBtn} prev"
+        <button class="${style.unSelectBtn} first"
         ${currentPage === 1 ? 'disabled' : ''}>
-          <
+          &lt;&lt;
         </button>
       </li>
+      <li>
+        <button class="${style.unSelectBtn} prev"
+        ${currentPage === 1 ? 'disabled' : ''}>
+          &lt;
+        </button>
+      </li>
+      
         ${pageButton.join('')}
       <li>
         <button class="${style.unSelectBtn} next"
         ${currentPage === totalPage ? 'disabled' : ''}>
-          >
+          &gt;
+        </button>
+      </li>
+      <li>
+        <button class="${style.unSelectBtn} last"
+        ${currentPage === totalPage ? 'disabled' : ''}>
+          &gt;&gt;
         </button>
       </li>
     </ul>`;
@@ -66,6 +80,9 @@ const userListRender = async () => {
         </div>
         <div class="${style.headerRight}">
           <input type="text" id="searchInput"class="${style.input}" placeholder="이름 또는 이메일로 검색하기" />
+          <button id="searchBtn" type="button" class="searchBtn">
+            <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${style.searchIcon}" />
+          </button>
         </div>
       </div>
 
