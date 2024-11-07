@@ -14,8 +14,6 @@
 
 /* HEADER */
 .userListheader {
-  margin: 70px auto 0;
-  width: 70%;
   height: 70px;
   position: relative;
   top: 0px;
@@ -97,7 +95,6 @@
 }
 /* PAGINATION */
 .pagination {
-  position: absolute;
   width: 100%;
   margin: 50px auto 0;
 }
