@@ -1,13 +1,15 @@
 import '../../../assets/css/buttons.css';
+import '../../../assets/css/select.css';
 import style from './signUp.module.css';
 
 const signUpRender = () => `
+  <div class="${style.container}">
     <div class="${style.signUpBox}">
       <h1>회원가입</h1>
       <form onsubmit="return false;">
         <!-- 아이디 입력 라벨 -->
         <label for="id">
-          <span>아이디</span>
+          <span>*아이디</span>
           <div>
             <input
               type="text"
@@ -21,7 +23,7 @@ const signUpRender = () => `
 
         <!-- 비밀번호 입력 라벨 -->
         <label for="pw">
-          <span>비밀번호</span>
+          <span>*비밀번호</span>
           <input
             type="password"
             name="pw"
@@ -32,7 +34,7 @@ const signUpRender = () => `
 
         <!-- 비밀번호 확인 라벨 -->
         <label for="confirmPw">
-          <span>비밀번호 확인</span>
+          <span>*비밀번호 확인</span>
           <input
             type="password"
             name="confirmPw"
@@ -43,7 +45,7 @@ const signUpRender = () => `
 
         <!-- 이름 라벨 -->
         <label for="name">
-          <span>이름</span>
+          <span>*이름</span>
           <input
             type="text"
             name="name"
@@ -54,7 +56,7 @@ const signUpRender = () => `
 
         <!-- 연락처 라벨 -->
         <label for="phone">
-          <span>연락처</span>
+          <span>*연락처</span>
           <input
             type="text"
             name="phone"
@@ -65,7 +67,7 @@ const signUpRender = () => `
 
         <!-- 이메일 라벨 -->
         <label for="email">
-          <span>이메일</span>
+          <span>*이메일</span>
           <input
             type="email"
             name="email"
@@ -76,7 +78,7 @@ const signUpRender = () => `
 
         <!-- 권한 라벨 -->
         <label for="grade">
-          <span>권한</span>
+          <span>*권한</span>
           <select name="grade" id="grade">
             <optgroup label="관리자 / 임직원">
               <option value="0">관리자</option>
@@ -90,6 +92,7 @@ const signUpRender = () => `
         </div>
       </form>
     </div>
-  `;
+  </div>
+`;
 
 export default signUpRender;
