@@ -58,7 +58,10 @@ const handlePagination = async (event, totalPage) => {
 
 //페이지네이션
 const setupPagination = (totalPage) => {
-  if(totalPage > 0){
+  if(totalPage < 1){
+    const paginationButtons = document.getElementById('paginationButtons');
+    paginationButtons.innerHTML = pagination(state.currentPage, 1);
+  } else{
     const paginationButtons = document.getElementById('paginationButtons');
     paginationButtons.innerHTML = pagination(state.currentPage, totalPage);
   }

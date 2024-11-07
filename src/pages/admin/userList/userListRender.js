@@ -6,18 +6,19 @@ import { fetchUsers } from './userListFunc';
 
 // 테이블의 행을 렌더링하는 함수
 export const renderTableRows = (data) => {
-  return data
-    .map(
-      (item) => `
-      <tr onclick="location.href='/admin/user/${item.userSn}'">
-        <td class="${style.td} ${style.name}">${item.name}</td>
-        <td class="${style.td} ${style.email}">${item.email}</td>
-        <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
-        <td class="${style.td} ${style.division}">${item.grade ? '임직원' : '관리자'}</td>
-      </tr>
-    `
-    )
-    .join('');
+  return data.length > 0
+  ? data
+      .map(
+        (item) => `
+        <tr onclick="location.href='/admin/user/${item.userSn}'">
+          <td class="${style.td} ${style.name}">${item.name}</td>
+          <td class="${style.td} ${style.email}">${item.email}</td>
+          <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
+          <td class="${style.td} ${style.division}">${item.grade ? '임직원' : '관리자'}</td>
+        </tr>
+      `)
+      .join('')
+  : `<tr><td colspan="5">등록된 임직원이 없습니다.</td></tr>`;
 };
 
 // 페이지네이션 버튼을 렌더링하는 함수
