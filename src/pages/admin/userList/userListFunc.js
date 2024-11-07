@@ -1,3 +1,4 @@
+import { apiRequest } from '../../../utils/apiUtils';
 import { pagination } from './userListRender';
 import { renderTableRows } from './userListRender';
 
@@ -13,9 +14,8 @@ const state = {
 export const fetchUsers = async (page = 1, searchTerm = '') => {
   const url = `/api/admin/userList?page=${page}&search=${encodeURIComponent(searchTerm)}`;
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch items');
-    return await response.json();
+    const response = await apiRequest(url);
+    return await response;
   } catch (error) {
     console.error('Error fetching items:', error);
   }
