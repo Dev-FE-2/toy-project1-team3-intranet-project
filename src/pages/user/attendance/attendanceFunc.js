@@ -1,7 +1,9 @@
-import axios from 'axios';
 import style from './attendanceModal.module.css';
 import { apiRequest } from '../../../utils/apiUtils';
+import Loader from '../../../components/loader/Loader';
+import axios from 'axios';
 
+const loader = new Loader();
 const userSn = window.localStorage.getItem('userSn');
 const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
 let workData;
@@ -10,11 +12,8 @@ let workData;
 const getUserData = async () => {
   const query = `?userSn=${userSn}`;
   try {
-    // const { data } = await axios.get(`/api/user/attendance${query}`);
-    const { data } = await apiRequest(`/api/user/attendance${query}`, {
-      method: 'GET',
-    });
-    return data;
+    const { data } = await axios.get(`/api/user/attendance${query}`);
+    return data['data'];
   } catch (error) {
     console.error('Error fetching user data:', error);
   }
@@ -24,11 +23,9 @@ const getUserData = async () => {
 const getWorkData = async () => {
   const query = `?userSn=${userSn}`;
   try {
-    const { data } = await apiRequest(`/api/user/attendance/working${query}`, {
-      method: 'GET',
-    });
-    workData = data;
-    return data;
+    const { data } = await axios.get(`/api/user/attendance/working${query}`);
+    workData = data['data'];
+    return data['data'];
   } catch (error) {
     console.error('Error fetching work data:', error);
   }
@@ -63,12 +60,13 @@ const fetchAttendanceData = (userData, workData) => {
 };
 
 const updateData = async () => {
+  loader.show();
   const [userData, workData] = await Promise.all([
     getUserData(),
     getWorkData(),
   ]);
   fetchAttendanceData(userData, workData);
-  console.log(workData);
+  loader.hide();
   return { userData: userData, workData: workData };
 };
 
@@ -90,7 +88,6 @@ const itWork = async () => {
 const itLeave = async () => {
   try {
     const params = { userSn };
-    // const { data } = await axios.put('/api/user/attendance', params);
     const { data } = await apiRequest('/api/user/attendance', {
       method: 'PUT',
       body: params,
