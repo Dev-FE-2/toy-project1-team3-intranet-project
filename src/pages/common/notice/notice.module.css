@@ -4,7 +4,7 @@
 .btn-wrap {
   display: flex;
 }
-.btn {
+/* .btn {
   display: inline-block;
   padding: 9px 11px 8px;
 }
@@ -22,7 +22,7 @@
   background: url('/src/assets/img/close_icon.svg') no-repeat;
   background-size: 15px;
   background-position: left bottom -1px;
-}
+} */
 
 /* 등록/수정, 상세 페이지 폼 형태 */
 .form-wrap {
@@ -40,16 +40,16 @@
 
 .label {
   flex: 0 0 100px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-head);
 }
 
 .content {
   flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
 }
 
 .content .pre-white {
