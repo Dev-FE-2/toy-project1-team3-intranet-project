@@ -1,4 +1,5 @@
-import '../../../assets/css/buttons.css';
+import '../../../assets/css/buttons.css'
+import '../../../assets/css/table.css';
 import styles from './adminAbsence.module.css';
 import { fetchAdminAbsence } from './absenceFunc';
 
@@ -7,8 +8,6 @@ const absenceRender = async () => {
   const { data } = await fetchAdminAbsence();
 
   return `
-    <h1 class="${styles.title}">부재 관리</h1>
-
     <div class="${styles.content}">
 
       <section class="${styles.searchWrap}">
