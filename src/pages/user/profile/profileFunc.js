@@ -7,7 +7,7 @@ const getUserInfo = async (userSn) => {
     const { data } = await apiRequest(`/api/user/userInfo${query}`, {
       method: 'GET',
     });
-    console.log(data);
+
     return data;
   } catch (error) {
     console.log(error);

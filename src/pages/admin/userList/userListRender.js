@@ -1,4 +1,4 @@
-import '../../../assets/css/buttons.css'
+import '../../../assets/css/buttons.css';
 import '../../../assets/css/table.css';
 import style from './userList.module.css';
 import { fetchUsers } from './userListFunc';
@@ -62,7 +62,6 @@ const userListRender = async () => {
   return `
       <div class="${style.userListheader}">
         <div class="${style.headerLeft}">
-          <div class="${style.title}">임직원 관리</div>
           <div id="userCount" class="${style.subTitle}">총 ${totalCount}명의 임직원</div>
         </div>
         <div class="${style.headerRight}">

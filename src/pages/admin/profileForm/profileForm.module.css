@@ -1,3 +1,12 @@
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-front);
+}
 .input {
   border: 1px solid black;
   border-radius: 4px;
@@ -7,13 +16,8 @@
 .profileBox {
   box-sizing: border-box;
   width: 775px;
-  height: 450px;
-  border: 1px solid rgba(102, 102, 102, 0.4);
-  border-radius: 25px;
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.25);
   background-color: white;
   position: relative;
-  padding-top: 75px;
 }
 .profileItem {
   width: 128px;
@@ -109,7 +113,7 @@
   right: -10px;
   top: -10px;
 }
-.closeButton:hover{
+.closeButton:hover {
   background-color: transparent;
 }
 .btn {
@@ -143,5 +147,8 @@
   }
   .form {
     max-width: 150px;
+  }
+  .btnWrap {
+    margin-top: 0;
   }
 }

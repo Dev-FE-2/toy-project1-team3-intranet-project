@@ -76,7 +76,6 @@ const updateData = async () => {
 const itWork = async () => {
   try {
     const params = { userSn };
-    // const { data } = await axios.post('/api/user/attendance', params);
     const { data } = await apiRequest('/api/user/attendance', {
       method: 'POST',
       body: params,
