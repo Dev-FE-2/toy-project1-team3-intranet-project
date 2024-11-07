@@ -1,14 +1,18 @@
 import axios from 'axios';
+import { apiRequest } from '../../../utils/apiUtils';
 
-const DEFAULT_IMAGE = '/src/img/default_user.svg';
+const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
 let base64Image;
 
 // 사용자 정보 가져오기
 const getUserData = async (userSn) => {
   try {
     const query = `?userSn=${userSn}`;
-    const { data } = await axios.get(`/api/user/userUpdate${query}`);
-    return data['data'];
+    const { data } = await apiRequest(`/api/user/userUpdate${query}`, {
+      method: 'GET',
+    });
+
+    return data;
   } catch (error) {
     console.error('Error fetching user data:', error);
   }

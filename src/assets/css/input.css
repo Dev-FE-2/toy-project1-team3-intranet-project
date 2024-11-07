@@ -1,0 +1,32 @@
+input[type='text'],
+input[type='search'],
+input[type='password'],
+input[type='email'] {
+  min-width: 240px;
+  height: 30px;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
+  outline: none;
+  border: 1px solid var(--line-light);
+  padding: 5px 15px;
+  border-radius: var(--radius);
+  transition: 0.2s;
+}
+
+input[type='text']:focus,
+input[type='search']:focus input[type='password']:focus,
+input[type='email']:focus {
+  border-color: var(--primary);
+}
+
+input[type='text'].warning:focus {
+  border-color: var(--text-red);
+}
+
+input:read-only {
+  cursor: default;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}

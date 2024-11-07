@@ -1,15 +1,20 @@
 import axios from 'axios';
-import style from './workonModal.module.css';
+import style from './attendanceModal.module.css';
+import { apiRequest } from '../../../utils/apiUtils';
 
 const userSn = window.localStorage.getItem('userSn');
-const DEFAULT_IMAGE = '/src/img/default_user.svg';
+const DEFAULT_IMAGE = '/src/assets/img/default_user.svg';
+let workData;
 
 // 사용자 정보 가져오기
 const getUserData = async () => {
   const query = `?userSn=${userSn}`;
   try {
-    const { data } = await axios.get(`/api/user/workOn${query}`);
-    return data['data'];
+    // const { data } = await axios.get(`/api/user/attendance${query}`);
+    const { data } = await apiRequest(`/api/user/attendance${query}`, {
+      method: 'GET',
+    });
+    return data;
   } catch (error) {
     console.error('Error fetching user data:', error);
   }
@@ -19,15 +24,18 @@ const getUserData = async () => {
 const getWorkData = async () => {
   const query = `?userSn=${userSn}`;
   try {
-    const { data } = await axios.get(`/api/user/workOn/working${query}`);
-    return data['data'];
+    const { data } = await apiRequest(`/api/user/attendance/working${query}`, {
+      method: 'GET',
+    });
+    workData = data;
+    return data;
   } catch (error) {
     console.error('Error fetching work data:', error);
   }
 };
 
 // 사용자 프로필 및 출결 정보 업데이트
-const fetchWorkOnData = (userData, workData) => {
+const fetchAttendanceData = (userData, workData) => {
   const profileImg = document.getElementById('profileImg');
   const name = document.getElementById('name');
   const workTime = document.getElementById('workTime');
@@ -59,7 +67,7 @@ const updateData = async () => {
     getUserData(),
     getWorkData(),
   ]);
-  fetchWorkOnData(userData, workData);
+  fetchAttendanceData(userData, workData);
   console.log(workData);
   return { userData: userData, workData: workData };
 };
@@ -68,7 +76,10 @@ const updateData = async () => {
 const itWork = async () => {
   try {
     const params = { userSn };
-    const { data } = await axios.post('/api/user/workOn', params);
+    const { data } = await apiRequest('/api/user/attendance', {
+      method: 'POST',
+      body: params,
+    });
     return data;
   } catch (error) {
     console.error('Error working:', error);
@@ -79,7 +90,11 @@ const itWork = async () => {
 const itLeave = async () => {
   try {
     const params = { userSn };
-    const { data } = await axios.put('/api/user/workOn', params);
+    // const { data } = await axios.put('/api/user/attendance', params);
+    const { data } = await apiRequest('/api/user/attendance', {
+      method: 'PUT',
+      body: params,
+    });
     return data;
   } catch (error) {
     console.error('Error leaving work:', error);
@@ -95,11 +110,12 @@ const closeModal = () => {
 // 확인 버튼 클릭 시 동작
 const handleConfirmClick = async (workData) => {
   if (workData['isWork']) {
+    closeModal();
     await itLeave(userSn);
   } else {
+    closeModal();
     await itWork(userSn);
   }
-  closeModal();
   updateData();
 };
 
@@ -107,8 +123,8 @@ const handleConfirmClick = async (workData) => {
 const showModal = (workData) => {
   const modal = document.getElementById('modal');
   const date = new Date();
-
-  modal.innerHTML = `<div class="${style.modal}">
+  if (workData['isWork'] === 0 || workData['isWork'] === 1) {
+    modal.innerHTML = `<div class="${style.modal}">
     <div class="${style.checkWork}">
       <h2>${workData['isWork'] ? '퇴근' : '출근'} 확인</h2>
       <h3>${workData['isWork'] ? '퇴근' : '출근'}을 처리 하시겠습니까?</h3>
@@ -134,21 +150,23 @@ const showModal = (workData) => {
     </div>
   </div>`;
 
-  const confirm = document.getElementById('confirm');
-  confirm.addEventListener('click', () => {
-    handleConfirmClick(workData);
-  });
-  const cancel = document.getElementById('cancel');
-  cancel.addEventListener('click', closeModal);
+    const confirm = document.getElementById('confirm');
+    confirm.addEventListener('click', () => {
+      handleConfirmClick(workData);
+    });
+    const cancel = document.getElementById('cancel');
+    cancel.addEventListener('click', closeModal);
+  }
 };
 
 // 메인 함수
-const workOnFunc = async () => {
-  const { workData } = await updateData();
+const attendanceFunc = async () => {
+  await updateData();
+
   const button = document.getElementById('attendButton');
   button.addEventListener('click', () => {
     showModal(workData);
   });
 };
 
-export default workOnFunc;
+export default attendanceFunc;

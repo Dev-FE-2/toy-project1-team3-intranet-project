@@ -1,11 +1,14 @@
-import axios from 'axios';
+import { apiRequest } from '../../../utils/apiUtils';
 
 // 사용자 정보 가져오기
 const getUserInfo = async (userSn) => {
   try {
     const query = `?userSn=${userSn}`;
-    const { data } = await axios.get(`/api/user/userInfo${query}`);
-    return data['data'];
+    const { data } = await apiRequest(`/api/user/userInfo${query}`, {
+      method: 'GET',
+    });
+
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -19,7 +22,7 @@ const updateProfile = (userData) => {
   const email = document.getElementById('email');
   const phone = document.getElementById('phone');
 
-  const defaultImage = '/src/img/default_user.svg';
+  const defaultImage = '/src/assets/img/default_user.svg';
   profileImg.src = userData['USER_IMAGE'] || defaultImage;
 
   name.textContent = userData['USER_NAME'];

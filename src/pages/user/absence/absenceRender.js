@@ -1,17 +1,14 @@
+import '../../../assets/css/buttons.css'
+import '../../../assets/css/table.css';
 import styles from './userAbsence.module.css';
 import { fetchUserAbsence } from './absenceFunc';
 
 // 페이지 렌더링
 const absenceRender = async () => {
-
-  const {data} = await fetchUserAbsence();
+  const { data } = await fetchUserAbsence();
 
   return `
-  <main class="${styles.page}">
-    <h1 class="${styles.title}">부재 관리</h1>
-  
-    <div class="${styles.content}">
-      
+    <div>      
       <div class="${styles.absenceRequest}">
         <button id="absenceBtn" class="${styles.absenceBtn}">+ 부재 신청</button>
       </div>
@@ -27,8 +24,8 @@ const absenceRender = async () => {
           <option value="공가">공가</option>
           <option value="병가">병가</option>
         </select>
-        <button id="searchBtn" type="button" class="${styles.searchBtn}">
-          <img src="/src/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
+        <button id="searchBtn" type="button" class="searchBtn">
+          <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </section>
   
@@ -54,12 +51,12 @@ const absenceRender = async () => {
         <div class="${styles.modalPopup}">
           <h1>부재 신청</h1>
           <button type="button" id="closeBtn" class="${styles.closeBtn}">
-            <img src="/src/img/close-x-svgrepo-com.svg" alt="닫기" />
+            <img src="/src/assets/img/close-x-svgrepo-com.svg" alt="닫기" />
           </button>
           <form id="requestForm">
             <article class="${styles.formWrap}">
               <section class="${styles.formList}">
-                <div class="${styles.label}">부재항목</div>
+                <div class="${styles.label}">* 부재항목</div>
                 <select name="reqType" id="reqType" class="${styles.reqType}">
                   <option value="">부재 항목 선택</option>
                   <option value="연차">연차</option>
@@ -71,14 +68,14 @@ const absenceRender = async () => {
                 </select>
               </section>
               <section class="${styles.formList}">
-                <div class="${styles.label}">시작일시</div>
+                <div class="${styles.label}">* 시작일시</div>
                 <div class="${styles.dateTime}">
                   <input type="text" id="reqStartDate" class="${styles.reqStartDate}" placeholder="yyyy-mm-dd">
                   <input type="text" id="reqStartTime" class="${styles.reqStartTime}" placeholder="hh:mm">
                 </div>
               </section>
               <section class="${styles.formList}">
-                <div class="${styles.label}">종료일시</div>
+                <div class="${styles.label}">* 종료일시</div>
                 <div class="${styles.dateTime}">
                   <input type="text" id="reqEndDate" class="${styles.reqEndDate}" placeholder="yyyy-mm-dd">
                   <input type="text" id="reqEndTime" class="${styles.reqEndTime}" placeholder="hh:mm">
@@ -95,20 +92,23 @@ const absenceRender = async () => {
       </section>
   
     </div>
-  </main>
   `;
-}
+};
 
 export const renderUserAbsenceList = (data) => {
-  return data.length > 0 ? data.map((item) => `
+  return data.length > 0
+    ? data
+        .map(
+          (item) => `
     <tr>
       <td>${item.ABSENCE_REQUEST_DATE_TIME.split(' ')[0].slice(0, 10)}</td>
       <td>${item.ABSENCE_START_DATE_TIME} ~ ${item.ABSENCE_END_DATE_TIME}</td>
       <td>${item.ABSENCE_TYPE}</td>
       <td>${item.ABSENCE_DETAIL_CONTENT}</td>
     </tr> `
-  ).join('')
-  : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
-}
+        )
+        .join('')
+    : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
+};
 
 export default absenceRender;
