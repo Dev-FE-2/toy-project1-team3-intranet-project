@@ -63,6 +63,7 @@ ul > li > button{
   color: var(--text-black);
 }
 .first, .prev, .next, .last{
+  background-color: var(--point-mint);
   color: var(--text-black);
   font-weight: bold;
 }
