@@ -1,26 +1,22 @@
-.container * {
-  box-sizing: border-box;
-}
-
 .container {
+  max-width: 1200px;
+  width: 100vw;
   height: 100vh;
-  background-color: #e9e9e9;
+  margin: 0 auto;
+  border-left: 1px solid var(--line-light);
+  border-right: 1px solid var(--line-light);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--bg-front);
 }
 
 .loginBox {
   width: 421px;
-  height: 294px;
-  border-radius: 25px;
-  padding: 34px 24px 18px;
-  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.4);
 }
 
 h1 {
@@ -35,6 +31,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .loginForm label {
@@ -60,13 +57,14 @@ h1 {
 }
 
 .buttonBox {
-  padding-top: 30px;
+  flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.buttonBox > button {
+.signUp {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -76,41 +74,29 @@ h1 {
   text-underline-offset: 4px;
   font-size: 12px;
   font-weight: 600;
+  color: var(--text-black);
 }
 
-.buttonBox > div {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.signUp:hover {
+  background-color: transparent;
 }
 
-.buttonBox > div > button {
+.buttonBox > button {
   border-radius: 4px;
-  background-color: black;
-  color: white;
   font-size: 12px;
   font-weight: 600;
-}
-
-button:hover {
-  cursor: pointer;
+  padding: 11px 15px;
 }
 
 @media (max-width: 1280px) {
   .loginBox {
     width: 100%;
-    height: 100%;
     border-radius: 0;
   }
 
   .loginForm {
     justify-content: center;
     max-width: 400px;
-  }
-
-  .loginForm label {
-    margin-bottom: 30px;
   }
 
   .loginForm label span {
