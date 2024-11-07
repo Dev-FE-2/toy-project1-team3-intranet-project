@@ -1,4 +1,4 @@
-import '../../../assets/css/buttons.css'
+import '../../../assets/css/buttons.css';
 import styles from './work.module.css';
 import { fetchWorks } from './workFunc';
 
