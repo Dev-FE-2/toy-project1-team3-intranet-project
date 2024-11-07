@@ -1,3 +1,5 @@
+import '../../../../assets/css/input.css';
+import '../../../../assets/css/buttons.css';
 import styles from '../notice.module.css';
 import listStyles from './noticeList.module.css';
 import listItem from './listItem';
@@ -10,45 +12,36 @@ const listRender = async () => {
   const { data, totalCount } = await getNotices();
 
   return /* HTML */ `
-    <main class="${styles.container}">
-      <div class="${styles.inner}">
-        <h1 class="${styles.h1}">기업공지 관리</h1>
-        ${userGrade
-          ? ''
-          : `<div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
-          <a href="${currentPath}/insert" class="${styles.btn} ${styles.plus}">
+    ${userGrade
+      ? ''
+      : `<div class="${styles['btn-wrap']} ${listStyles['btn-wrap']}">
+          <button onclick="location.href='${currentPath}/insert'" class="${styles.btn} ${styles.plus}">
             <span>공지 등록</span>
-          </a>
+          </button>
         </div>`}
-        <section class="${listStyles['list-wrap__header']}">
-          <div class="${listStyles['count-desc']}">
-            총 <span id="noticeCnt">${totalCount}</span>개의 공지
-          </div>
-          <div class="${listStyles['search-wrap']}">
-            <input
-              type="search"
-              id="searchInput"
-              class="${styles.input}"
-              placeholder="검색"
-            />
-            <button
-              type="button"
-              id="searchBtn"
-              class="${listStyles['search-btn']}"
-            >
-              <img
-                src="/src/assets/img/search-svgrepo-com.svg"
-                alt="검색 아이콘"
-              />
-            </button>
-          </div>
-        </section>
-        <section id="noticeList" class="${listStyles['list-wrap__body']}">
-          ${renderNotices(data)}
-        </section>
-        <nav id="pagingContainer"></nav>
+    <section class="${listStyles['list-wrap__header']}">
+      <div class="${listStyles['count-desc']}">
+        총 <span id="noticeCnt">${totalCount}</span>개의 공지
       </div>
-    </main>
+      <div class="${listStyles['search-wrap']}">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="제목 또는 내용으로 검색"
+        />
+        <button
+          type="button"
+          id="searchBtn"
+          class="searchBtn ${listStyles['search-btn']}"
+        >
+          <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" />
+        </button>
+      </div>
+    </section>
+    <section id="noticeList" class="${listStyles['list-wrap__body']}">
+      ${renderNotices(data)}
+    </section>
+    <nav id="pagingContainer"></nav>
   `;
 };
 

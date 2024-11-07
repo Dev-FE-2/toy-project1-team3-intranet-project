@@ -1,5 +1,7 @@
 import axios from 'axios';
+import Loader from '../../../components/loader/Loader';
 
+const loader = new Loader();
 // 사용자 로그인 함수
 const signInUser = async (userId, userPW) => {
   const params = {
@@ -8,6 +10,7 @@ const signInUser = async (userId, userPW) => {
   };
 
   try {
+    loader.show();
     const response = await axios.post('/api/user/signIn', params);
     const { data } = response.data;
 
@@ -16,6 +19,7 @@ const signInUser = async (userId, userPW) => {
       window.localStorage.setItem('userGrade', data['USER_GRADE']);
       checkUserGrade();
     } else {
+      loader.hide();
       alert('잘못된 로그인 정보입니다.');
     }
   } catch (error) {
@@ -46,7 +50,7 @@ const checkUserGrade = () => {
   if (userGrade === '0') {
     window.location.href = '/admin/userList';
   } else if (userGrade === '1') {
-    window.location.href = '/user/workOn';
+    window.location.href = '/user/attendance';
   }
 };
 

@@ -1,3 +1,5 @@
+import '../../../assets/css/buttons.css'
+import '../../../assets/css/table.css';
 import styles from './adminAbsence.module.css';
 import { fetchAdminAbsence } from './absenceFunc';
 
@@ -6,9 +8,6 @@ const absenceRender = async () => {
   const { data } = await fetchAdminAbsence();
 
   return `
-  <main class="${styles.page}">
-    <h1 class="${styles.title}">부재 관리</h1>
-
     <div class="${styles.content}">
 
       <section class="${styles.searchWrap}">
@@ -22,7 +21,7 @@ const absenceRender = async () => {
           <option value="공가">공가</option>
           <option value="병가">병가</option>
         </select>
-        <button id="searchBtn" type="button" class="${styles.searchBtn}">
+        <button id="searchBtn" type="button" class="searchBtn">
           <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </section>
@@ -46,7 +45,6 @@ const absenceRender = async () => {
       </nav>
       
     </div>
-  </main>
   `;
 };
 
@@ -65,7 +63,7 @@ export const renderAdminAbsenceList = (data) => {
     </tr> `
         )
         .join('')
-    : `<tr><td colspan="4">등록된 부재 기록이 없습니다.</td></tr>`;
+    : `<tr><td colspan="5">등록된 부재 기록이 없습니다.</td></tr>`;
 };
 
 export default absenceRender;

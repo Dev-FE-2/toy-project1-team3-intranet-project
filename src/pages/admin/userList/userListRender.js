@@ -1,20 +1,24 @@
+import '../../../assets/css/buttons.css';
+import '../../../assets/css/table.css';
+import '../../../assets/css/input.css';
 import style from './userList.module.css';
 import { fetchUsers } from './userListFunc';
 
 // 테이블의 행을 렌더링하는 함수
 export const renderTableRows = (data) => {
-  return data
-    .map(
-      (item) => `
-      <tr onclick="location.href='/admin/user/${item.userSn}'">
-        <td class="${style.td} ${style.name}">${item.name}</td>
-        <td class="${style.td} ${style.email}">${item.email}</td>
-        <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
-        <td class="${style.td} ${style.division}">${item.grade ? '임직원' : '관리자'}</td>
-      </tr>
-    `
-    )
-    .join('');
+  return data.length > 0
+  ? data
+      .map(
+        (item) => `
+        <tr onclick="location.href='/admin/user/${item.userSn}'">
+          <td class="${style.td} ${style.name}">${item.name}</td>
+          <td class="${style.td} ${style.email}">${item.email}</td>
+          <td class="${style.td} ${style.phoneNumber}">${item.phoneNumber}</td>
+          <td class="${style.td} ${style.division}">${item.grade ? '임직원' : '관리자'}</td>
+        </tr>
+      `)
+      .join('')
+  : `<tr><td colspan="5">등록된 임직원이 없습니다.</td></tr>`;
 };
 
 // 페이지네이션 버튼을 렌더링하는 함수
@@ -25,25 +29,43 @@ export const pagination = (currentPage, totalPage) => {
   const endPage = Math.min(startPage + 9, totalPage);
 
   for (let i = startPage; i <= endPage; i++) {
-    pageButton.push(
-      `<button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `${style.unSelectBtn}`}">
-      ${i}
-      </button>
-    `
-    );
+    pageButton.push(`
+      <li>
+        <button class="${i === currentPage ? `${style.selectBtn} pageBtn` : `unSelectBtn`}">
+        ${i}
+        </button>
+      </li>
+    `);
   }
 
   return ` 
-    <ul>
-      <button class="${style.unSelectBtn} prev"
-      ${currentPage === 1 ? 'disabled' : ''}>
-        <
-      </button>
-      ${pageButton.join('')}
-      <button class="${style.unSelectBtn} next"
-      ${currentPage === totalPage ? 'disabled' : ''}>
-        >
-      </button>
+    <ul class="${style.paginationBtn}">
+      <li>
+        <button class="${style.unSelectBtn} first"
+        ${currentPage === 1 ? 'disabled' : ''}>
+          &lt;&lt;
+        </button>
+      </li>
+      <li>
+        <button class="${style.unSelectBtn} prev"
+        ${currentPage === 1 ? 'disabled' : ''}>
+          &lt;
+        </button>
+      </li>
+      
+        ${pageButton.join('')}
+      <li>
+        <button class="${style.unSelectBtn} next"
+        ${currentPage === totalPage ? 'disabled' : ''}>
+          &gt;
+        </button>
+      </li>
+      <li>
+        <button class="${style.unSelectBtn} last"
+        ${currentPage === totalPage ? 'disabled' : ''}>
+          &gt;&gt;
+        </button>
+      </li>
     </ul>`;
 };
 
@@ -53,14 +75,15 @@ const userListRender = async () => {
   const data = userData.data; // 임직원 데이터
 
   return `
-    <main class="${style.userListWrapper}">
       <div class="${style.userListheader}">
         <div class="${style.headerLeft}">
-          <div class="${style.title}">임직원 관리</div>
           <div id="userCount" class="${style.subTitle}">총 ${totalCount}명의 임직원</div>
         </div>
         <div class="${style.headerRight}">
           <input type="text" id="searchInput"class="${style.input}" placeholder="이름 또는 이메일로 검색하기" />
+          <button id="searchBtn" type="button" class="searchBtn">
+            <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${style.searchIcon}" />
+          </button>
         </div>
       </div>
 
@@ -68,7 +91,6 @@ const userListRender = async () => {
         <table class="${style.table}">
           <thead>
             <tr>
-              <th scope="col" class="${style.th} checkbox"></th>
               <th scope="col" class="${style.th} name">이름</th>
               <th scope="col" class="${style.th} ${style.email}">이메일</th>
               <th scope="col" class="${style.th} ${style.phoneNumber}">휴대폰번호</th>
@@ -80,12 +102,11 @@ const userListRender = async () => {
           </tbody>
         </table>
         <nav class="${style.pagination}">
-          <div id="paginationButtons" class="${style.paginationBtn}">
+          <div id="paginationButtons">
           </div>
         </nav>
       </article>
-    </main>
-        `;
+  `;
 };
 
 export default userListRender;
