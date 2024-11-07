@@ -1,6 +1,6 @@
 .btn-wrap {
     justify-content: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .list-wrap__header {
@@ -12,8 +12,8 @@
 
 .count-desc {
     font-size: 12px;
-    font-weight: 400;
-    color: #6C727F;
+    font-weight: var(--fw-body);
+    color: var(--text-gray);
 }
 
 .list-wrap__body {
@@ -24,7 +24,7 @@
 
 .nodata {
     text-align: center;
-    color: darkgray;
+    color: var(--text-gray);
     width: 100%;
     font-weight: 300;
     padding: 30px 0;
@@ -35,13 +35,9 @@
     align-items: center;
 }
 
-/* .search-btn {
-    width: 26px;
-    height: 26px;
-    background-color: transparent;
-    padding: 4px;
+.search-btn {
     margin-left: 5px;
-} */
+}
 
 .search-btn img {
     width: 18px;
