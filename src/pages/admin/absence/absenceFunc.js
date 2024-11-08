@@ -1,6 +1,6 @@
-import '../../../assets/css/buttons.css'
 import styles from './adminAbsence.module.css';
 import { renderAdminAbsenceList } from './absenceRender';
+import { apiRequest } from '../../../utils/apiUtils';
 
 // 상수 정의
 const DEFAULT_PAGE = 1;
@@ -25,9 +25,7 @@ export const fetchAdminAbsence = async (page = DEFAULT_PAGE, searchType = '', se
   const url = `/api/admin/absence?page=${page}&searchType=${encodeURIComponent(searchType)}&searchTerm=${encodeURIComponent(searchTerm)}`;
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch items');
-    return await response.json();
+    return await apiRequest(url, {method:'GET'});
   } catch (error) {
     console.error('Error fetching items:', error);
     return { data: [], page, size: PAGE_SIZE, totalCount: 0, totalPage: 1 };
