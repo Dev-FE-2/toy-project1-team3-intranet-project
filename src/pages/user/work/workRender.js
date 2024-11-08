@@ -12,7 +12,7 @@ const workRender = async () => {
 
       <section class="${styles.searchWrap}">
         <input type="search" id="searchInput" class="${styles.searchInput}" placeholder="날짜 검색" />
-        <button type="button" id="searchBtn" class="searchBtn">
+        <button type="button" id="searchBtn" class="${styles.searchBtn} searchBtn">
           <img src="/src/assets/img/search-svgrepo-com.svg" alt="검색 아이콘" class="${styles.searchIcon}" />
         </button>
       </section>
