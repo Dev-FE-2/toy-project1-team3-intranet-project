@@ -1,10 +1,17 @@
 import { pagination } from './userListRender';
 import { renderTableRows } from './userListRender';
-import style from './userList.module.css';
+
+const DEFAULT_PAGE = 1; //기본 페이지
+const PAGE_SIZE = 5; //출력 데이터 수
+
+const state = {
+  currentSearchTerm: '', //검색어
+  currentPage: DEFAULT_PAGE //현재 페이지
+};
 
 // 임직원 리스트 API 호출 함수
-export const fetchUsers = async (page = 1) => {
-  const url = `/api/admin/userList?page=${page}`;
+export const fetchUsers = async (page = 1, searchTerm = '') => {
+  const url = `/api/admin/userList?page=${page}&search=${encodeURIComponent(searchTerm)}`;
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Failed to fetch items');
@@ -14,105 +21,91 @@ export const fetchUsers = async (page = 1) => {
   }
 };
 
+//검색어 포함 api 호출 함수
+export const getUsers = async (page = DEFAULT_PAGE) => {
+  if (state.currentSearchTerm) {
+    return await fetchUsers(page, state.currentSearchTerm);
+  } else if(!state.currentSearchTerm){
+    return await fetchUsers(page)
+  }
+}
+
 // 페이지네이션 버튼 핸들러
 const handlePagination = async (event, totalPage) => {
   const target = event.target;
-  let currentPage = parseInt(document.querySelector('.pageBtn').innerText);
+  if(target.tagName !== 'BUTTON') return;
+
+  const currentPage = state.currentPage;
   let newPage = currentPage;
+
   if (target.classList.contains('prev') && currentPage > 1) {
     newPage = currentPage - 1;
   } else if (target.classList.contains('next') && currentPage < totalPage) {
     newPage = currentPage + 1;
+  } else if (target.classList.contains('first') && currentPage > 1) {
+    newPage = 1;
+  } else if (target.classList.contains('last') && currentPage < totalPage) {
+    newPage = totalPage;
   } else {
     newPage = parseInt(target.innerText, 10);
   }
+
   if (newPage !== currentPage) {
-    currentPage = newPage;
+    state.currentPage = newPage;
     await updateUserList(newPage);
   }
 };
 
 //페이지네이션
-const setupPagination = (totalPage, currentPage = 1) => {
-  const paginationButtons = document.getElementById('paginationButtons');
-  paginationButtons.innerHTML = pagination(currentPage, totalPage);
+const setupPagination = (totalPage) => {
+  if(totalPage < 1){
+    const paginationButtons = document.getElementById('paginationButtons');
+    paginationButtons.innerHTML = pagination(state.currentPage, 1);
+  } else{
+    const paginationButtons = document.getElementById('paginationButtons');
+    paginationButtons.innerHTML = pagination(state.currentPage, totalPage);
+  }
 };
-// 임직원 리스트 업데이트 함수
-const updateUserList = async (page = 1) => {
-  const { data, totalCount, totalPage } = await fetchUsers(page);
 
+// 임직원 리스트 업데이트 함수
+const updateUserList = async (page = DEFAULT_PAGE) => {
+  const { data, totalCount, totalPage } = await getUsers(page);
   document.getElementById('userTableBody').innerHTML = renderTableRows(data);
 
   document.getElementById('userCount').textContent =
     `총 ${totalCount}명의 임직원`;
 
-  setupPagination(totalPage, page);
+  setupPagination(totalPage);
 };
-//검색
-// const search = async (searchTerm) => {
-//   const data = await fetchUsers()
-//   const userData = data.data
-//   // searchTerm을 포함하는 항목만 필터링
-//   const filteredUsers = userData.filter(user =>
-//     user.name.includes(searchTerm) || user.email.includes(searchTerm)
-//   );
-//   console.log(filteredUsers)
-//   return filteredUsers
-// }
-//검색 결과 렌더링
-const filterTableRows = (data) => {
-  const curPath = window.location.pathname;
-  console.log(data);
-  return `
-    <tr onclick="location.href='/admin/user/${data.userSn}'">
-      <td class="${style.td} ${style.name}">${data.name}</td>
-      <td class="${style.td} ${style.email}">${data.email}</td>
-      <td class="${style.td} ${style.phoneNumber}">${data.phoneNumber}</td>
-      <td class="${style.td} ${style.division}">${data.grade ? '관리자' : '임직원'}</td>
-   </tr>
-    `;
-};
-{
-  /* <td class="${style.td} checkbox"><input type="checkbox" onclick="event.stopPropagation()"></td> */
+
+//검색어 처리 함수
+const searchUsers = async () =>{
+  state.currentSearchTerm = document.getElementById('searchInput').value.toLowerCase(); // 전역 변수에 검색어 저장
+  state.currentPage = DEFAULT_PAGE
+  await updateUserList();
 }
 
-const filterRender = async (searchTerm) => {
-  const data = await fetchUsers();
-  const userData = data.data;
-  const filteredUsers = userData.filter(
-    (user) => user.name.includes(searchTerm) || user.email.includes(searchTerm)
-  );
-  const tableRowsHTML = filteredUsers.map(filterTableRows).join('');
-  document.getElementById('userTableBody').innerHTML = tableRowsHTML;
+//이벤트 초기화 함수
+const initEventLister = (totalPage) => {
+  //페이지네이션 이벤트리스너 추가
+  document.getElementById('paginationButtons').addEventListener('click', (event) =>{
+    handlePagination(event, totalPage)
+  })
 
-  document.getElementById('userCount').textContent =
-    `총 ${filteredUsers.length}명의 임직원`;
-
-  setupPagination(1, filteredUsers.length);
-};
-
-let currentSearchTerm = '';
-const userListFunc = async () => {
-  const { totalPage } = await fetchUsers();
-  const paginationButtons = document.getElementById('paginationButtons');
-  const searchInput = document.getElementById('searchInput');
-  //첫 번째 페이지로 초기화
-  setupPagination(totalPage, 1);
-  const searchUsers = async () => {
-    currentSearchTerm = searchInput.value.toLowerCase(); // 전역 변수에 검색어 저장
-
-    filterRender(currentSearchTerm);
-  };
-  // 페이지네이션 버튼 이벤트 리스너 추가
-  paginationButtons.addEventListener('click', (event) => {
-    handlePagination(event, totalPage);
-  });
-  // 검색 이벤트 리스너
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      searchUsers();
+  //검색 이벤트 리스너 추가
+  document.getElementById('searchInput').addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      searchUsers()
     }
-  });
+  })
+  document.getElementById('searchBtn').addEventListener('click',searchUsers)
+}
+
+//최초 초기화 함수
+const userListFunc = async () => {
+  const { totalPage } = await fetchUsers();  
+  setupPagination(totalPage);
+  initEventLister(totalPage);
 };
 
 export default userListFunc;
