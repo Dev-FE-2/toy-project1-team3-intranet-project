@@ -1,6 +1,7 @@
 import '../../../assets/css/buttons.css'
 import styles from './userAbsence.module.css';
 import { renderUserAbsenceList } from './absenceRender';
+import { apiRequest } from '../../../utils/apiUtils';
 
 // 상수 정의
 const DEFAULT_PAGE = 1;
@@ -25,9 +26,7 @@ export const fetchUserAbsence = async (page = DEFAULT_PAGE, searchType = '', sea
   const url = `/api/user/absence?userSn=${encodeURIComponent(state.userSn)}&page=${page}&searchType=${encodeURIComponent(searchType)}&searchTerm=${encodeURIComponent(searchTerm)}`;
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch items');
-    return await response.json();
+    return await apiRequest(url, {method: 'GET'});
   } catch (error) {
     console.error('Error fetching items:', error);
     return { data: [], page, size: PAGE_SIZE, totalCount: 0, totalPage: 1 };
@@ -42,19 +41,15 @@ const requestAbsence =  async (formData) => {
   const url = `/api/user/absence/request`;
 
   try {
-    const response = await fetch(url, {
+    const { message } = await apiRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json', // JSON 형식으로 전송
-      },
-      body: JSON.stringify(Object.fromEntries(formData))
+      body: formData
     });
-    if (!response.ok) throw new Error('Failed to request absence');
-    const result = await response.json();
-    alert(result.message);
-    window.location.href = '/user/absence';
+      alert(message);
+      window.location.href = '/user/absence';
   } catch (error) {
-    console.error('Error request absence:', error);
+    console.error('Absence Request Error :', error);
+    alert('부재 신청에 실패하였습니다.', error);
   }
 }
 
@@ -164,12 +159,13 @@ const createFormData = () => {
   const reqStartDateTime = document.getElementById('reqStartDate').value + ' ' + document.getElementById('reqStartTime').value + ':00';
   const reqEndDateTime = document.getElementById('reqEndDate').value + ' ' + document.getElementById('reqEndTime').value + ':00';
 
-  const formData = new FormData();
-  formData.append('reqType', document.getElementById('reqType').value);
-  formData.append('reqStartDateTime', reqStartDateTime);
-  formData.append('reqEndDateTime', reqEndDateTime);
-  formData.append('reqContent', document.getElementById('reqContent').value.trim());
-  formData.append('userSn', state.userSn);
+  const formData = {
+    reqType : document.getElementById('reqType').value,
+    reqStartDateTime : reqStartDateTime,
+    reqEndDateTime : reqEndDateTime,
+    reqContent : document.getElementById('reqContent').value.trim(),
+    userSn : state.userSn
+  }
 
   return formData;
 }
